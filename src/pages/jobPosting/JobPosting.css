@@ -1,0 +1,64 @@
+@font-face {
+    font-family: "KOTRA_BOLD-Bold";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.1/KOTRA_BOLD-Bold.woff")
+      format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SUITE-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
+.posting-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    font-family: "KOTRA_BOLD-Bold";
+    font-size: 30px;
+    margin-top: 10px;
+}
+
+.posting-box{
+    width: 1150px;
+    height: 530px;
+}
+
+.posting-list {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    height: 550px;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    box-shadow: 0px 0px 10px #ccc;
+}
+
+.posting-table {
+    margin-top: 30px;
+    height: 500px;
+    width: 1050px;
+}
+
+.posting-list td {
+    border-bottom: 1px solid gray;
+}
+
+/* ------------------------------ */
+.paging-container {
+    margin-top: 110px;
+}
+
+.pagingbtn {
+    border: none;
+    background-color: white;
+    font-family: 'SUITE-Regular';
+    font-size: 20px;
+    cursor: pointer;
+}
