@@ -21,9 +21,9 @@ function SmallPosting() {
 
     return (
         <>
-            <div>
-            <h1>채용공고</h1>
-                <table>
+            <div className="postcontainer">
+            <h1 className="posttext">채용공고</h1>
+                <table className="smallposttable">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -36,9 +36,9 @@ function SmallPosting() {
                             <tr
                                 key={ p.idx }
                             >
-                                <td>{ index + 1 }</td>
-                                <td className="recruit">{ p.recruit }</td>
-                                <td className="company">{ p.company }</td>
+                                <td className="index">{ index + 1 }</td>
+                                <td className="recruit">{ p.recru_title }</td>
+                                <td className="company">{ p.recru_company }</td>
                             </tr>
                         )) 
                     }

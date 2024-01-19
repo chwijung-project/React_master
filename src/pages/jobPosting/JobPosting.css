@@ -17,6 +17,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 80px;
 }
 
 .title {
@@ -46,13 +47,18 @@
     width: 1050px;
 }
 
+.postarticle :hover {
+    /* background-color: #ccc; */
+    cursor: pointer;
+}
+
 .posting-list td {
     border-bottom: 1px solid gray;
 }
 
 /* ------------------------------ */
 .paging-container {
-    margin-top: 110px;
+    margin-top: 150px;
 }
 
 .pagingbtn {

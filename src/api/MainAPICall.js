@@ -1,11 +1,13 @@
-import { GET_MAINGRAHP, GET_SMALLCOMU } from '../modules/MainModule.js';
+import { GET_MAINGRAHP } from '../modules/MainModule.js';
+import { GET_SMALLCOMU } from '../modules/SmallModule.js';
 import { GET_SMALLPOST } from '../modules/PostModule.js';
 
 
 /* 메인페이지 직무별 그래프 */
 export const callMainJobListAPI = ({selectedJob}) => {
-    const encodedJob = encodeURIComponent(selectedJob);
-    let requestURL = `http://localhost:8080/checkedjobs?job=${encodedJob}`;
+    // const encodedJob = encodeURIComponent(selectedJob);
+    // let requestURL = `http://localhost:8080/checkedjobs?job=${encodedJob}`;
+    let requestURL = `http://localhost:8080/recruit-counts-by-checked-job`;
 
     return async (dispatch) => {
 
@@ -30,7 +32,7 @@ export const callMainJobListAPI = ({selectedJob}) => {
 /* 메인페이지 채용공고 스몰보드 */
 export const callSmallPostListAPI = ({currentPage}) => {
 
-    let requestURL = `http://localhost:8080/smallposting`;
+    let requestURL = `http://localhost:8080/smallrecruit`;
 
     if (currentPage !== undefined || currentPage !== null) {
         requestURL = `${requestURL}?offset=${currentPage}`;

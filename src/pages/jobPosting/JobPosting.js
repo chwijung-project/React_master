@@ -40,10 +40,14 @@ function JobPosting() {
                   <button>정렬버튼3</button>
                 </thead>
                   {Array.isArray(postList) && postList.map((p) => (
-                    <tr key={p.idx}>
-                      <td>
-                        <div>{p.recruit}</div>
-                        <div>{p.company}</div>
+                    <tr 
+                      key={p.idx} 
+                    >
+                      <td
+                        className="postarticle"
+                        onClick={() => window.location.href = p.url}>
+                          <div>{p.recruit}</div>
+                          <div>{p.company}</div>
                       </td>
                       <td>{p.jobname}</td>
                       <td>{p.region}</td>
