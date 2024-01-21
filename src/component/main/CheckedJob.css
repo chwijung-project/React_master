@@ -1,4 +1,4 @@
-@font-face {
+/* @font-face {
     font-family: "KOTRA_BOLD-Bold";
     src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.1/KOTRA_BOLD-Bold.woff")
       format("woff");
@@ -20,7 +20,6 @@
     margin-bottom: 20px;
 }
 
-/* 차트를 감싸고 있는 영역 */
 .chart {
     width: 1200px;
     height: 350px;
@@ -53,4 +52,14 @@
     margin-left: 15px;
     height: 200px;
     width: 97%;
-}
+} */
+/* 
+.test {
+    background-color: rgba(255, 99, 132, 1);
+    background-color: rgba(54, 162, 235, 1);
+    background-color: rgba(255, 206, 86, 1);
+    background-color: rgba(75, 192, 192, 1);
+    background-color: rgba(153, 102, 255, 1);
+    background-color: rgba(255, 159, 64, 1);
+    background-color: rgb(22, 241, 77);
+} */

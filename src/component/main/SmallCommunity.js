@@ -6,7 +6,7 @@ import './SmallCommunity.css';
 function SmallCommunity() {
 
     const dispatch = useDispatch();
-    const smallcomu = useSelector(state => state.mainReducer);
+    const smallcomu = useSelector(state => state.smallReducer);
     const comuList = smallcomu.data;
     const [currentPage, setCurrentPage] = useState(1);
 
@@ -21,9 +21,9 @@ function SmallCommunity() {
 
     return (
         <>
-            <div>
-            <h1>감자 커뮤니티</h1>
-                <table>
+            <div className="comucontainer">
+            <h1 className="comutext">감자 커뮤니티</h1>
+                <table className="smallcomutable">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -36,7 +36,7 @@ function SmallCommunity() {
                             <tr
                                 key={ p.comu_idx }
                             >
-                                <td>{ index + 1 }</td>
+                                <td className="index">{ index + 1 }</td>
                                 <td className="comu_titl">{ p.comu_titl }</td>
                                 <td className="user_id">{ p.user_id }</td>
                             </tr>

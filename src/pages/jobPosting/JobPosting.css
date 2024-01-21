@@ -7,11 +7,46 @@
 }
 
 @font-face {
+    font-family: 'KOTRA_GOTHIC';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/KOTRA_GOTHIC.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
     font-family: 'SUITE-Regular';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
     font-weight: 400;
     font-style: normal;
 }
+
+@font-face {
+    font-family: 'NanumBarunGothic';
+    font-style: normal;
+    font-weight: 400;
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot');
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype');
+   }
+   
+   @font-face {
+    font-family: 'NanumBarunGothic';
+    font-style: normal;
+    font-weight: 700;
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.eot');
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.ttf') format('truetype')
+   }
+   
+   @font-face {
+    font-family: 'NanumBarunGothic';
+    font-style: normal;
+    font-weight: 300;
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot');
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.ttf') format('truetype');
+   }
+   
+   .nanumbarungothic * {
+    font-family: 'NanumBarunGothic', sans-serif;
+   }
 
 .posting-container {
     display: flex;
@@ -20,13 +55,151 @@
 }
 
 .title {
-    font-family: "KOTRA_BOLD-Bold";
-    font-size: 30px;
+    font-family: "NanumBarunGothic";
+    font-size: 37px;
     margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
 }
 
+/* 직무 필터 */
+.job-category {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+    justify-content: start;
+    list-style-type: none;
+    margin: 0;
+}
+
+.job-category label {
+    background-color: #FFC34E;
+    opacity: 0.85;
+    color: rgb(53, 53, 53);
+    padding: 18px 18px;
+    border-radius: 7px;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px #ccc;
+    display: flex;
+    align-items: center;
+    font-family: NanumBarunGothic;
+    font-size: 23px;
+}
+
+.job-category label:hover{
+    background-color: #f7f7f7;
+}
+
+.job-category label::before{
+    background-color: #f7f7f7;
+}
+
+.job-category input[type="radio"] {
+    appearance: none;
+    width: 25px; 
+    height: 25px; 
+    border: 3px solid rgb(53, 53, 53);
+    border-radius: 5px;
+    margin-right: 15px;
+    vertical-align: middle;
+}
+
+.job-category input[type="radio"]:checked{
+    background-color: #000000;
+}
+
+.job-category input[type="radio"]:checked+span{
+    color: #000000;
+    font-family: NanumBarunGothic;
+    font-weight: bold;
+}
+
+.job-category span {
+    pointer-events: none;
+}
+
+/* 정렬기능 */
+.sort {
+    font-family: "NanumBarunGothic";
+    font-size: 23px;
+    margin-top: 18px;
+    margin-left: 10px;
+    margin-bottom: 15px;
+}
+
+.sort-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.right-buttons {
+    margin-left: auto; 
+    display: flex; 
+    gap: 5px;
+}
+
+.sort-button {
+    /* display: flex;
+    justify-content: flex-end;
+    text-align: right; */
+    margin-bottom: 15px;
+    margin-left: auto;
+    position: relative;
+    display: inline-block;
+}
+
+.sort-button button{
+    margin-top: 10px;
+    margin-right: 10px;
+    padding: 15px 15px;
+    width: 130px;
+    font-size: 21px;
+    font-family: NanumBarunGothic;
+    font-weight:550;
+    color: #f39519;
+    background-color: white;
+    border: 2.6px solid #f39519;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.sort-button button:hover{
+    background-color: #f39519;
+    color: whitesmoke;
+}
+
+/* 드롭다운 겉부분 디자인 */
+.sort-content {
+    /* display: none; */
+    position: absolute;
+    /* margin-left: 35px; */
+    border: 1px solid #FFC34E;
+    background-color: #f9f9f9;
+    min-width: 127px;
+    font-size: 20px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* 드롭다운 메뉴 디자인 */
+.sort-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.show {
+    display: block;
+}
+
+/* 채용공고 리스트 */
 .posting-box{
-    width: 1150px;
+    width: 1200px;
     height: 530px;
 }
 
@@ -34,21 +207,84 @@
     margin-top: 10px;
     display: flex;
     justify-content: center;
-    height: 550px;
+    height: 1290px;
     border: 1px solid #ddd;
-    border-radius: 30px;
+    border-radius: 10px;
     box-shadow: 0px 0px 10px #ccc;
 }
 
 .posting-table {
     margin-top: 30px;
-    height: 500px;
-    width: 1050px;
+    height: 1000px;
+    width: 1130px;
+}
+
+.company-logo button {
+    height: 85px;
+    width: 85px;
+    border-radius: 10px;
+    margin-right: 10px;
+    border:white
 }
 
 .posting-list td {
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid #d7d8da;
+    font-family: KOTRA_GOTHIC;
+    font-size: 22px;
+    padding: 12px 5px;
 }
+
+/* 텍스트 줄 바꿈 없이 */
+/* .region-cell {
+    white-space: nowrap; 
+} */
+
+.post-job-design {
+    margin-right: 35px;
+    padding: 2px 20px 2px 10px;
+    display: flex;
+    align-items: center;
+    height: 60px;
+    width: 280px;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    background-color: rgba(60, 179, 114);
+    font-family: NanumBarunGothic;
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
+}
+
+
+/* ------------------------------ */
+.moreinfo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 185vh; /* 화면 높이에 따라 조절할 수 있음 */
+}
+
+.moreinfo-container button{
+    font-family: "NanumBarunGothic";
+    font-size: 30px;
+    color: #3CB371;
+    background-color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    width: 1200px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px #ccc
+}
+
+.moreinfo-container button:hover{
+    background-color: whitesmoke;
+}
+
 
 /* ------------------------------ */
 .paging-container {
