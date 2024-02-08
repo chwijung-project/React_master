@@ -2,11 +2,25 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { callPostListAPI } from "../../api/PostingAPICall";
 //채용공고 정보 받아옴
-
 import './JobPosting.css';
+import Pagination from "../../component/jobposting/Pagination";
+import PostingList from "../../component/jobposting/PostingList";
 
-function JobPosting() {
 
+function JobPosting() {  
+  //공고 열림 닫힘 모드 변경
+  const [showOpenJobs, setShowOpenJobs] = useState(false);
+
+  const toggleOpenJobs = () => {
+    setShowOpenJobs(!showOpenJobs);
+  };
+
+  const [filterdropdown, setFilterDropdown] = useState(false);
+  const onClickFilterDropdown = () => {
+    setFilterDropdown(!filterdropdown);
+  };
+
+  //직무명 필터링
   const jobCategories = [
     { label: '머신러닝/딥러닝 엔지니어', value: '머신러닝/딥러닝 엔지니어' },
     { label: '머신러닝/딥러닝 리서처', value: '머신러닝/딥러닝 리서처' },  //
@@ -17,43 +31,28 @@ function JobPosting() {
     { label: 'AI 아티스트', value: 'AI 아티스트' }
 ];
 
-  const [regiondropdown, setRegionDropdown] = useState(false);
-  const [sortdropdown, setSortDropdown] = useState(false);
-
-  const onClickRegionDropdown = () => {
-    setRegionDropdown(!regiondropdown);
-    setSortDropdown(false);
-  };
-
-  const onClickSortDropdown = () => {
-    setSortDropdown(!sortdropdown);
-    setRegionDropdown(false);
-  };
-
   const [selectedJob, setSelectedJob] = useState('');
   //직무 필터링 용
 
-  const handleRadioChange = (job) => {
+  const handleJobChange = (job) => {
     setSelectedJob(job);
     setCurrentPage(1); //선택하면 첫 페이지로 오도록
 };
+
+  const [jobdropdown, setjobDropdown] = useState(false);
+  const onClickjobDropdown = () => {
+    setjobDropdown(!jobdropdown);
+  };
 
   const dispatch = useDispatch();
   const posting = useSelector(state => state.postReducer);
   //Redux사용->Redux스토어 업데이트 및 정보 가져오기
   //postReducer:Modules>PostModule.js에 있음
 
-  const postList = posting.data;
-  const pageInfo = posting.pageInfo;
+  const postList = posting.data; //채용공고 정보
+  const pageInfo = posting.pageInfo; //전체 공고 개수
   const [currentPage, setCurrentPage] = useState(1);
   //현재 페이지 정보(초기값1) 저장
-  
-  const pageNumber = [];
-    if(pageInfo){
-        for(let i = 1; i <= pageInfo.pageEnd ; i++){
-            pageNumber.push(i);
-        }
-  }
 
   useEffect(
     () => {
@@ -66,139 +65,105 @@ function JobPosting() {
   );
   //정보 가져오기
 
-    return (
-      <>
-        <hr color="#f1f3f5"></hr>
-        <div className="posting-container">
-          <div className="posting-box">
-            <br></br>
-            <div className="title">Click, Get AI Jobs</div>
-            <div className="job-category">
-                {jobCategories.map(job => (
-                    <label key={job.label}>
-                        <input
-                            type="radio"
-                            name="jobCategory"
-                            value={job.value}
-                            checked={selectedJob === job.value}
-                            onChange={() => handleRadioChange(job.value)}
-                        />
-                        <span>
-                            {job.label}
-                        </span>
-                    </label> 
-                ))}
+  return (
+  <>
+  <hr color="#f1f3f5"></hr> {/* 구분선 */}
+  <div className="posting-container"> {/* 전체 가운데로 */}
+    <div className="posting-box">
+      <br></br>
+      <div className="title"><a href="/jobposting">Click, Get AI Jobs</a></div>
+      <div className="small">이 사이트에서는 머신러닝과 딥러닝 기술을 개발, 응용 및 관리하는 직업을 찾아볼 수 있습니다.</div>
+      
+      <div className="jobdropdown-container">
+        <div className="middle">AI채용공고를 직무별로 확인해보세요.</div>
+        
+        {/* 직무 필터 드롭다운 */}
+        {/* 클릭 되면 바뀌는 로직 깔끔하게 정리할 것 */}
+        <div class="jobdropdown">
+          <button onClick={onClickjobDropdown} style={{fontWeight: selectedJob ? 'bold': 'transparent'}}>
+            <span>
+              {selectedJob || 'Job Filter'}
+            </span>
+            <span style={{fontSize: '25px' }}>∨</span>
+          </button>
+          {jobdropdown && (
+            <div class="jobdropdown-options">
+              {jobCategories.map(job => (
+                <div key={job.value} onClick={()=>handleJobChange(job.value)}>
+                  {job.label}
+                </div>
+              ))}
             </div>
-            <br></br>
-            <div className="sort-container">
-              <div className="sort">{pageInfo && pageInfo.total}개 채용공고</div>
-            
-              <div className="right-buttons">
-                <div className="sort-button">
-                  <button onClick={ onClickRegionDropdown }>
-                  지역&nbsp;&nbsp;&nbsp;&#9661;&nbsp;
-                  </button>
-                  {regiondropdown && (
-                    <div className="sort-content">
-                      <a href="/">서울</a>
-                      <a href="/">경기</a>
-                      <a href="/">부산</a>
-                    </div>
-                  )}
-                </div>
+          )}
+        </div>
+      </div>
+      <br></br>
 
-                <div className="sort-button">  
-                  <button onClick={ onClickSortDropdown }>
-                    최신순&nbsp;&nbsp;&#9661;&nbsp;
-                  </button>
-                  {sortdropdown && (
-                    <div className="sort-content">
-                      <a href="/">조회순</a>
-                    </div>
-                  )}
+      <div className="sort-container">
+        <div className="middle-count">{pageInfo && pageInfo.total}개 채용공고</div>
+        <div className="right-buttons">
+          
+          {/* 체크박스 */}
+          <div className="filterdropdown">
+            <button onClick={toggleOpenJobs} style={{width:'fit-content'}}>
+              {showOpenJobs && (
+                <label className='checkbox-container'>
+                  <input
+                    type="checkbox"
+                    checked={showOpenJobs}
+                    onChange={toggleOpenJobs}
+                    style={{ display: 'none' }} // 체크박스 숨기기
+                  />
+                  <span style={{ display: 'inline-block'.replace, fontSize:'25px'}}>∨</span> 
+                </label>
+              )}
+              <span>채용중</span>
+            </button>
+          </div>
+
+          {/* 지역 필터링 */}
+          <div class="filterdropdown">
+            <button onClick={onClickjobDropdown}>
+              <span>{selectedJob ? selectedJob : '지역'}</span> 
+              <span style={{fontSize:'25px'}}>∨</span> 
+            </button>
+          {jobdropdown && (
+            <div class="jobdropdown-options">
+              {jobCategories.map(job => (
+                <div key={job.value} onClick={()=>handleJobChange(job.value)}>
+                  {job.label}
                 </div>
+              ))}
+            </div>
+          )}
+          </div>
+          
+          {/* 정렬 필터링 */}
+          <div className="filterdropdown"
+          style={{marginRight:'12px'}}>
+            <button onClick={onClickFilterDropdown}>
+              <span>정렬</span> 
+              <span>☰</span> 
+            </button>
+            <div>
+             {filterdropdown && (
+              <div>
               </div>
-            </div>
-
-            <div className="posting-list">
-                <table className="posting-table">
-                  {Array.isArray(postList) && postList
-                  .filter(p => !selectedJob || p.recru_job === selectedJob)
-                  .map((p) => (
-                    <tr key={p.idx}>                      
-                      <td>
-                        <div className="company-logo">
-                        {/* <img src={ chwijung_logo } /> */}
-                        <button></button>
-                        </div>
-                      </td>
-                      <td>
-                        <div style={{ fontWeight: 'bold',marginRight:'30px', fontSize:'24px'}}>
-                          <a href={p.recru_url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit' }}>
-                            {p.recru_title}
-                          </a>
-                          </div>
-                        <div style={{color: 'gray' }}>{p.recru_company}</div>
-                      </td>
-                      <td>
-                        <div className="post-job-design">
-                          {p.recru_job}
-                        </div>
-                      </td>
-                      <td className="region-cell">{p.recru_region}</td>
-                    </tr>
-                  ))}
-                </table>
+             )}
             </div>
           </div>
         </div>
-        
-        
-        <div className="moreinfo-container">
-          { Array.isArray(postList) &&
-                <button 
-                  onClick={() => setCurrentPage(currentPage + 1)} 
-                  disabled={currentPage === pageInfo.pageEnd  || pageInfo.total === 0}
-                >
-                    채용공고 더보기
-                </button>
-            }
-        </div>
-        {/* 페이지네이션 구현 */}
-        {/* <div className="paging-container" style={{ listStyleType: "none", display: "flex", justifyContent: "center" }}>
-            { Array.isArray(postList) &&
-                <button
-                  className="pagingbtn"
-                  onClick={() => setCurrentPage(currentPage - 1)} 
-                  disabled={currentPage === 1}
-                >
-                    &lt; 이전
-                </button>
-            }&nbsp;&nbsp;
-            {pageNumber.map((num) => (
-                <div key={num} onClick={() => setCurrentPage(num)}>
-                    <button
-                      className="pagingbtn"
-                      style={ currentPage === num ? {backgroundColor : '#FFC34E' } : null}
-                    >
-                        {num}
-                    </button>&nbsp;&nbsp;
-                </div>
-            ))}
-            { Array.isArray(postList) &&
-                <button 
-                  className="pagingbtn"
-                  onClick={() => setCurrentPage(currentPage + 1)} 
-                  disabled={currentPage === pageInfo.pageEnd  || pageInfo.total === 0}
-                >
-                    다음 &gt;
-                </button>
-            }
-        </div> */}
-      </>
+      </div>
 
-
-    )
+      {/* 채용공고 리스트 */}
+      <PostingList/>
+    </div>
+  </div>
+  
+  {/* 페이지네이션 구현 */}
+  <Pagination/>
+  </>
+  )
   }    
   export default JobPosting;
   
