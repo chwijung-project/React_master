@@ -74,7 +74,6 @@ margin-bottom: 10px;
 font-family: "NanumBarunGothic";
 font-size: 23px;
 margin-top: 18px;
-margin-left: 5px;
 margin-bottom: 15px;
 }
 
@@ -99,171 +98,32 @@ margin-bottom: 10px;
     height: 530px;
 }
 
-/* 직무 필터 */
-.job-category {
+/* 직무 필터 버튼과 설명 구역 지정 */
+.jobdropdown-container {
     display: flex;
-    /* 글자 크기에 맞게 */
-    flex-wrap: wrap; 
-    /* 다음줄에 이어서 정렬되도록 display: flex;와 함께!*/
-    gap: 10px;
-    padding: 10px;
-    justify-content: start;
-    /* 콘텐츠 항목 사이와 주위에 공간을 분배 */
-    list-style-type: none;
-    margin: 0;
-}
+    justify-content: flex-end; /* 오른쪽 정렬 */
+    width: 80%;
+    gap: 70px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 100px;
+    align-items: center;
+    }
 
 /* 정렬기능 */
-.sort-container {
+.sort-container-main {
     margin-top: 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: 5px 10px;
+    padding: 5px 10px 10px;
 }
 
-/* 정렬 버튼 오른쪽으로 정렬 */
+/* 오른쪽에 몰아넣기 */
 .right-buttons {
     margin-left: auto; 
     display: flex; 
     gap: 5px;
-}
-
-/* 직무 드롭다운 */
-.jobdropdown-container {
-display: flex;
-justify-content: flex-end; /* 오른쪽 정렬 */
-width: 80%;
-gap: 70px;
-margin-top: 20px;
-margin-bottom: 20px;
-height: 100px;
-align-items: center;
-}
-
-.jobdropdown {
-display: inline-block;
-position: relative;
-}
-
-.jobdropdown button{
-border-radius:5px;
-display: flex;
-justify-content: space-between;
-/* 한 공간에서 두 개로 나누기 */
-align-items: center;
-padding: 10px 20px;
-width: 310px;
-height: 70px;
-font-size:20px;
-cursor:pointer;
-background-color: white;
-border: 2px solid #adb5bd;
-}
-
-.jobdropdown button span {
-/* 화살표 스타일 조정 */
-font-size: 20px;
-color: #333;
-}
-
-.jobdropdown button:hover{
-background-color:#ddd;
-}
-
-.jobdropdown-options {
-position: absolute;
-overflow: auto;
-background-color:#fff;
-border-radius:5px;
-box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.4);
-}
-
-.jobdropdown:hover .jobdropdown-options {
-display: block;
-}
-
-.jobdropdown-options div {
-display: block;
-color: #000000;
-padding: 5px;
-text-decoration: none;
-width: 250px;
-padding:20px 30px;
-font-size: 19px;
-border-bottom: 1px solid #d7d8da;
-}
-
-.jobdropdown-options div:hover {
-color: #0a0a23;
-background-color: #83c5be;
-border-radius:5px;
-}
-
-/* 필터 */
-.filterdropdown {
-display: inline-block;
-position: relative;
-}
-
-.filterdropdown button{
-margin-right: 7px;
-border-radius:30px;
-display: flex;
-justify-content: space-between;
-/* 한 공간에서 두 개로 나누기 */
-align-items: center;
-padding: 10px 25px;
-width: 140px;
-height: 60px;
-font-size:20px;
-cursor:pointer;
-background-color: white;
-border: 2px solid #adb5bd;
-}
-
-.filterdropdown button span {
-/* 화살표 스타일 조정 */
-font-size: 20px;
-color: #333;
-}
-
-/* .filterdropdown button: {
-    font-size: 20px;
-    color: white;
-    } */ */
-
-/* .filterdropdown button:hover span{
-background-color:#fb8500;
-}
-
-.filterdropdown button:hover span {
-font-size: 20px;
-color: white;
-} */
-
-
-/* 체크박스 */
-.checkbox-container {
-margin-right: 20px;
-border-radius:5px;
-display: flex;
-align-items: center;
-padding: 10px 25px;
-width: 40px;
-height: 50px;
-}
-
-.checkbox-container span {
-margin-right: 20px;
-font-size: 29px;
-}
-
-.checkbox-container input[type="checkbox"] {
-display: inline-block;
-width: 20px;
-height: 20px;
-border:3px solid #707070;
-position: relative;
+    margin-right: 5px;
 }

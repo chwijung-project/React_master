@@ -1,37 +1,6 @@
-import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { callPostListAPI } from "../../api/PostingAPICall";
 import './PostingList.css';
 
-function PostingList() {
-    const dispatch = useDispatch();
-    const posting = useSelector(state => state.postReducer);
-    const postList = posting.data;
-    const [currentPage, setCurrentPage] = useState(1);
-
-    const [selectedJob, setSelectedJob] = useState('');
-  //직무 필터링 용
-
-    const handleJobChange = (job) => {
-        setSelectedJob(job);
-        setCurrentPage(1); //선택하면 첫 페이지로 오도록
-    };
-
-    const [showOpenJobs, setShowOpenJobs] = useState(false);
-
-    const toggleOpenJobs = () => {
-        setShowOpenJobs(!showOpenJobs);
-    };
-
-    useEffect(
-        () => {
-            dispatch(callPostListAPI({
-                currentPage: currentPage,
-                jobCategory: selectedJob,
-            }));            
-        }
-        ,[currentPage, selectedJob]
-      );
+function PostingList({postList, selectedJob, showOpenJobs}) {
 
     return(
         <div className="posting-table">

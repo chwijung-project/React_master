@@ -1,3 +1,13 @@
+/* 정렬기능 */
+.sort-container {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 5px 10px;
+}
+
 /* 채용공고 리스트 겉 박스 디자인 */
 .posting-table {
     margin-top: 10px;
