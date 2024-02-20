@@ -1,6 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { callMainJobListAPI } from "../../api/MainAPICall";
+import { callMainJobListAPI, callMainJobListAPI2 } from "../../api/MainAPICall";
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS } from 'chart.js/auto';
 import zoomPlugin from 'chartjs-plugin-zoom';
@@ -10,14 +10,20 @@ function RecruitGraph() {
     ChartJS.register(zoomPlugin);
     const dispatch = useDispatch();
     const postingByCrawlingdate = useSelector((state) => state.mainReducer);
+    const [selectOption, setSelectOption] = useState('option1'); // 드롭다운 상태
 
     useEffect(() => {
-        dispatch(
-            callMainJobListAPI({
-            })
-        );
-    }, [dispatch]);
+      if (selectOption === 'option1') {
+          dispatch(callMainJobListAPI({}));
+      } else if (selectOption === 'option2') {
+          dispatch(callMainJobListAPI2({}));
+      }
+    }, [dispatch, selectOption]);
 
+    const handleDropdownChange = (e) => {
+      setSelectOption(e.target.value);
+    };
+    
     const colors = [
         'rgba(255, 99, 132, 1)',
         'rgba(54, 162, 235, 1)',
@@ -26,7 +32,7 @@ function RecruitGraph() {
         'rgba(153, 102, 255, 1)',
         'rgba(255, 159, 64, 1)',
         'rgba(22, 241, 77, 1)'
-      ];
+    ];
 
     const allKeys = new Set();
             postingByCrawlingdate.forEach(p => {
@@ -94,10 +100,16 @@ function RecruitGraph() {
       <>
         <div className="graph-container">
             <div className="graph-box">
-                <h1 className="recrutext">AI 직무 현황</h1>
-                <div className="graph">
-                    <Line data={chartData} options={options} className="chart-canvas"/>
-                </div>
+              <div className="graph-upside">
+                  <h1 className="recrutext">AI 직무 현황</h1>
+                  <select onChange={handleDropdownChange} value={selectOption} className="dropdown">
+                      <option value="option1">누적</option>
+                      <option value="option2">임시</option>
+                  </select>
+              </div>
+              <div className="graph">
+                  <Line data={chartData} options={options} className="chart-canvas"/>
+              </div>
             </div>
         </div>
       </>
