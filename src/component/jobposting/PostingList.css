@@ -1,11 +1,10 @@
 /* 정렬기능 */
 .sort-container {
-    margin-top: 10px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     width: 100%;
-    padding: 5px 10px;
+    height: 100%;
+    justify-content: center;
 }
 
 /* 채용공고 리스트 겉 박스 디자인 */
@@ -30,9 +29,9 @@
 }
 
 .posting-title {
-    margin-left: 30px;
-    margin-right: 30px;
-    width: 550px; 
+    margin-left: 50px;
+    margin-right: 50px;
+    width: 650px; 
 }
 
 .posting-company {
@@ -59,8 +58,8 @@
 
 .posting-region {
     margin-left: 60px;
-    margin-right: 30px;
-    width: 350px;
+    /* margin-right: 10px; */
+    width: 200px;
     height: 50px;
 }
 

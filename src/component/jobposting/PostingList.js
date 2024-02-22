@@ -1,13 +1,10 @@
 import './PostingList.css';
 
-function PostingList({postList, selectedJob, showOpenJobs}) {
+function PostingList({postList}) {
 
     return(
         <div className="posting-table">
-        {Array.isArray(postList) && postList
-        .filter(p => !selectedJob || p.recru_job === selectedJob)
-        .filter(p => !showOpenJobs || p.recru_closed === "false")
-        .map((p) => (
+        {Array.isArray(postList) && postList.map((p) => (
           <div id={p.recru_idx} className="posting-list">
             <div className="sort-container">
               {p.recru_closed === "false" ? (

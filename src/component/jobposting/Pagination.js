@@ -36,7 +36,7 @@ function Pagination({ currentPage, setCurrentPage, pageInfo, postList }) {
                     className="pagingbtn"
                     onClick={() => {setCurrentPage(currentPage + 1);
                     window.scrollTo(0,0);}} 
-                    disabled={currentPage === pageInfo.pageEnd  || pageInfo.total === 0}
+                    // disabled={currentPage === pageInfo.pageEnd  || pageInfo.total === 0}
                 > 다음 &gt;
                 </button>
             }

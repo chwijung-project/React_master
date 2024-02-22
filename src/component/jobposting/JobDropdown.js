@@ -13,51 +13,70 @@ function JobDropdown(
     }) {
 
     const [isOpen, setIsOpen] = useState(false);
-    const [selectedItem, setSelectedItem] = useState(selectedOne);
-    // '전체' 선택시 초기로 돌아가도록
+    const [selectedItem, setSelectedItem] = useState([]);
 
     useEffect(() => {
-        setSelectedItem(selectedOne);
-    }, [selectedOne]);
+        const foundItems = dropdownContent.filter(item => selectedOne.includes(item.value));
+        setSelectedItem(foundItems);
+    }, [selectedOne, dropdownContent]);    
 
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
-        setSelectedItem(selectedOne === "전체" ? null : selectedOne);
     };
 
-    // 선택된 항목 표시
-    const displayText = (
-        <div className="dropdown-text">
-            <span>{selectedItem || buttonText}</span>
-            <span>{isOpen ? "⮝" : "⮟"}</span>
-        </div>
-    );
+    // 선택 항목 처리&드롭다운 닫기
+    const handleSelect = (value) => {
+        if (value === null) {
+            setSelectedItem([]); 
+            handleChange([]); 
+        } else {
+            const currentIndex = selectedItem.findIndex(item => item.value === value);
+            let newSelectedItem = [...selectedItem];
+        
+            if (currentIndex === -1) {
+                const selectedItemToAdd = dropdownContent.find(item => item.value === value);
+                newSelectedItem = newSelectedItem.filter(item => item.value !== null);
+                newSelectedItem.push(selectedItemToAdd);
+            } else {
+                newSelectedItem.splice(currentIndex, 1);
+            }
+            setSelectedItem(newSelectedItem);
+            handleChange(newSelectedItem.map(item => item.value));
+        }
+    };
     
     
+    
+    // 선택여부에 따라 css지정
     const buttonClasses = `jobdropdown ${bsize} ${selectedItem ? `${press}` : ''}`;
     const dropdownClasses = `jobdropdown-options ${osize}`;
-    
-    // 선택 항목 처리&드롭다운 닫기
-    const handleSelect = (item) => {
-        setSelectedItem(item === "전체" ? null:item);
-        handleChange(item === "전체" ? null:item);
-        setIsOpen(false);
-    }
     
     return (
         <div>
             <button 
             className={buttonClasses}
             onClick={toggleDropdown}>
-            {displayText}
+            <div className="dropdown-text">
+            <span>{selectedItem.length > 0 ? selectedItem.length === 1 ? selectedItem[0].label : `${selectedItem[0].label}...`
+            : buttonText}</span>
+                <span>{isOpen ? "⮝" : "⮟"}</span>
+            </div>
             </button>
             {isOpen && (
                 <div className={dropdownClasses}>
-                    {dropdownContent.map((item,index)=>(
-                        <div key={index}
-                        className={`${color}-hover`} 
-                        onClick={()=>handleSelect(item)}>{item}</div>
-                    ))}
+                    {dropdownContent.map(item => (
+    <div key={item.value} className={`${color}-hover checkbox-container`} onClick={() => handleSelect(item.value)}>
+        <input 
+            type="checkbox" 
+            checked={Array.isArray(selectedItem) && selectedItem.some(selected => selected.value === item.value)}
+            onChange={() => {}} // 실제 로직은 handleSelect에서 처리
+            className="real-checkbox"
+        />
+        <span className="custom-checkbox"></span>
+        {item.label}
+    </div>
+))}
+
                 </div>
             )}
         </div>
