@@ -13,30 +13,66 @@
     font-style: normal;
 }
 
-.postcontainer {
+.small-box{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.smalldrop{
+    margin-top: 5px;
+    width: 300px;
+    height: 30px;
+    font-size: 21px;
+    font-family: NanumBarunGothic;
+    font-weight:550;
+    background-color: white;
     border: 1px solid #ddd;
-    border-radius: 30px;
+    border-radius: 5px;
     box-shadow: 0px 0px 10px #ccc;
-    margin-top: 30px;
-    height: 350px;
+    text-align: center;
 }
 
 .posttext {
-    margin-left: 18px;
-    margin-top: 20px;
+    margin-left: 15px;
     font-family: "KOTRA_BOLD-Bold";
     font-size: 30px;
 }
 
 .smallposttable {
+    position: relative;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px #ccc;
     width: 575px;
-    height: 250px;
-    /* border: 1px solid black; */
+    height: 360px;
     text-align: center;
 }
 
+.morebtn {
+    font-family: "SUITE-Regular";
+    background-color: white;
+    margin-top: 10px;
+    margin-left: 460px;
+    border: none;
+    width: 80px;
+    height: 30px;
+    position: absolute;
+    cursor: pointer;
+}
+
+.morebtn:hover{
+    /* background-color: #f7f7f7; */
+    color: red; /* 글씨 색상을 변경 */
+    font-weight: bold;
+}
+
+.smallposttable th,
+.smallposttable td {
+  padding: 10px;
+}
+
 .index {
-    width: 30px;
     font-family: 'SUITE-Regular';
 }
 
