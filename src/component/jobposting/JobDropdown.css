@@ -1,0 +1,134 @@
+.jobdropdown {
+    display: flex;
+    margin-right: 7px;
+    /* position: relative; */
+    border-radius:5px;
+    justify-content: center;
+    align-items: center;
+    font-size:20px;
+    cursor:pointer;
+    background-color: white;
+    border: 2px solid #adb5bd;
+    color: #333;
+}
+.dropdown-text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.jobdropdown:hover{
+    background-color:#ddd;
+}
+
+/* 버튼 사이즈 */
+.b-large {
+    padding: 10px 30px;
+    width: 350px;
+    height: 70px;
+}
+.b-mid {
+    padding: 10px 25px;
+    width:150px;
+    height: 60px;
+}
+
+/* 클릭 상태일때 스타일 -나중에) click css랑 같음 확인 필요*/
+.basic-pressed {
+    color: black;
+    font-weight: bold;
+    font-size: 21px;
+    box-shadow: 0px 0px 5px #ccc;
+}
+.red-pressed {
+    background-color: #ed6b5a25;
+    border: none;
+    color: #ef5945;
+    font-weight: bold;
+}
+.blue-pressed {
+    background-color: #458cef2a;
+    border: none;
+    color: #458cef;
+    font-weight: bold;
+}
+
+/* 드롭다운 옵션 */
+.jobdropdown-options {
+    position: absolute;
+    overflow:auto;
+    background-color:white;
+    border-radius:5px;
+    box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.4);
+    z-index: 1000;
+    height: fit-content;
+    /* 맨 위로 올리기 위함 */
+}
+
+.jobdropdown-options div {
+    display: block;
+    color: #000000;
+    text-decoration: none;
+    padding:20px 30px;
+    font-size: 19px;
+    border-bottom: 1px solid #d7d8da;
+    cursor:pointer;
+}
+
+/* 옵션 사이즈 */
+.o-large {
+    width: 350px;
+}
+.o-mid {
+    width:150px;
+}
+
+/* 옵션 호버 색깔 */
+.jobdropdown-options div.basic-hover:hover {
+    color: #0a0a23;
+    border-radius:5px;
+    background-color: #9ed2cd;
+}
+
+.jobdropdown-options div.blue-hover:hover {
+    color: #0a0a23;
+    border-radius:5px;
+    background-color: #83bcff;
+}
+
+
+/* 실제 체크박스 숨기기 */
+.real-checkbox {
+    display: none;
+}
+
+/* 커스텀 체크박스 기본 스타일 */
+.custom-checkbox {
+    position: relative;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 4px;
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+/* 체크박스 체크 시 */
+.checkbox-container input:checked + .custom-checkbox {
+    background-color: #2196F3;
+}
+
+/* 체크박스 체크 시 가상 요소로 체크 표시 추가 */
+.checkbox-container input:checked + .custom-checkbox:after {
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 2px;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}

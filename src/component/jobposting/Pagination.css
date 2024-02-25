@@ -48,82 +48,19 @@ src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot?#i
 font-family: 'NanumBarunGothic', sans-serif;
 }
 
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-/* 글씨 설정 */
-.title {
-font-family: "NanumBarunGothic";
-font-size: 37px;
-margin-top: 10px;
-margin-left: 10px;
-margin-bottom: 10px;
-}   
-
-.middle {
-font-family: "KOTRA_GOTHIC";
-font-size: 22px;
-margin-top: 20px;
-margin-left: 10px;
-margin-bottom: 10px;
-}
-
-.middle-count {
-font-family: "NanumBarunGothic";
-font-size: 23px;
-margin-top: 18px;
-margin-bottom: 15px;
-}
-
-.small {
-font-family: "KOTRA_GOTHIC";
-font-size: 19px;
-margin-top: 20px;
-margin-left: 10px;
-margin-bottom: 10px;
-}
-
-/* 전부 가운데로 보내기 */
-.posting-container {
+/* 페이지네이션 */
+.paging-container {
+    margin-top: 1450px;
+    margin-bottom: 100px;
+    list-style-type: none;
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
-/* 채용공고 구역 지정 */
-.posting-box{
-    width: 1200px;
-    height: 530px;
-}
-
-/* 직무 필터 버튼과 설명 구역 지정 */
-.jobdropdown-container {
-    display: flex;
-    justify-content: flex-end; /* 오른쪽 정렬 */
-    width: 80%;
-    gap: 70px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    height: 100px;
-    align-items: center;
-    }
-
-/* 정렬기능 */
-.sort-container-main {
-    margin-top: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    padding: 5px 10px 10px;
-}
-
-/* 오른쪽에 몰아넣기 */
-.right-buttons {
-    margin-left: auto; 
-    display: flex; 
-    gap: 5px;
-    margin-right: 5px;
+.pagingbtn {
+    border: none;
+    background-color: white;
+    font-family: 'SUITE-Regular';
+    font-size: 20px;
+    cursor: pointer;
 }

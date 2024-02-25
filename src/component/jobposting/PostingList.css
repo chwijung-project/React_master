@@ -1,0 +1,92 @@
+/* 정렬기능 */
+.sort-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
+
+/* 채용공고 리스트 겉 박스 디자인 */
+.posting-table {
+    margin-top: 10px;
+    justify-content: center;
+    height: 1550px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #ccc;
+}
+
+.posting-list {
+    display: block;
+    width: 100%;
+    height: 180px;
+    border-bottom: 1px solid #d7d8da;
+    font-family: KOTRA_GOTHIC;
+    font-size: 22px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.posting-title {
+    margin-left: 50px;
+    margin-right: 50px;
+    width: 650px; 
+}
+
+.posting-company {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.posting-job {
+    padding: 1px 2px 1px 10px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    height: 40px;
+    width: 165px;
+    border: 1px solid #e9ecef;
+    border-radius: 15px;
+    background-color: #edf6f9;
+    font-family: NanumBarunGothic;
+    font-weight: bold;
+    font-size: 15px;
+    color: #006d77;
+}
+
+.posting-region {
+    margin-left: 60px;
+    /* margin-right: 10px; */
+    width: 200px;
+    height: 50px;
+}
+
+.posting-logo-able {
+    height: 85px;
+    width: 85px;
+    border-radius: 10px;
+    margin-right: 10px;
+    margin-left: 30px;
+    border:white;
+    background-color: #b8dedc;
+    color: #006d77;
+    font-size: 20px;
+    font-weight: bold;
+    border: 1px solid #006d77;
+    box-shadow: 0px 3px 3px 0px #b8dedc;
+}
+
+.posting-logo-unable {
+    height: 85px;
+    width: 85px;
+    border-radius: 10px;
+    margin-right: 10px;
+    margin-left: 30px;
+    border:white;
+    background-color: #f5f3f4;
+    color: #adb5bd;
+    font-size: 35px;
+    border: 1px solid #d3d3d3;
+}
