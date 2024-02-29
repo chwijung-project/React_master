@@ -72,8 +72,9 @@ margin-bottom: 10px;
 
 .middle-count {
 font-family: "NanumBarunGothic";
-font-size: 23px;
+font-size: 25px;
 margin-top: 18px;
+margin-left: 7px;
 margin-bottom: 15px;
 }
 
@@ -117,7 +118,7 @@ margin-bottom: 10px;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: 5px 10px 10px;
+    padding: 5px 5px 15px;
 }
 
 /* 오른쪽에 몰아넣기 */
