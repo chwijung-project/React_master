@@ -11,7 +11,7 @@ function SmallPosting() {
     const smallposting = useSelector(state => state.postReducer);
     const postingList = smallposting.data;
     // const [currentPage, setCurrentPage] = useState(1);
-    const [selectOption, setSelectOption] = useState('option1');
+    const [selectOption, setSelectOption] = useState('머신러닝/딥러닝 엔지니어');
 
     const jobOptions = [
         { value: '머신러닝/딥러닝 엔지니어', label: '머신러닝/딥러닝 엔지니어' },
@@ -31,6 +31,10 @@ function SmallPosting() {
         setSelectOption(e.target.value);
     };
 
+    const onClickRecruUrl = (url) => {
+        window.open(url, '_blank');
+    };
+
     useEffect(
         () => {
             dispatch(callSmallPostListAPI({
@@ -45,7 +49,7 @@ function SmallPosting() {
         <>
             <div className="postcontainer">
                 <div className="small-box">
-                    <h1 className="posttext">채용공고</h1>
+                    <h1 className="posttext">최신 채용공고</h1>
                     <select onChange={ DropdownChangehandler } value={selectOption} className="smalldrop">
                         {jobOptions.map((option) => (
                             <option key={option.value} value={option.value}>
@@ -71,7 +75,9 @@ function SmallPosting() {
                                 key={ p.idx }
                             >
                                 <td className="index">{ index + 1 }</td>
-                                <td className="recruit">{ p.recru_title }</td>
+                                <td className="recruit" onClick={() => onClickRecruUrl(p.recru_url)}>
+                                    {p.recru_title}
+                                </td>
                                 <td className="company">{ p.recru_company }</td>
                             </tr>
                         )) 

@@ -7,7 +7,7 @@ import { GET_SMALLPOST } from '../modules/PostModule.js';
 export const callMainJobListAPI = ({selectedJob}) => {
     // const encodedJob = encodeURIComponent(selectedJob);
     // let requestURL = `http://localhost:8080/checkedjobs?job=${encodedJob}`;
-    let requestURL = `http://localhost:8080/recruit-counts-by-checked-job`;
+    let requestURL = `http://localhost:8080/recruit-accumulate-counts-by-checked-job`;
 
     return async (dispatch) => {
 
@@ -29,11 +29,11 @@ export const callMainJobListAPI = ({selectedJob}) => {
     };
 }
 
-/* 메인페이지 직무별 그래프 */
+/* 메인페이지 직무별 그래프(더미) */
 export const callMainJobListAPI2 = ({selectedJob}) => {
     // const encodedJob = encodeURIComponent(selectedJob);
     // let requestURL = `http://localhost:8080/checkedjobs?job=${encodedJob}`;
-    let requestURL = `http://localhost:8080/recruit-counts-by-checked-dumy`;
+    let requestURL = `http://localhost:8080/recruit-open-closed-counts-by-checked-job`;
 
     return async (dispatch) => {
 
@@ -48,7 +48,7 @@ export const callMainJobListAPI2 = ({selectedJob}) => {
 
         if(result.status === 200){
 
-            console.log('[MainAPICall] callMainJobListAPI RESULT : ', result);
+            console.log('[MainAPICall] callMainJobListAPI2 RESULT : ', result);
 
             dispatch({ type: GET_MAINGRAHP,  payload: result.data });
         }
@@ -58,11 +58,11 @@ export const callMainJobListAPI2 = ({selectedJob}) => {
 /* 메인페이지 채용공고 스몰보드 */
 export const callSmallPostListAPI = ({selectOption}) => {
 
-    let requestURL = `http://localhost:8080/smallrecruit?selectOption=${selectOption}`;
+    let requestURL = `http://localhost:8080/smallrecruit?job=${selectOption}`;
 
-    if (selectOption !== undefined || selectOption !== null) {
-        requestURL = `${requestURL}?offset=${selectOption}`;
-    }
+    // if (selectOption !== undefined || selectOption !== null) {
+    //     requestURL = `${requestURL}?job=${selectOption}`;
+    // }
     
     console.log('[MainAPICall] requestURL : ', requestURL);
 

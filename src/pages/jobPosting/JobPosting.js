@@ -76,18 +76,15 @@ function JobPosting() {
   <div className="posting-box">
   <br></br>
     <div className="title">Click, Get AI Jobs</div>
-          <div className="small">이 사이트에서는 머신러닝과 딥러닝 기술을 개발, 응용 및 관리하는 직업을 찾아볼 수 있습니다.</div>
-
-          <div className="jobdropdown-container">
-              <div className="middle">AI채용공고를 직무별로 확인해보세요.</div>
-              <JobDropdown buttonText='Job Filter'
-                dropdownContent={Jobnames}
-                selectedOne = {selectedJob}
-                handleChange={handleJobChange}>
-              </JobDropdown>
-          </div>
+          <div className="middle">AI채용공고를 직무별로 확인해보세요.</div>
+          <br></br>
           <br></br>
     <div className="sort-container-main">
+      <JobDropdown buttonText='All Jobs'
+        dropdownContent={Jobnames}
+        selectedOne = {selectedJob}
+        handleChange={handleJobChange}>
+      </JobDropdown>
       <div className="middle-count">
       {pageInfo && pageInfo.total}개 채용공고</div>
     <div className="right-buttons">
@@ -112,7 +109,6 @@ function JobPosting() {
       </JobDropdown>
     </div>
     </div>
-
     <PostingList
       postList={postList}
     />
