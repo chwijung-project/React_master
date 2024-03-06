@@ -13,7 +13,7 @@
     justify-content: center;
     height:fit-content;
     border: 1px solid #ddd;
-    border-radius: 10px;
+    border-radius: 5px;
     box-shadow: 0px 0px 10px #ccc;
 }
 
@@ -30,8 +30,8 @@
 
 .posting-title {
     margin-left: 50px;
-    margin-right: 50px;
-    width: 650px; 
+    width: 690px; 
+    /* white-space: pre-wrap; */
 }
 
 .posting-company {
@@ -57,7 +57,7 @@
 }
 
 .posting-region {
-    margin-left: 60px;
+    margin-left: 50px;
     /* margin-right: 10px; */
     width: 100px;
     height: 50px;
@@ -66,7 +66,7 @@
 .posting-enddate {
     width: 120px;
     height: 40px;
-    font-size: 20px;
+    font-size: 21px;
     margin-right: -10px
 }
 
@@ -96,4 +96,32 @@
     color: #adb5bd;
     font-size: 35px;
     border: 1px solid #d3d3d3;
+}
+
+/* 메뉴 */
+.posting-common{
+    height: 50px;
+    font-size: 22px;
+    align-items: center;
+    display: flex;
+    color: #5d6871;
+}
+
+.posting-title-common {
+    margin-left: 20px;
+    width: 110px;
+}
+
+.posting-job-common {
+    margin-left: 50px;
+    width: 680px;  
+}
+
+.posting-region-common {
+    margin-left: 50px;
+    width: 100px;
+}
+
+.posting-enddate-common {
+    width: 100px;
 }

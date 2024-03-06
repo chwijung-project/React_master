@@ -109,6 +109,8 @@ function JobPosting() {
       </JobDropdown>
     </div>
     </div>
+    <div>
+    </div>
     <PostingList
       postList={postList}
     />

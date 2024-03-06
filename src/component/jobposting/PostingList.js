@@ -4,6 +4,25 @@ function PostingList({postList}) {
 
     return(
         <div className="posting-table">
+          <div>
+            <div className="sort-container">
+              <div className="posting-common">
+                <div className="posting-title-common">
+                  지원가능
+                </div>
+                <div className="posting-job-common">
+                  공고명
+                </div>
+                <div className="posting-region-common">
+                  지역
+                </div>
+                <div className="posting-enddate-common">
+                  마감일
+                </div>
+              </div>
+            </div>
+          <hr color="#d7d8da"></hr>
+          </div>              
         {Array.isArray(postList) && postList.map((p) => (
           <div id={p.recru_idx} className="posting-list">
             <div className="sort-container">
@@ -38,7 +57,7 @@ function PostingList({postList}) {
               </div>
               <div className="posting-enddate">
                 {p.recru_end_date ? (
-                  <span>{p.recru_end_date}</span>
+                  <span>~{p.recru_end_date.substr(2)}</span>
                 ): (
                   <span>상시채용</span>
                 )}
