@@ -1,0 +1,41 @@
+.filterbutton {
+    display: flex;
+    position: relative;
+    cursor:pointer;
+    border-radius:5px;
+    font-size: 20px;
+    width:fit-content;
+    height: 60px;
+    margin-right: 7px;
+    align-items: center;
+    }
+
+
+/* 크기 옵션 */
+.small {
+    padding: 5px 10px;
+}
+.medium {
+    padding: 10px 25px;
+}
+
+/* 색상 옵션 */
+.default {
+    background-color: white;
+    color: #333;
+    border: 2px solid #adb5bd;
+}
+    
+/* 클릭 상태일때 스타일 */
+.red-pressed {
+    background-color: #ed6b5a25;
+    border: none;
+    color: #ef5945;
+    font-weight: bold;
+}
+.blue-pressed {
+    background-color: #458cef2a;
+    border: none;
+    color: #458cef;
+    font-weight: bold;
+}
