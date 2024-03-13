@@ -24,8 +24,8 @@
 }
 
 .smallcomudrop{
-    margin-top: 5px;
-    width: 300px;
+    margin-left: -60px; 
+    width: 280px;
     height: 30px;
     font-size: 21px;
     font-family: NanumBarunGothic;
@@ -44,6 +44,7 @@
 }
 
 .smallcomutable {
+    margin-top: -15px; 
     position: relative;
     border: 1px solid #ddd;
     border-radius: 15px;
