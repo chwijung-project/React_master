@@ -59,10 +59,10 @@ function SmallPosting() {
                     </select>
                 </div>
                 <table className="smallposttable">
+                    <button className="morebtn" onClick={ onClickNaviHandler }>
+                        더 보기 &gt;
+                    </button><br/><br/>
                     <thead>
-                        <button className="morebtn" onClick={ onClickNaviHandler }>
-                           더 보기 &gt;
-                        </button><br/><br/>
                         <tr>
                             <th>No</th>
                             <th>공고명</th>

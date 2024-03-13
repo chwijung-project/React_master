@@ -14,30 +14,68 @@
 }
 
 .comucontainer {
-    border: 1px solid #ddd;
-    border-radius: 30px;
-    box-shadow: 0px 0px 10px #ccc;
-    margin-top: 30px;
     margin-left: 45px;
-    height: 350px;
 }
 
+.comusmall-box{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.smallcomudrop{
+    margin-top: 5px;
+    width: 300px;
+    height: 30px;
+    font-size: 21px;
+    font-family: NanumBarunGothic;
+    font-weight:500;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px #ccc;
+    text-align: center;
+
+}
 .comutext {
-    margin-left: 18px;
-    margin-top: 20px;
+    margin-left: 15px;
     font-family: "KOTRA_BOLD-Bold";
     font-size: 30px;
 }
 
 .smallcomutable {
+    position: relative;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px #ccc;
     width: 575px;
-    height: 250px;
-    /* border: 1px solid pink; */
+    height: 400px;
     text-align: center;
 }
 
+.morebtn {
+    font-family: "SUITE-Regular";
+    background-color: white;
+    margin-top: 10px;
+    margin-left: 460px;
+    border: none;
+    width: 80px;
+    height: 30px;
+    position: absolute;
+    cursor: pointer;
+}
+
+.morebtn:hover{
+    /* background-color: #f7f7f7; */
+    color: red; /* 글씨 색상을 변경 */
+}
+
+.smallcomutable th,
+.smallcomutable td {
+  padding: 10px;
+}
+
 .index {
-    width: 30px;
     font-family: 'SUITE-Regular';
 }
 
@@ -48,6 +86,11 @@
     max-width: 280px;
     min-width: 280px;
     font-family: 'SUITE-Regular';
+    cursor: pointer;
+}
+
+.comu_titl:hover{
+    color: #ccc;
 }
 
 .user_id {
