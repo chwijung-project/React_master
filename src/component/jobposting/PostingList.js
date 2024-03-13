@@ -20,7 +20,7 @@ function PostingList({postList}) {
       words.forEach((word, index) => {  
         if (lineLength + word.length + 1 > maxLineLength && index !== 0) { 
           formattedText.push(<br key={index}/>); 
-          // 넘어가는 애들만 확인
+          // 넘어가는 친구들만 확인
           console.log('text:',text, 'formattedText:',formattedText)
           lineLength = 0;
         }
