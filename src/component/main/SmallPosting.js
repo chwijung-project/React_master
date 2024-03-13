@@ -57,11 +57,12 @@ function SmallPosting() {
                             </option>
                         ))}
                     </select>
-                </div>
-                <table className="smallposttable">
                     <button className="morebtn" onClick={ onClickNaviHandler }>
                         더 보기 &gt;
                     </button><br/><br/>
+                </div>
+                <table className="smallposttable">
+                    
                     <thead>
                         <tr>
                             <th>No</th>

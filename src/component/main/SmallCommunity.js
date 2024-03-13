@@ -57,12 +57,12 @@ function SmallCommunity() {
                             </option>
                         ))}
                     </select>
-
-                </div>
-                <table className="smallcomutable">
                     <button className="morebtn" onClick={ onClickMenuiHandler }>
                            더 보기 &gt;
                         </button><br/><br/>
+                </div>
+                <table className="smallcomutable">
+                    
                     <thead>
                         <tr>
                             <th>No</th>
