@@ -70,9 +70,9 @@ function JobPosting() {
   }, [currentPage, showOpenJobs, selectedJob, selectedRegion, showOrder, dispatch]);
 
   return (
-  <>
-  <hr color="#f1f3f5"></hr> {/* 구분선 */}
-  <div className="posting-container"> {/* 전체 가운데로 */}
+  <div className="total">
+  {/* <hr color="#f1f3f5"></hr>
+  <div className="posting-container"> 전체 가운데로
   <div className="posting-box">
   <br></br>
     <div className="title">Click, Get AI Jobs</div>
@@ -110,12 +110,12 @@ function JobPosting() {
     </div>
     </div>
     <div>
-    </div>
+    </div> */}
     <PostingList
       postList={postList}
     />
-  </div>
-  </div>
+  {/* </div>
+  </div> */}
 
   <Pagination 
     currentPage={currentPage} 
@@ -123,7 +123,7 @@ function JobPosting() {
     pageInfo={pageInfo} 
     postList={postList} 
   />
-  </>
+  </div>
   )
   }    
   export default JobPosting;

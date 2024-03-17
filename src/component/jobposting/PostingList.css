@@ -1,3 +1,146 @@
+.container{
+    background-color: #182237;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    color: white;
+    font-size: 12px;
+}
+
+.container_search{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #2e374a;
+    padding: 10px;
+    border-radius: 10px;
+    width: max-content;
+}
+
+.container_pgn{
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.space {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.addButton{
+    padding: 10px;
+    background-color: #5d57c9;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.table{
+    width: 100%;
+}
+
+.table td{
+padding: 15px;
+font-family: 'Noto Sans KR', sans-serif;
+}
+
+.user{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.userImage{
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.buttons{
+    display: flex;
+    gap: 10px;
+}
+  
+.button{
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+  
+.view{
+    background-color: teal;
+}
+  
+.delete{
+    background-color: crimson;
+    cursor:default;
+}
+
+.input_search {
+    background-color: transparent;
+    border: none;
+    color: white;
+    outline: none;
+}
+
+.button_pgn {
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+/* .disabled {
+    cursor: not-allowed;
+} */
+
+/* 반응형코드 */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+        font-size: 10px;
+    }
+
+    .container_search {
+        width: 100%; /* 작은 화면에서는 검색 바가 전체 너비를 차지하도록 조정 */
+        justify-content: center; /* 요소들을 중앙에 배치 */
+    }
+
+    .table td {
+        padding: 10px; /* 테이블 셀 패딩 감소 */
+        font-size: 10px; /* 테이블 내 글꼴 크기 감소 */
+    }
+
+    .button, .button_pgn {
+        padding: 5px; /* 버튼 패딩 감소 */
+        font-size: 10px; /* 버튼 내 글꼴 크기 감소 */
+    }
+
+    .addButton, .buttons .button {
+        padding: 5px 8px; /* 작은 화면에서 버튼 크기 감소 */
+    }
+}
+
+@media (max-width: 480px) {
+    /* 더 작은 화면에서의 추가적인 스타일 조정 */
+    .container_search, .top, .space {
+        flex-direction: column; /* 요소들을 세로로 쌓음 */
+        gap: 5px; /* 요소 간격 감소 */
+    }
+}
+
+
+
+/* ****예전 코드**** */
 /* 정렬기능 */
 .sort-container {
     display: flex;

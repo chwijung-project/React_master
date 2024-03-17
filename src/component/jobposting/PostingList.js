@@ -1,4 +1,10 @@
 import './PostingList.css';
+import {
+  MdArrowDropDown,
+  MdSearch,
+  MdAutoFixHigh
+} from "react-icons/md";
+// npm i react-icons@4.11.0
 
 function PostingList({postList}) {
 
@@ -14,7 +20,6 @@ function PostingList({postList}) {
     function addLineBreaksJSX(text, maxLineLength) {
       const words = text.split(' ');
       let lineLength = 0;
-      let currentLine = 1;
       const formattedText = [];
       
       words.forEach((word, index) => {  
@@ -34,7 +39,89 @@ function PostingList({postList}) {
 
 
     return(
-        <div className="posting-table">             
+      <div className='container'>
+        <div className='top' style={{fontSize:'14px'}}>
+          <div className='space'>
+            <div className='container_search'>
+              <MdSearch />
+              <input 
+                type='text'
+                placeholder='Search for job'
+                className='input_search'
+              />
+            </div>
+            <div>1505개 채용공고</div>
+          </div>
+          <div className='space'>
+            <button className='addButton'>
+              <MdAutoFixHigh size={12}/>
+              채용중
+            </button>
+            <button className='addButton'>
+              최신순 
+              <MdArrowDropDown size={12}/>
+            </button>
+            <button className='addButton'>
+              지역
+              <MdArrowDropDown size={12}/>
+            </button>
+          </div>
+        </div>
+        <br></br>
+
+        <table className='table'>
+          <thead>
+              <tr>
+              <td>공고명</td>
+              <td>회사명</td>
+              <td>직무명</td>
+              <td>위치</td>
+              <td>마감일</td>
+              <td>공고지원</td>
+              </tr>
+          </thead>
+          <tbody>
+           {Array.isArray(postList) && postList.map((p,index) => (
+            <tr key={index}>
+              <td>
+                <div className='user'>
+                  <img src='noavatar.png' alt='' width={40} height={40}/>
+                  {addLineBreaksJSX(p.recru_title, 50)}
+                </div>
+              </td>
+              <td>{p.recru_company}</td>
+              <td>{p.recru_job}</td>
+              <td>{p.recru_region}</td>
+              <td>{p.recru_end_date ? ( <span>~{p.recru_end_date.substr(5)}({getWeekday(p.recru_end_date)})</span>
+              ):( <span>상시채용</span>
+              )}</td>
+              <td>
+                <div className='buttons'>
+                  {p.recru_closed === 'false' ? (
+                    <button className='button view'
+                    onClick={() => window.open(p.recru_url, '_blank')}>
+                      지원하기
+                    </button>
+                  ):(<button className='button delete'>
+                      공고마감
+                    </button>)}
+                </div>
+              </td>
+
+            </tr>
+           ))}
+          </tbody>
+        </table>
+        <br></br>
+        <div className='container_pgn'>
+          <button className='button_pgn disabled'>
+            이전
+          </button>
+          <button className='button_pgn'>
+            다음
+          </button>
+        </div>
+        {/* <div className="posting-table">             
           {Array.isArray(postList) && postList.map((p) => (
           <div key={p.recru_idx} className="posting-list">
             <div className="sort-container">
@@ -42,11 +129,6 @@ function PostingList({postList}) {
                 <button className="posting-logo-able">
                 </button>
                 <br></br>
-                {/* {p.recru_closed === "false" ? (
-                  <span style={{textAlign:'center',display:'flex',color:'blue',marginLeft:'5px',marginTop:'5px',marginBottom:'-10px',fontSize:'21px'}}>지원가능</span>
-                ): (
-                  <span style={{textAlign:'center',color:'gray',marginLeft:'5px',marginTop:'5px',marginBottom:'-10px',fontSize:'21px'}}>공고마감</span>
-                )} */}
               </div>
               
               <div className="posting-title">
@@ -97,6 +179,7 @@ function PostingList({postList}) {
           </div>
         ))
         }   
+      </div> */}
       </div>
     )
 }
