@@ -1,7 +1,7 @@
 import { GET_JOBPOST } from '../modules/PostModule.js';
 
 /* 채용공고 리스트 호출용(상세 호출API 따로 설정할 것) */
-export const callPostListAPI = ({selectedJob,selectedRegion,showOrder,currentPage,showOpenJobs}) => {
+export const callPostListAPI = ({selectedJob,selectedRegion,selectedOrder,currentPage,showOpenJobs}) => {
 
     let requestURL = `http://localhost:8080/recruitmentList?`;
 
@@ -13,8 +13,8 @@ export const callPostListAPI = ({selectedJob,selectedRegion,showOrder,currentPag
     if(selectedRegion && selectedRegion.length>0 && selectedRegion !== null) {
         params.append('region', selectedRegion);
     }
-    if(showOrder) {
-        params.append('sort', showOrder);
+    if(selectedOrder) {
+        params.append('sort', selectedOrder);
     }
     params.append('offset', currentPage||'1');
     params.append('closed', showOpenJobs ? 'true' : 'false');

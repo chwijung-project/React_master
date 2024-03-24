@@ -4,14 +4,29 @@ import { callPostListAPI } from "../../api/PostingAPICall";
 //채용공고 정보 받아옴
 import './JobPosting.css';
 import PostingList from "../../component/jobposting/PostingList";
-import Pagination from "../../component/jobposting/Pagination";
 import JobDropdown from "../../component/jobposting/JobDropdown"
 import JobClick from "../../component/jobposting/JobClick"
 
+//화면 크기 확인용
+function useWindowSize() {
+  const [size, setSize] = useState([0, 0]);
+  useEffect(() => {
+    function updateSize() {
+      setSize([window.innerWidth, window.innerHeight]);
+    }
+    window.addEventListener('resize', updateSize);
+    updateSize();
+    return () => window.removeEventListener('resize', updateSize);
+  }, []);
+  return size;
+}
+
 function JobPosting() {  
+  const [width, height] = useWindowSize();
+
   const [selectedJob, setSelectedJob] = useState('');
   const [selectedRegion, setSelectedRegion] = useState('');
-  const [showOrder, setShowOrder] = useState('');
+  const [selectedOrder, setSelectedOrder] = useState('');
   const [showOpenJobs, setShowOpenJobs] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -21,20 +36,16 @@ function JobPosting() {
   const pageInfo = posting.pageInfo;
 
   const toggleOpenJobs = () => {setShowOpenJobs(!showOpenJobs)};
-  const toggleAndSetOrder = () => {
-    setShowOrder(!showOrder);
-    if (!showOrder) {
-      setShowOrder('deadline_order');
-      setCurrentPage(1);
-    } else {
-    }
-  };
   const handleJobChange = (job) => {
     setSelectedJob(job);
     setCurrentPage(1); //선택하면 첫 페이지로 오도록
   };
   const handleRegionChange = (region) => {
     setSelectedRegion(region);
+    setCurrentPage(1); //선택하면 첫 페이지로 오도록
+  };
+  const handleOrderChange = (order) => {
+    setSelectedOrder(order);
     setCurrentPage(1); //선택하면 첫 페이지로 오도록
   };
 
@@ -60,71 +71,63 @@ function JobPosting() {
       {label: '대구', value: '대구'}
   ];
 
-  // const Order = [
-  //     {label: '최신순', value: 'latest_order'},
-  //     {label: '마감순', value: 'deadline_order'}
-  // ];
+  const Order = [
+      {label: '최신순', value: 'latest_order'},
+      {label: '마감순', value: 'deadline_order'}
+  ];
 
   useEffect(() => {
-    dispatch(callPostListAPI({ currentPage, showOpenJobs, selectedJob,selectedRegion, showOrder }));
-  }, [currentPage, showOpenJobs, selectedJob, selectedRegion, showOrder, dispatch]);
+    dispatch(callPostListAPI({ currentPage, showOpenJobs, selectedJob,selectedRegion, selectedOrder }));
+  }, [currentPage, showOpenJobs, selectedJob, selectedRegion, selectedOrder, dispatch]);
 
   return (
   <div className="total">
-  {/* <hr color="#f1f3f5"></hr>
-  <div className="posting-container"> 전체 가운데로
-  <div className="posting-box">
-  <br></br>
-    <div className="title">Click, Get AI Jobs</div>
-          <div className="middle">AI채용공고를 직무별로 확인해보세요.</div>
-          <br></br>
-          <br></br>
-    <div className="sort-container-main">
-      <JobDropdown buttonText='All Jobs'
-        dropdownContent={Jobnames}
-        selectedOne = {selectedJob}
-        handleChange={handleJobChange}>
-      </JobDropdown>
-      <div className="middle-count">
-      {pageInfo && pageInfo.total}개 채용공고</div>
-    <div className="right-buttons">
-      <JobClick buttonText='채용중'
-        toggleOpen = {toggleOpenJobs}
-        showOpen = {showOpenJobs}>
-      </JobClick>
-      <JobClick buttonText={showOrder === 'deadline_order' ? '마감순' : '최신순'}
-        toggleOpen = {toggleAndSetOrder}
-        showOpen = {setShowOrder}
-        check = '✔'
-        press = "blue-pressed">
-      </JobClick>
-      <JobDropdown buttonText='지역'
-        dropdownContent={Region}
-        selectedOne = {selectedRegion}
-        handleChange={handleRegionChange}
-        bsize='b-mid'
-        osize='o-mid'
-        color="blue"
-        press="blue-pressed">
-      </JobDropdown>
+    <div className='top' style={{fontSize:'13px'}}>
+      <div className='space'>
+        <JobDropdown buttonText='All Jobs'
+          dropdownContent={Jobnames}
+          selectedOne = {selectedJob}
+          handleChange={handleJobChange}
+          backcolor={width <= 400 ? 'purple' : 'default'}>
+        </JobDropdown>
+        <div className="cnt_job">
+          {pageInfo && pageInfo.total}개 채용공고
+        </div>
+      </div>
+      <br></br>
+      <span className="space_media"></span>
+      <div className='space'>
+        <JobDropdown buttonText='지역'
+          dropdownContent={Region}
+          selectedOne = {selectedRegion}
+          handleChange={handleRegionChange}
+          backcolor={width <= 400 ? 'gray' : 'white'}
+          underline={width <= 400 ? false : true}>
+        </JobDropdown>
+        <JobDropdown buttonText='정렬'
+          dropdownContent={Order}
+          selectedOne = {selectedOrder}
+          handleChange={handleOrderChange}
+          backcolor={width <= 400 ? 'gray' : 'white'}
+          underline={width <= 400 ? false : true}
+          closeOnSelect ={true}
+          multiple = {false}>
+        </JobDropdown>
+        <JobClick buttonText={showOpenJobs ? '현재 모집' : '전체 공고'}
+          toggleOpen = {toggleOpenJobs}
+          showOpen = {showOpenJobs}
+          size={width <= 400 ? 'large' : 'medium'}>
+        </JobClick>
+      </div>
     </div>
-    </div>
-    <div>
-    </div> */}
+    <br></br>
     <PostingList
-      postList={postList}
+      currentPage={currentPage} 
+      setCurrentPage={setCurrentPage} 
+      pageInfo={pageInfo} 
+      postList={postList} 
     />
-  {/* </div>
-  </div> */}
-
-  <Pagination 
-    currentPage={currentPage} 
-    setCurrentPage={setCurrentPage} 
-    pageInfo={pageInfo} 
-    postList={postList} 
-  />
-  </div>
-  )
+  </div>)
   }    
   export default JobPosting;
   

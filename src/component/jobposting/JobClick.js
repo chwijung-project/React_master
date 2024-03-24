@@ -4,18 +4,12 @@ import './JobClick.css';
 function JobClick(
   {buttonText, 
   toggleOpen, 
-  showOpen, 
-  size = 'medium',
-  color = 'default',
-  check = '✔',
-  press = 'red-pressed'
-    }) {
-  //showOpen=True, selected=exist->buttonText&check 출력
-  const displayText = showOpen && buttonText ?(<span><span style={{marginRight:'12px'}}>{check}</span>{buttonText}</span>
-  ): buttonText;
+  showOpen,
+  size = 'medium'
+  }) {
 
-  //showOpen T이면-> pressed 스타일대로 변경
-  const buttonClasses = `filterbutton ${size} ${color} ${showOpen ? `${press}` : ''}`;
+  // showOpen T이면-> pressed 스타일대로 변경
+  const buttonClasses = `filterbutton ${showOpen ? `click` : ''} ${size}`;
 
   return (
     <div>
@@ -24,7 +18,7 @@ function JobClick(
         onClick={toggleOpen} 
         aria-pressed={showOpen ? "true" : "false"}
       >
-        {displayText}
+        {buttonText}
       </button>
     </div>
   );
