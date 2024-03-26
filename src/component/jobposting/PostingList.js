@@ -200,7 +200,7 @@ return(
     {Array.isArray(postList) && postList.map((p,index) => (
       <tr key={index}>
         <td>
-          <div className='space'>
+          <div className='space_media'>
             <div>
               <div className='title'>
                 {addLineBreaksAndErase(p.recru_title, 30)}
@@ -233,7 +233,7 @@ return(
           
           <span className='space_posting'>
             <div className='user'>
-              <img src='https://static.wanted.co.kr/images/wdes/0_5.be5f31e8.png' alt='' width={20} height={20}/>
+              <img src='https://static.wanted.co.kr/images/wdes/0_5.be5f31e8.png' alt='' width={18} height={18}/>
             </div>
             <div>
               <div style={{marginTop:'5px', fontSize:'10px'}}>

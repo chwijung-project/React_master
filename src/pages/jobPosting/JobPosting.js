@@ -82,45 +82,47 @@ function JobPosting() {
 
   return (
   <div className="total">
-    <div className='top' style={{fontSize:'13px'}}>
-      <div className='space'>
-        <JobDropdown buttonText='All Jobs'
-          dropdownContent={Jobnames}
-          selectedOne = {selectedJob}
-          handleChange={handleJobChange}
-          backcolor={width <= 400 ? 'purple' : 'default'}>
-        </JobDropdown>
-        <div className="cnt_job">
-          {pageInfo && pageInfo.total}개 채용공고
+      <div className='top' style={{fontSize:'13px'}}>
+        <div className='space'>
+          <JobDropdown buttonText='All Jobs'
+            dropdownContent={Jobnames}
+            selectedOne = {selectedJob}
+            handleChange={handleJobChange}
+            backcolor={width <= 400 ? 'purple' : 'default'}
+            showOptions={width <= 400 ? false : true}
+            >
+          </JobDropdown>
+          <div className="cnt_job">
+            {pageInfo && pageInfo.total}개 채용공고
+          </div>
+        </div>
+        <div className='space'>
+          <JobDropdown buttonText='지역'
+            dropdownContent={Region}
+            selectedOne = {selectedRegion}
+            handleChange={handleRegionChange}
+            backcolor={width <= 400 ? 'gray' : 'white'}
+            underline={width <= 400 ? false : true}
+            showOptions={width <= 400 ? false : true}>
+          </JobDropdown>
+          <JobDropdown buttonText='정렬'
+            dropdownContent={Order}
+            selectedOne = {selectedOrder}
+            handleChange={handleOrderChange}
+            backcolor={width <= 400 ? 'gray' : 'white'}
+            underline={width <= 400 ? false : true}
+            closeOnSelect ={true}
+            multiple = {false}
+            showOptions={width <= 400 ? false : true}>
+          </JobDropdown>
+          <JobClick buttonText={showOpenJobs ? '현재 모집' : '전체 공고'}
+            toggleOpen = {toggleOpenJobs}
+            showOpen = {showOpenJobs}
+            size={width <= 400 ? 'small' : 'medium'}>
+          </JobClick>
         </div>
       </div>
-      <br></br>
-      <span className="space_media"></span>
-      <div className='space'>
-        <JobDropdown buttonText='지역'
-          dropdownContent={Region}
-          selectedOne = {selectedRegion}
-          handleChange={handleRegionChange}
-          backcolor={width <= 400 ? 'gray' : 'white'}
-          underline={width <= 400 ? false : true}>
-        </JobDropdown>
-        <JobDropdown buttonText='정렬'
-          dropdownContent={Order}
-          selectedOne = {selectedOrder}
-          handleChange={handleOrderChange}
-          backcolor={width <= 400 ? 'gray' : 'white'}
-          underline={width <= 400 ? false : true}
-          closeOnSelect ={true}
-          multiple = {false}>
-        </JobDropdown>
-        <JobClick buttonText={showOpenJobs ? '현재 모집' : '전체 공고'}
-          toggleOpen = {toggleOpenJobs}
-          showOpen = {showOpenJobs}
-          size={width <= 400 ? 'large' : 'medium'}>
-        </JobClick>
-      </div>
-    </div>
-    <br></br>
+
     <PostingList
       currentPage={currentPage} 
       setCurrentPage={setCurrentPage} 

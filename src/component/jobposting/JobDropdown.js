@@ -13,7 +13,8 @@ function JobDropdown({
     backcolor = 'default',
     underline = false, //글자에 밑줄 표시 여부
     closeOnSelect = false, //선택하면 닫기 결정
-    multiple = true //복수 응답여부 결정
+    multiple = true, //복수 응답여부 결정
+    showOptions = true //드롭다운 표시 여부
 }) {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedItem, setSelectedItem] = useState(multiple ? [] : {}); //여러개[], 한개{}
@@ -68,8 +69,8 @@ return (
                 <span style={{ marginTop: '2px' }}>{isOpen ? <MdArrowDropUp size={18} /> : <MdArrowDropDown size={18} />}</span>
             </div>
         </button>
-        {isOpen && (
-            <div className="jobdropdown-options">
+        {isOpen  && (
+            <div className={`jobdropdown-options ${!showOptions ? "centered-options" : ""}`}>
                 {dropdownContent.map(item => (
                     <div className='checkbox-container' key={item.value} onClick={() => handleSelect(item.value)}>
                         {multiple ? (

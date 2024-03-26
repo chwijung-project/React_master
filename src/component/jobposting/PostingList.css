@@ -7,6 +7,13 @@
     display: none;
 }
 
+.space_media{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
 .space_posting {
     display: flex;
     align-items: center;
