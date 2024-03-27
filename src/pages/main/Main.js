@@ -1,20 +1,20 @@
 import RecruitGraph from "../../component/main/RecruitGraph";
 // import BannerSlider from "../../component/main/BannerSlider";
-import SmallCommunity from "../../component/main/SmallCommunity";
-import SmallPosting from "../../component/main/SmallPosting";
+import Test from "../test";
+import Smalltest from "../smalltest";
 
 function Main() {
 
 
     return (
         <>
+            <Test/>
             <RecruitGraph/>
             {/* <CheckedJob/> */}
             {/* <BannerSlider/> */}
-            <div style={{ display: "flex", justifyContent: "center" }}>
-                <SmallPosting/>
-                <SmallCommunity/>
-            </div>
+            {/* <SmallPosting/> */}
+            {/* <SmallCommunity/> */}
+            <Smalltest/>
         </>
     );
 }

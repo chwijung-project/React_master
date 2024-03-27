@@ -6,43 +6,52 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+  }
+
 .header-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-between; /* 자식 요소들을 가운데 정렬합니다. */
     align-items: center;
+    position: relative;
     margin-top: 30px;
 }
 
 .header-banner {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
-    align-items: center;
-    width: 1200px;
 }
 
 .header-logo img {
     width: 120px;
     height: 85px;
     cursor: pointer;
+    flex-shrink: 0;
+    margin-left: 30px;
 }
 
 .header-container button {
-    position: relative;
-    margin-left: 35px;
     border: none;
     background-color: white;
-    font-family: "KOTRA_BOLD-Bold";
-    font-size: 18px;
+    font-family: 'Pretendard-Regular';
+    font-size: 22px;
+    font-weight: 600;
     cursor: pointer;
 }
 
-.drop-container {
-    position: relative;
+.SPACE {
+    width: 120px;
 }
 
 .drop-content {
     position: absolute;
-    top: 100px;
-    margin-left: 35px;
+    top: 50px;
     border: 1px solid #FFC34E;
     background-color: #f9f9f9;
     min-width: 200px;
@@ -52,7 +61,7 @@
 
 .drop-content a {
     color: black;
-    padding: 12px 16px;
+    padding: 10px 10px;
     text-decoration: none;
     display: block;
 }
@@ -63,4 +72,34 @@
 
 .show {
     display: block;
+}
+
+.bottom-line2 { 
+    width: 97%;
+    height: 1.5px;
+    background-color: rgb(233, 228, 228);
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+}
+
+@media (max-width: 400px) {
+    .header-container{
+        width: 100%;
+    }
+    .header-logo img{
+        width: 60px;
+        height: 50px;
+        margin-left: 10px;
+    }
+    .header-banner {
+        margin-left: 20px;
+    }
+    .SPACE {
+        width: 10px;
+    }
+    .header-container button{
+        font-size: 12px;
+        width: 60px;
+    }
+
 }

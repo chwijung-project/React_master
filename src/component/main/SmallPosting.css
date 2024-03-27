@@ -1,101 +1,270 @@
 @font-face {
-    font-family: "KOTRA_BOLD-Bold";
-    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.1/KOTRA_BOLD-Bold.woff")
-      format("woff");
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'SUITE-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
     font-weight: 400;
     font-style: normal;
 }
 
-.small-box{
-    display: flex;
+
+/* 전체 컨테이너 */
+.postContainer {
+    display: block;
+    /* flex-direction: column; */
     align-items: center;
-    justify-content: space-between;
-}
-
-.smalldrop{
-    margin-top: 5px;
-    width: 300px;
-    height: 30px;
-    font-size: 21px;
-    font-family: NanumBarunGothic;
-    font-weight:500;
-    background-color: white;
-    border: 1px solid #ddd;
+    min-width: auto;
+    width: 100%;
+    border: 1px solid #ddd; 
     border-radius: 5px;
-    box-shadow: 0px 0px 10px #ccc;
-    text-align: center;
+    box-shadow: 0px 0px 2px #ccc;
 }
 
-.posttext {
-    margin-left: 15px;
-    font-family: "KOTRA_BOLD-Bold";
+/* 상단 영역(제목, 드롭다운, 더 보기 버튼) */
+.small-upside {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 18%;
+    width: 100%;
+}
+
+.small-text {
+    font-family: 'Pretendard-Regular';
     font-size: 30px;
+    white-space: nowrap;
 }
 
-.smallposttable {
-    position: relative;
-    border: 1px solid #ddd;
-    border-radius: 15px;
-    box-shadow: 0px 0px 10px #ccc;
-    width: 575px;
-    height: 360px;
-    text-align: center;
+/* upside요소간의 space */
+.space { 
+    width: 140px;
+}
+
+/* List간의 space */
+.space2 {
+    width: 12px;
 }
 
 .morebtn {
-    font-family: "SUITE-Regular";
-    background-color: white;
-    margin-top: 10px;
-    margin-left: 460px;
-    border: none;
-    width: 80px;
-    height: 30px;
-    position: absolute;
-    cursor: pointer;
+    border: none; 
+    padding: 5px 10px;
+    font-size: 15px;
+    cursor: pointer; 
+    background-color: #fff;
+    border-radius: 5px; 
+    outline: none; 
+    margin-top: 15px;
+    white-space: nowrap;
+    font-family: 'Pretendard-Regular';
 }
 
 .morebtn:hover{
-    /* background-color: #f7f7f7; */
-    color: red; /* 글씨 색상을 변경 */
+    color: red;
     font-weight: bold;
 }
 
-.smallposttable th,
-.smallposttable td {
-  padding: 10px;
+
+.small-drop {
+    border: 1px solid #ccc; 
+    padding: 5px 10px;
+    font-size: 15px;
+    cursor: pointer; 
+    background-color: none;
+    border-radius: 5px; 
+    outline: none;
+    white-space: nowrap;
+    font-family: "Pretendard-Regular";
 }
 
-.index {
-    font-family: 'SUITE-Regular';
+.line {
+    width: 95%;
+    height: 1.5px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    background-color: rgb(233, 228, 228);
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0);
 }
 
-.recruit{
+.smallPostList {
+    width: 100%;
+    height: 320px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    /* border: 1px solid purple; */
+}
+.postItem {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px; /* 게시물 사이의 간격 */
+}
+
+.smallPostList .company-logo img {
+    width: 30px;
+    border-radius: 50%;
+    margin-left: 18px;
+}
+
+/* 스몰리스트 공고제목 */
+.smallPostList .recruit {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 280px;
-    min-width: 280px;
-    font-family: 'SUITE-Regular';
+    width: 420px;
     cursor: pointer;
+    font-size: 15px;
+    font-family: "Pretendard-Regular";
 }
 
-.recruit:hover{
-    color: #ccc;
-}
-
-.company {
+/* 스몰리스트 회사명 */
+.smallPostList .company{
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 80px;
-    min-width: 80px;
-    font-family: 'SUITE-Regular';
+    width: 100px;
+    /* height: 20px; */
+    font-size: 13px;
+    padding: 2px;
+    text-align: center;
+    /* vertical-align: middle; */
+    font-family: "Pretendard-Regular";
+    border-radius: 10px;
+    font-weight: 600;
+    color: #522fb3da;
+    background-color: #d0d1ff67;
+}
+
+.smallPostList .recruit:hover{
+    color: #cccccc;
+}
+
+
+
+/* 기본으로 적용되는 css는 데스크탑용 */
+/* 노트북 전체화면 */
+@media (max-width: 1550px) {
+    .small-text {
+        font-size: 28px;
+    }
+    .space {
+        width: 160px;
+    }
+    .smallPostList .company-logo img {
+        margin-left: 15px;
+    }
+
+    .smallPostList .recruit {
+        font-size: 16px;
+    }
+    .space2 {
+        width: 15px;
+    }
+
+    .smallPostList .company{
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 1278px) {
+    .postContainer {
+        width: 550px;
+    }
+    .space { 
+        width: 100px;
+    }
+    .smallPostList .recruit{
+        width: 350px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .postContainer {
+      width: 385px;
+      height: 400px;
+    }
+    .small-text {
+        font-size: 20px;
+    }
+    .morebtn {
+        font-size: 10px;
+    }
+    .small-drop {
+        font-size: 10px;
+    }
+    .space { 
+        width: 40px;
+    }
+    .space2 {
+        width: 10px;
+    }
+    .smallPostList .company-logo img{
+        width: 25px;
+    }
+    .smallPostList .recruit {
+        font-size: 14px;
+        width: 230px;
+    }        
+    .smallPostList .company {
+        font-size: 10px;
+        width: 80px;
+    }        
+}
+
+/* 노트북 50% */
+@media (max-width: 768px) {
+    .postContainer {
+        width: 270px;
+        height: 350px;
+    }
+    .small-text {
+        font-size: 14px;
+    }
+    .morebtn {
+        font-size: 8px;
+    }
+    .small-drop {
+        font-size: 8px;
+        width: 100px;
+    }
+    .space { 
+        width: 5px;
+    }
+    .space2 {
+        width: 10px;
+    }
+    .smallPostList .company-logo img{
+        width: 20px;
+    }
+    .smallPostList .recruit {
+        font-size: 14px;
+        width: 230px;
+    }        
+    .smallPostList .company {
+        display: none;
+    } 
+}
+
+/* 스마트폰 */
+@media (max-width: 400px) {
+    .postContainer {
+        width: 100%;
+        height: 350px;
+        margin-top: 20px;
+    }
+    .small-text {
+        font-size: 20px;
+    }
+    .morebtn {
+        font-size: 12px;
+    }
+    .small-drop {
+        font-size: 12px;
+        width: 130px;
+    }
+    .space {
+        width: 15px;
+    }
+    .smallPostList .company {
+        display: flex;
+        width: 100px;
+        justify-content: center;
+        font-size: 11px;
+        margin-right: 10px;
+    } 
 }
 

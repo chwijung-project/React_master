@@ -6,7 +6,6 @@ import Coaching from './pages/coaching/Coaching';
 import MoreInfo from './pages/moreInfo/MoreInfo';
 import Community from './pages/community/Community';
 
-
 function App() {
   
   return (

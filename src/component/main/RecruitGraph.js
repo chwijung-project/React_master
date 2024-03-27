@@ -25,13 +25,13 @@ function RecruitGraph() {
     };
     
     const colors = [
-        'rgba(255, 99, 132, 1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)',
-        'rgba(75, 192, 192, 1)',
-        'rgba(153, 102, 255, 1)',
-        'rgba(255, 159, 64, 1)',
-        'rgba(22, 241, 77, 1)'
+        'gray', // AI 서비스 기획자
+        'gray', // 데이터 사이언티스트
+        'gray', // 머신러닝/딥러닝 엔지니어
+        'gray', // 머신러닝/딥러닝 리서처
+        'gray', // AI 서비스 개발자
+        'gray', // 데이터 엔지니어
+        'gray', // AI 아티스트
     ];
 
     const allKeys = new Set();
@@ -78,7 +78,7 @@ function RecruitGraph() {
               },
             legend: {
                 labels: {
-                    boxWidth: 20,
+                    boxWidth: 15,
                 }
             }
         },
@@ -98,20 +98,20 @@ function RecruitGraph() {
 
     return(
       <>
-        <div className="graph-container">
-            <div className="graph-box">
-              <div className="graph-upside">
-                  <h1 className="recrutext">AI 직무 현황</h1>
-                  <select onChange={handleDropdownChange} value={selectOption} className="dropdown">
-                      <option value="option1">누적</option>
-                      <option value="option2">임시</option>
-                  </select>
-              </div>
-              <div className="graph">
-                  <Line data={chartData} options={options} className="chart-canvas"/>
-              </div>
-            </div>
+        <div className="graphcontainer">
+          <div className="graph-upside">
+              <h1 className="text">AI 직무 현황</h1>
+              <div className="spacer"></div>
+              <select onChange={handleDropdownChange} value={selectOption} className="dropdown">
+                  <option value="option1">누적</option>
+                  <option value="option2">임시</option>
+              </select>
+          </div>
+          <div className="graph">
+              <Line data={chartData} options={options} className="chart-canvas"/>
+          </div>
         </div>
+        <div class="bottom-line"></div>
       </>
     );
 }

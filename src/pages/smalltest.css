@@ -1,0 +1,41 @@
+.bottomside{
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto; 
+    width: 1250px;
+    height: 500px;
+    margin-bottom: 100px;
+}
+
+.bottomSpace {
+    width: 30px;
+}
+
+@media (max-width: 1278px) {
+    .bottomside {
+        width: 90%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .bottomside {
+        width: 80%;
+    }
+}
+
+@media (max-width: 768px) {
+    .bottomside {
+        flex-direction: column;
+
+        width: 90%;
+        height: 400px;
+    }
+}
+
+@media (max-width: 400px) {
+    .bottomside {
+        width: 90%;
+        height: 400px;
+    }
+}

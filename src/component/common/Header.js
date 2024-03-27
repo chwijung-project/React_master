@@ -37,13 +37,14 @@ function Header() {
   return (
     <>
       <div className="header-container">
+        <div
+          className="header-logo"
+          onClick={ onClickLogoHandler }
+        >
+          <img src={ chwijung_logo } alt= ""/>
+        </div>
+        
         <div className="header-banner">
-          <div
-            className="header-logo"
-            onClick={ onClickLogoHandler }
-          >
-            <img src={ chwijung_logo } alt= ""/>
-          </div>
 
           <div className="dropdown-container">
             <button onClick={ onClickPostingDropdown }>
@@ -60,7 +61,7 @@ function Header() {
               </div>
             )}
           </div>
-
+          <div className="SPACE"></div>
           <div className="dropdown-container">
             <button onClick={ onClickCommunityDropdown }>
               감자 커뮤니티
@@ -71,15 +72,17 @@ function Header() {
               </div>
             )}
           </div>
-
+          <div className="SPACE"></div>
           <button onClick={ onClickCoachingHandler }>
             코칭
           </button>
+          <div className="SPACE"></div>
           <button onClick={ onClickMoreIndoHandler }>
             더 보기
           </button>
         </div>  
       </div>
+      <div class="bottom-line2"></div>
     </>
   )
 }    

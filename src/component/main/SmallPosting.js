@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { callSmallPostListAPI } from "../../api/MainAPICall";
+import basic from '../../image/basic.png';
 import './SmallPosting.css';
 
 function SmallPosting() {
@@ -47,10 +48,14 @@ function SmallPosting() {
 
     return (
         <>
-            <div className="postcontainer">
-                <div className="small-box">
-                    <h1 className="posttext">최신 채용공고</h1>
-                    <select onChange={ DropdownChangehandler } value={selectOption} className="smalldrop">
+            <div className="postContainer">
+                <div className="small-upside">
+                    <h1 className="small-text">최신 채용공고</h1>
+                    <button className="morebtn" onClick={ onClickNaviHandler }>
+                        더 보기 &gt;
+                    </button>
+                    <div className="space"></div>
+                    <select onChange={ DropdownChangehandler } value={selectOption} className="small-drop">
                         {jobOptions.map((option) => (
                             <option key={option.value} value={option.value}>
                                 {option.label}
@@ -58,32 +63,24 @@ function SmallPosting() {
                         ))}
                     </select>
                 </div>
-                <table className="smallposttable">
-                    <thead>
-                        <button className="morebtn" onClick={ onClickNaviHandler }>
-                           더 보기 &gt;
-                        </button><br/><br/>
-                        <tr>
-                            <th>No</th>
-                            <th>공고명</th>
-                            <th>회사명</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        { Array.isArray(postingList) && postingList.map((p, index) => (
-                            <tr
-                                key={ p.idx }
-                            >
-                                <td className="index">{ index + 1 }</td>
-                                <td className="recruit" onClick={() => onClickRecruUrl(p.recru_url)}>
-                                    {p.recru_title}
-                                </td>
-                                <td className="company">{ p.recru_company }</td>
-                            </tr>
-                        )) 
-                    }
-                    </tbody>                    
-                </table> 
+                <div class="line"></div>
+                <div className="smallPostList">
+                    {Array.isArray(postingList) && postingList.map((p) => (
+                        <div key={p.idx} className="postItem">
+                            <div className="company-logo">
+                                <img src="https://static.wanted.co.kr/images/wdes/0_5.be5f31e8.png" alt="" />
+                            </div>
+                            <div className="space2"></div>
+                            <div className="recruit">
+                                {p.recru_title}
+                            </div>
+                            <div className="space2"></div>
+                            <div className="company">
+                                {p.recru_company}
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
         </>
     )
