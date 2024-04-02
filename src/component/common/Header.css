@@ -1,66 +1,74 @@
-@font-face {
-    font-family: "KOTRA_BOLD-Bold";
-    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.1/KOTRA_BOLD-Bold.woff")
-      format("woff");
-    font-weight: normal;
-    font-style: normal;
+.header_container {
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 0 8px 0 var(--shadow);
+    z-index: 20;
+    font-family: var(--fontRegular);
+    font-size: var(--f_size_big);
 }
 
-.header-container {
+.header_banner {
     display: flex;
-    justify-content: center;
+    height: 60px;
+    justify-content: space-between;
     align-items: center;
-    margin-top: 30px;
+    padding: 0 2rem;
+    max-width: 1060px;
+    margin: auto;
 }
 
-.header-banner {
+.header_start{
+    height: 30px;
+    line-height: 30px;
     display: flex;
-    align-items: center;
-    width: 1200px;
-}
-
-.header-logo img {
-    width: 120px;
-    height: 85px;
     cursor: pointer;
 }
+.header_logo{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgb(71, 172, 255);
+    background-image: url(../../image/chwijung_logo.jpg);
+    background-size: 30px 30px;
+}
+.header_title{
+    margin-left: 0.5rem;
+}
 
-.header-container button {
-    position: relative;
-    margin-left: 35px;
+.header_middle{
+    width: 50%;
+}
+.header_middle button{
+    width: 33%;
+    background-color: transparent;
+    font-family: var(--fontRegular);
     border: none;
-    background-color: white;
-    font-family: "KOTRA_BOLD-Bold";
-    font-size: 18px;
     cursor: pointer;
 }
 
-.drop-container {
-    position: relative;
+.header_end{
+    display: flex;
+    justify-content: space-between;
+}
+.header_profile{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: tomato;
+    cursor: pointer;
 }
 
-.drop-content {
-    position: absolute;
-    top: 100px;
-    margin-left: 35px;
-    border: 1px solid #FFC34E;
-    background-color: #f9f9f9;
-    min-width: 200px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-.drop-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-.drop-content a:hover {
-    background-color: #ddd;
-}
-
-.show {
-    display: block;
+@media (max-width: 400px) {
+    .header_title{
+        display: none;
+    }
+    .header_middle{
+        width:60%;
+    }
+    .header_banner{
+        padding: 0 1rem;
+    }
 }

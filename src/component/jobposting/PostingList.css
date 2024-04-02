@@ -1,82 +1,100 @@
 .container{
-    padding: 10px 0 10px 14px;
-}
-
-.container_media{
-    padding: 10px;
-    display: none;
-}
-
-.space_media{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-}
-
-.space_posting {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    width: 330px;
-    gap: 10px;
-}
-
-.space_first{
-    display: flex;
-    align-items: center;
-    justify-content:flex-start;
-    gap:5px;
-    font-family: var(--fontRegular);
-}
-
-.table{
     width: 100%;
-    border-collapse: collapse;
-}  
-
-.table tr {
-    border-bottom: 1px solid #ddd;
+    padding: 0 2rem;
+    font-family: var(--fontRegular);
+    font-size: var(--f_size_small);
+    max-width: 1060px;
+    margin: 0 auto;
+    align-items: center;
 }
-
-.table tr:last-child {
+.list_wraper{
+    justify-content: space-between;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    border-bottom: 1px solid var(--lineSoft);
+    padding: 10px 0;
+    height: 45px;
+}
+.list_wraper:last-child {
     border-bottom: none;
 }
 
-.table td{
-    /* padding: 18px 0px 18px 10px; */
-    height: 70px;
-    font-family: var(--fontMedium);
-    color: var(--text);
-    font-size: 11px;
-}
-
-.user{
+.list_start{
+    width: 50%;
     display: flex;
+    height: calc(45px/2);
     align-items: center;
-    gap: 10px;
+}
+.list_title_content{
+    margin-left: 0.4rem;
+}
+.recru_logo{
+    align-items: center;
+}
+.recru_title{
+    font-size: var(--f_size_default);
+    font-family: var(--fontMedium);
 }
 
-.userImage{
-    border-radius: 50%;
-    object-fit: cover;
+/* 미디어쿼리 */
+.recru_title_media{
+    display: none;
 }
 
-.buttons{
+.list_title_under{
     display: flex;
-    gap: 10px;
+    margin-top: 0.3rem;
+    font-size: var(--f_size_short);
 }
-  
-.button{
+
+/* 미디어쿼리 */
+.list_title_under_media{
+    display: none;
+}
+
+.recru_company{
+    margin-right: 0.4rem;
+}
+.recru_period{
+    color: var(--textSoft);
+}
+
+.list_middle{
+    width: 10%;
+}
+.recru_endate{
+    margin-bottom: 0.2rem;
+}
+
+.list_end{
+    width: 25%;
+}
+.recru_jobstyle{
+    padding: 8px;
+    border-radius: 12px;
+    width: fit-content;
+}
+.recru_jobname{
+    margin-left: 4px;
+}
+
+/* .list_button{
+    width: 10%;
+} */
+.list_button_media{
+    display: none;
+}
+
+.list_button button{
     padding: 8px 14px;
     border-radius: 5px;
     color: white;
     border: none;
     cursor: pointer;
     font-family: var(--fontRegular);
-    font-size: 11px;
+    font-size: var(--f_size_small);
 }
-  
 .view{
     background-color: #6247aa;
 }
@@ -86,40 +104,22 @@
     cursor:default;
 }
 
-.input_search {
-    background-color: transparent;
-    border: none;
-    color: black;
-    outline: none;
-    font-family: var(--fontRegular);
-}
-
-.title {
-    font-size: 12px;
-}
-
-.period{
-    margin-left: 5px;
-    color: #adb5bd;
-}
-
-/* 페이지네이션 */
-.paging-container {
-    margin-top: 25px;
+.pgn_wraper{
+    margin-top: 28px;
     list-style-type: none;
     display: flex;
     justify-content: center;
 }
 
-.pagingbtn {
+.pgn_button button{
     border: none;
     background-color: white;
     font-family: var(--fontLight);
-    font-size: 12px;
+    font-size: var(--f_size_default);
     cursor: pointer;
 }
 
-.pagingbtn-text{
+.pgn_middle{
     display: flex;
     align-items: center;
     justify-content:flex-start;
@@ -127,26 +127,71 @@
 }
 
 @media (max-width: 400px) {
-    .container {
+    .container{
+        padding: 0 0.5rem;
+        max-width: none;
+    }
+    .list_wraper{
+        height: 70px;
+    }
+    .list_start{
+        width: 70%;
+    }
+    .recru_title{
         display: none;
     }
-    .container_media{
+    .recru_title_media{
+        display: inline;
+        font-size: var(--f_size_default);
+        font-family: var(--fontMedium);
+    }
+    .list_title_under_media{
         display: inline;
     }
-    .button{
-        padding: 6px 9px;
-        font-size: 10px;
+    
+    .recru_jobstyle{
+        padding: 2px 7px;
+        border-radius: 12px;
+        width: fit-content;
+        font-size: var(--f_size_short);
     }
-    .table td{
-        height: 90px;
+
+    .list_button{
+        display: none;
     }
-    .pagingbtn{
-        font-size: 10px;
+    .list_button_media{
+        display: inline;
     }
-    .title{
-        margin-bottom: 4px;
+    .list_button_media button{
+        padding: 5px 8px;
+        font-size: var(--f_size_short);
+        border-radius: 5px;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-family: var(--fontRegular);
     }
     .view{
         background-color: #8969e1;
+    }
+
+    .recru_period, .recru_logo, .recru_company, 
+    .list_middle, .list_end{
+        display: none;
+    }
+
+    .list_title_top{
+        display: flex;
+        margin: 0.2rem 0 0.7rem 0;
+        gap: 0.2rem;
+    }
+    .list_title_bottom{
+        display: flex;
+        gap: 0.4rem;
+        align-items: center;
+    }
+
+    .pgn_button button{
+        font-size: var(--f_size_short);
     }
 }

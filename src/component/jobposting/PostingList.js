@@ -9,7 +9,7 @@ import {
 
 function PostingList({currentPage, setCurrentPage, pageInfo, postList}) {
 
-  // 직무별 색깔 다르게
+  //직무별 다른 색깔
   const jobStyles = {
     '머신러닝/딥러닝 엔지니어': { backgroundColor: '#f8ad9d40', color: '#e5383b' },
     '머신러닝/딥러닝 리서처': { backgroundColor: '#fae58840', color: '#ffc300' },
@@ -93,195 +93,129 @@ function PostingList({currentPage, setCurrentPage, pageInfo, postList}) {
 
 
 return(
-<>
-  <div className='container'>
-    <table className='table'>
-      <tbody>
-        {Array.isArray(postList) && postList.map((p,index) => (
-          <tr key={index}>
-            <td>
-              <span className='space_posting'>
-                <div className='user'>
-                  <img src='https://static.wanted.co.kr/images/wdes/0_5.be5f31e8.png' alt='' width={30} height={30}/>
-                </div>
-                <div>
-                  <div className='title'>
-                    {addLineBreaks(p.recru_title, 45)}
-                  </div>
-                  <div style={{marginTop:'5px', fontSize:'10px'}}>
-                    {p.recru_company}
-                    <span className='period'>
-                      {countdate(p.recru_crawling_date)}일 전
-                    </span>
-                  </div>
-                </div>
-              </span>
-            </td>
-            <td>
-              <div style={{width:'80px'}}>
-                  {p.recru_end_date ? ( <span>~{p.recru_end_date.substr(5)}({getWeekday(p.recru_end_date)})</span>
-                  ):( <span>상시채용</span>
-                  )}
+<div className='container'>
+    {Array.isArray(postList)&&postList.map((p,index) => (
+      <div className='list_wraper'>
+          <div className='list_start'>
+            <div className='recru_logo'>
+              <img src='https://static.wanted.co.kr/images/wdes/0_5.be5f31e8.png' alt='' width={25} height={25}/>
+            </div>
+            <div className='list_title_content'>
+              <div className='recru_title'>
+                {addLineBreaks(p.recru_title, 45)}
               </div>
-              <div style={{marginTop:'4px'}}>
-                <span style={{color:'#adb5bd'}}>In</span> {p.recru_region}
-              </div>
-            </td>
-            <td>
-              <div style={{width:'150px'}}>
-                <div style={{backgroundColor:jobStyles[p.recru_job].backgroundColor, padding:'8px', borderRadius:'12px', width:'fit-content'}}>
-                  <MdCircle size={10} color={jobStyles[p.recru_job].color}/><span style={{marginLeft:'4px'}}>{p.recru_job}</span>
-                </div>
-              </div>
-            </td>
-            <td>
-              <div className='buttons'>
-                {p.recru_closed === 'false' ? (
-                  <button className='button view'
-                  onClick={() => window.open(p.recru_url, '_blank')}>
-                    지원하기
-                  </button>
-                ):(<button className='button delete'>
-                    공고마감
-                  </button>)}
-              </div>
-            </td>
-          </tr>
-           ))}
-      </tbody>
-    </table>
-
-    <div className="paging-container">
-      {Array.isArray(postList) &&
-        <div>
-          <button
-              className="pagingbtn"
-              onClick={() => {setCurrentPage(currentPage - 1);
-              window.scrollTo(0,0);}} 
-              disabled={currentPage === 1}> 
-              <div className='pagingbtn-text'>
-                <span><MdArrowBackIos size={10}/></span> 
-                <span>이전</span>
-              </div>
-          </button>
-        </div>
-      }&nbsp;&nbsp;
-      {currentPageArray.map((num) => (
-        <div key={num} onClick={() => {setCurrentPage(num);
-            window.scrollTo(0,0);}}>
-            <button
-                className="pagingbtn"
-                style={ currentPage === num ? {color : '#b5179e', fontWeight:'bold' } : {color:'#adb5bd'}}
-            > {num}
-            </button>&nbsp;&nbsp;
-        </div>
-      ))}
-      {Array.isArray(postList) &&
-        <div>
-          <button 
-              className="pagingbtn"
-              onClick={() => {setCurrentPage(currentPage + 1);
-              window.scrollTo(0,0);}}
-              // disabled={currentPage === pageInfo.pageEnd  || pageInfo.total === 0}
-              >
-              <div className='pagingbtn-text'>
-                <span style={{marginRight:'5px'}}>다음</span>
-                <span><MdArrowForwardIos size={10}/></span> 
-              </div>
-          </button>
-        </div>
-      }
-    </div>
-  </div>
-
-<div className='container_media'>
-<table className='table'>
-  <tbody>
-    {Array.isArray(postList) && postList.map((p,index) => (
-      <tr key={index}>
-        <td>
-          <div className='space_media'>
-            <div>
-              <div className='title'>
+              {/* 미디어쿼리 적용부분 */}
+              <div className='recru_title_media'>
                 {addLineBreaksAndErase(p.recru_title, 30)}
               </div>
-              <div className='space_first'>
-                <div>
-                  {p.recru_end_date ? ( <span>~{p.recru_end_date.substr(5)}({getWeekday(p.recru_end_date)})</span>
-                  ):( <span>상시채용</span>
-                  )}
+              
+              <div className='list_title_under'>
+                {/* 미디어쿼리 적용부분 */}
+                <div className='list_title_under_media'>
+                  <div className='list_title_top'>
+                    <div className='recru_endate'>
+                      {p.recru_end_date ? ( <span>~{p.recru_end_date.substr(5)}
+                        ({getWeekday(p.recru_end_date)})</span>):
+                        (<span>상시채용</span>)}
+                    </div>
+                    <div className='recru_jobstyle' style={{backgroundColor:jobStyles[p.recru_job].backgroundColor}}>
+                      <MdCircle size={6} color={jobStyles[p.recru_job].color}/>
+                      <span className='recru_jobname'>
+                        {p.recru_job}
+                      </span>
+                    </div>
+                  </div>
+                  <div className='list_title_bottom'>
+                    <img src='https://static.wanted.co.kr/images/wdes/0_5.be5f31e8.png' alt='' width={18} height={18}/>
+                    {p.recru_company}
+                    <div className='recru_region'>
+                      <span style={{color:'#adb5bd'}}>{p.recru_region}</span> 
+                    </div>
+                  </div>
                 </div>
-                <div style={{backgroundColor:jobStyles[p.recru_job].backgroundColor, padding:'2px 7px', borderRadius:'12px', width:'fit-content'}}>
-                  <MdCircle size={7} color={jobStyles[p.recru_job].color}/><span style={{marginLeft:'4px',fontSize:'10px'}}>{p.recru_job}</span>
+                
+                <div className='recru_company'>
+                  {p.recru_company}
                 </div>
-              </div>
-            </div>
-            <div>
-              <div className='buttons'>
-                {p.recru_closed === 'false' ? (
-                  <button className='button view'
-                  onClick={() => window.open(p.recru_url, '_blank')}>
-                    지원
-                  </button>
-                ):(<button className='button delete'>
-                    마감
-                  </button>)}
+                <div className='recru_period'>
+                  {countdate(p.recru_crawling_date)}일 전
+                </div>
               </div>
             </div>
           </div>
-          <br></br>
           
-          <span className='space_posting'>
-            <div className='user'>
-              <img src='https://static.wanted.co.kr/images/wdes/0_5.be5f31e8.png' alt='' width={18} height={18}/>
+          <div className='list_middle'>
+            <div className='recru_endate'>
+              {p.recru_end_date ? ( <span>~{p.recru_end_date.substr(5)}
+                ({getWeekday(p.recru_end_date)})</span>):
+                (<span>상시채용</span>)}
             </div>
-            <div>
-              <div style={{marginTop:'5px', fontSize:'10px'}}>
-                {p.recru_company}
-                <span className='period'>
-                  {p.recru_region}
-                </span>
-              </div>
+            <div className='recru_region'>
+              <span style={{color:'#adb5bd'}}>In</span> {p.recru_region}
             </div>
-          </span>
-        </td>
-      </tr>
-       ))}
-  </tbody>
-</table>
-
-<div className="paging-container">
-  {Array.isArray(postList) &&
-    <div>
-      <button
-          className="pagingbtn"
-          onClick={() => {setCurrentPage(currentPage - 1);
-          window.scrollTo(0,0);}} 
-          disabled={currentPage === 1}> 
-          <div className='pagingbtn-text'>
-            <span><MdArrowBackIos size={10}/></span> 
-            <span>이전</span>
           </div>
-      </button>
-    </div>
-  }&nbsp;&nbsp;
-  {Array.isArray(postList) &&
-    <div>
-      <button 
-          className="pagingbtn"
-          onClick={() => {setCurrentPage(currentPage + 1);
-          window.scrollTo(0,0);}}
-          // disabled={currentPage === pageInfo.pageEnd  || pageInfo.total === 0}
-          >
-          <div className='pagingbtn-text'>
+          <div className='list_end'>
+            <div className='recru_jobstyle' style={{backgroundColor:jobStyles[p.recru_job].backgroundColor}}>
+              <MdCircle size={10} color={jobStyles[p.recru_job].color}/>
+              <span className='recru_jobname'>
+                {p.recru_job}
+              </span>
+            </div>
+          </div>
+          <div className='list_button'>
+            {p.recru_closed === 'false' ? (
+            <button className='button view' onClick={() => window.open(p.recru_url, '_blank')}>
+              지원하기</button>):(<button className='button delete'>
+                공고마감</button>)}
+          </div>
+
+          {/* 미디어쿼리 적용부분 */}
+          <div className='list_button_media'>
+            {p.recru_closed === 'false' ? (
+            <button className='button view' onClick={() => window.open(p.recru_url, '_blank')}>
+              지원</button>):(<button className='button delete'>
+                마감</button>)}
+          </div>
+          {/* 미디어쿼리 적용부분 */}
+      </div>
+    ))}
+
+  <div className='pgn_wraper'>
+    {Array.isArray(postList) &&
+      <div className='pgn_button'>
+        <button onClick={() => {setCurrentPage(currentPage - 1);
+        window.scrollTo(0,0);}} 
+        disabled={currentPage === 1}> 
+          <span><MdArrowBackIos size={10}/></span> 
+          <span>이전</span>
+        </button>
+      </div>
+    }&nbsp;&nbsp;
+
+    {currentPageArray.map((num) => (
+      <div className='pgn_button' key={num} onClick={() => {setCurrentPage(num);
+          window.scrollTo(0,0);}}>
+          <button
+              style={ currentPage === num ? {color : '#b5179e', fontWeight:'bold', backgroundColor:'#b5179d30'} : {color:'#adb5bd'}}
+          > {num}
+          </button>&nbsp;&nbsp;
+      </div>
+    ))}
+
+    {Array.isArray(postList) &&
+      <div className='pgn_button'>
+        <button 
+            onClick={() => {setCurrentPage(currentPage + 1);
+            window.scrollTo(0,0);}}
+            // disabled={currentPage === pageInfo.pageEnd  || pageInfo.total === 0}
+            >
             <span style={{marginRight:'5px'}}>다음</span>
             <span><MdArrowForwardIos size={10}/></span> 
-          </div>
-      </button>
-    </div>
-  }
+        </button>
+      </div>
+    }
+  </div>
 </div>
-</div>
-</>)
+)
 }
 export default PostingList;

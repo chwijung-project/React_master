@@ -4,8 +4,8 @@ import { callPostListAPI } from "../../api/PostingAPICall";
 //채용공고 정보 받아옴
 import './JobPosting.css';
 import PostingList from "../../component/jobposting/PostingList";
-import JobDropdown from "../../component/jobposting/JobDropdown"
-import JobClick from "../../component/jobposting/JobClick"
+import JobDropdown from "../../component/common/Dropdown"
+import JobClick from "../../component/common/Clickbutton"
 
 //화면 크기 확인용
 function useWindowSize() {
@@ -49,15 +49,14 @@ function JobPosting() {
     setCurrentPage(1); //선택하면 첫 페이지로 오도록
   };
 
-
   const Jobnames = [
-    {label: '머신러닝/딥러닝 엔지니어', value: '머신러닝/딥러닝 엔지니어'},
-    {label: '머신러닝/딥러닝 리서처', value: '머신러닝/딥러닝 리서처'},
-    {label: '데이터 사이언티스트', value: '데이터 사이언티스트'},
-    {label: '데이터 엔지니어', value: '데이터 엔지니어'},
-    {label: 'AI 서비스 개발자', value: 'AI 서비스 개발자'},
-    {label: 'AI 서비스 기획자', value: 'AI 서비스 기획자'},
-    {label: 'AI 아티스트', value: 'AI 아티스트'}
+    {label: '머신러닝/딥러닝 엔지니어', value: '머신러닝/딥러닝 엔지니어', short:'MLE'},
+    {label: '머신러닝/딥러닝 리서처', value: '머신러닝/딥러닝 리서처', short:'MLR'},
+    {label: '데이터 사이언티스트', value: '데이터 사이언티스트', short:'DS'},
+    {label: '데이터 엔지니어', value: '데이터 엔지니어', short:'DE'},
+    {label: 'AI 서비스 개발자', value: 'AI 서비스 개발자', short:'AI DEV'},
+    {label: 'AI 서비스 기획자', value: 'AI 서비스 기획자', short:'AI PLAN'},
+    {label: 'AI 아티스트', value: 'AI 아티스트', short:'AI ART'}
   ];
 
   const Region = [
@@ -83,37 +82,31 @@ function JobPosting() {
   return (
   <div className="total">
       <div className='top' style={{fontSize:'13px'}}>
-        <div className='space'>
-          <JobDropdown buttonText='All Jobs'
+        <div className='space_left'>
+          <JobDropdown buttonText='직무'
             dropdownContent={Jobnames}
             selectedOne = {selectedJob}
-            handleChange={handleJobChange}
-            backcolor={width <= 400 ? 'purple' : 'default'}
-            showOptions={width <= 400 ? false : true}
-            >
+            handleChange={handleJobChange}>
           </JobDropdown>
           <div className="cnt_job">
             {pageInfo && pageInfo.total}개 채용공고
           </div>
         </div>
-        <div className='space'>
+        <div className='space_right'>
           <JobDropdown buttonText='지역'
             dropdownContent={Region}
             selectedOne = {selectedRegion}
             handleChange={handleRegionChange}
-            backcolor={width <= 400 ? 'gray' : 'white'}
-            underline={width <= 400 ? false : true}
-            showOptions={width <= 400 ? false : true}>
+            backcolor={width <= 400 ? 'c_gray' : 'c_white'}
+            optionsize='o_small'>
           </JobDropdown>
           <JobDropdown buttonText='정렬'
             dropdownContent={Order}
             selectedOne = {selectedOrder}
             handleChange={handleOrderChange}
-            backcolor={width <= 400 ? 'gray' : 'white'}
-            underline={width <= 400 ? false : true}
-            closeOnSelect ={true}
+            backcolor={width <= 400 ? 'c_gray' : 'c_white'}
             multiple = {false}
-            showOptions={width <= 400 ? false : true}>
+            optionsize='o_short'>
           </JobDropdown>
           <JobClick buttonText={showOpenJobs ? '현재 모집' : '전체 공고'}
             toggleOpen = {toggleOpenJobs}
@@ -123,12 +116,14 @@ function JobPosting() {
         </div>
       </div>
 
-    <PostingList
-      currentPage={currentPage} 
-      setCurrentPage={setCurrentPage} 
-      pageInfo={pageInfo} 
-      postList={postList} 
-    />
+    <div className="posting_list">
+      <PostingList
+        currentPage={currentPage} 
+        setCurrentPage={setCurrentPage} 
+        pageInfo={pageInfo} 
+        postList={postList} 
+      />
+    </div>
   </div>)
   }    
   export default JobPosting;

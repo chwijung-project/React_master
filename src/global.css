@@ -31,10 +31,17 @@
     --bgSoft: #182237; */
     --text: #212529;
     --textSoft: #adb5bd;
+    --textDark: #80868d;
+    --lineSoft: #c1cad482;
+    --shadow: #cad2da;
     --fontLight:'Pretendard-ExtraLight';
     --fontRegular:'Pretendard-Regular';
     --fontMedium:'Pretendard-SemiBold';
     --fontBold:'Pretendard-Bold';
+    --f_size_default:12px;
+    --f_size_small:11px;
+    --f_size_short:10px;
+    --f_size_big:14px;
   }
 
 a {
