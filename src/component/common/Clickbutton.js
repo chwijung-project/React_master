@@ -1,7 +1,7 @@
 import React from "react";
 import './Clickbutton.css';
 
-function JobClick(
+function Clickbutton(
   {buttonText, 
   toggleOpen, 
   showOpen,
@@ -24,4 +24,4 @@ function JobClick(
   );
 }
 
-export default JobClick;
+export default Clickbutton;

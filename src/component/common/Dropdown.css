@@ -43,8 +43,12 @@
     font-size: var(--f_size_default);
 }
 .s_small{
-    padding: 5px 7px 5px 12px;
+    padding: 3px 4px 3px 10px;
     font-size: var(--f_size_short);
+}
+.s_semi{
+    padding: 7px 7px 7px 12px;
+    font-size: var(--f_size_default);
 }
 
 /* 드롭다운 옵션 */
@@ -157,6 +161,10 @@
     .s_default{
         padding: 5px 7px 5px 12px;
         font-size: var(--f_size_short);
+    }
+    .s_semi{
+        padding: 1px 4px 1px 10px;
+        font-size: 9px;
     }
     .dropdown_option{
         position: fixed;

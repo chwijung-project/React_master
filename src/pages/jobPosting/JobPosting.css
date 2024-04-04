@@ -1,20 +1,13 @@
-.total {
-  margin: 60px 10px 0 10px;
-  width: 100%;
-  justify-content: center;
-}
-
 .top {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 15px;
+  padding: 1rem;
   font-family: var(--fontRegular);
   top : 55px;
-  right: 0;
+  left: 0;
   position : sticky;
   background : white;
-  width: 100%;
   max-width: 1060px;
   margin: auto;
 }
@@ -33,9 +26,15 @@
   gap: 10px;
 }
 
+.posting_list{
+  max-width: 1060px;
+  margin: auto;
+}
+
 @media (max-width: 400px) {
   .total {
-      font-size: var(--f_size_small)
+      font-size: var(--f_size_small);
+      margin: 60px 0 0 0;
   }
   .cnt_job{
     display: none;

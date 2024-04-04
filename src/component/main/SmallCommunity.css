@@ -1,104 +1,57 @@
-@font-face {
-    font-family: "KOTRA_BOLD-Bold";
-    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.1/KOTRA_BOLD-Bold.woff")
-      format("woff");
-    font-weight: normal;
-    font-style: normal;
+.small_commu{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* background-image: url('../../image/kakao.png');
+    background-repeat: no-repeat;
+    background-position : 100% 50%; */
+    /* background-size : cover; */
+    
 }
-
-@font-face {
-    font-family: 'SUITE-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
-}
-
-.comucontainer {
-    margin-left: 45px;
-}
-
-.comusmall-box{
+.commu_banner{
+    flex-grow: 1;
+    margin-bottom: 10px; 
+    height: 20px;
+    padding: 7px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    font-size: var(--f_size_default);
+    font-family: var(--fontMedium);
+    /* background-color: rgb(248, 248, 248); */
+    background-color: transparent;
+    border: 1px solid var(--lineSoft);
+}
+.commu_banner img{
+    opacity: 0.7;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 50%);
 }
 
-.smallcomudrop{
-    margin-left: -60px; 
-    width: 280px;
-    height: 30px;
-    font-size: 21px;
-    font-family: NanumBarunGothic;
-    font-weight:500;
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px #ccc;
-    text-align: center;
-
+.mle{
+    /* background-color: #E69F0030; */
+    color: #E69F00;  
 }
-.comutext {
-    margin-left: 15px;
-    font-family: "KOTRA_BOLD-Bold";
-    font-size: 30px;
+.mls{
+    /* background-color: #56B4E930; */
+    color: #56B4E9;
 }
-
-.smallcomutable {
-    margin-top: -15px; 
-    position: relative;
-    border: 1px solid #ddd;
-    border-radius: 15px;
-    box-shadow: 0px 0px 10px #ccc;
-    width: 575px;
-    height: 400px;
-    text-align: center;
+.ds{
+    /* background-color: #009E7330; */
+    color: #009E73;
 }
-
-.morebtn {
-    font-family: "SUITE-Regular";
-    background-color: white;
-    margin-top: 10px;
-    margin-left: 460px;
-    border: none;
-    width: 80px;
-    height: 30px;
-    position: absolute;
-    cursor: pointer;
+.de{
+    /* background-color: #F0E44240; */
+    color: #d5cb3b;
 }
-
-.morebtn:hover{
-    /* background-color: #f7f7f7; */
-    color: red; /* 글씨 색상을 변경 */
+.ai_dev{
+    /* background-color: #0072B230; */
+    color: #0072B2;
 }
-
-.smallcomutable th,
-.smallcomutable td {
-  padding: 10px;
+.ai_plan{
+    /* background-color: #D55E0030; */
+    color: #D55E00;
 }
-
-.index {
-    font-family: 'SUITE-Regular';
-}
-
-.comu_titl{
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 280px;
-    min-width: 280px;
-    font-family: 'SUITE-Regular';
-    cursor: pointer;
-}
-
-.comu_titl:hover{
-    color: #ccc;
-}
-
-.user_id {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 80px;
-    min-width: 80px;
-    font-family: 'SUITE-Regular';
+.ai_art{
+    /* background-color: #CC79A730; */
+    color: #CC79A7;
 }

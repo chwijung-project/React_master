@@ -93,7 +93,7 @@ function PostingList({currentPage, setCurrentPage, pageInfo, postList}) {
 
 
 return(
-<div className='container'>
+<div className='posting_container'>
     {Array.isArray(postList)&&postList.map((p,index) => (
       <div className='list_wraper'>
           <div className='list_start'>

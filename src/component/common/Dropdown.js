@@ -8,7 +8,7 @@ import {
     MdRefresh 
 } from "react-icons/md";
 
-function JobDropdown({
+function Dropdown({
     buttonText, //버튼 위 텍스트
     dropdownContent, //옵션 목록
     selectedOne, //선택된 것
@@ -120,4 +120,4 @@ return (
 
 </div>);
 
-} export default JobDropdown;
+} export default Dropdown;

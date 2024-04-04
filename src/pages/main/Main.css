@@ -1,0 +1,38 @@
+.main_container{
+    max-width: 1060px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main_contents{
+    width: 100%;
+    /* background-color: ghostwhite; */
+}
+
+.small_list{
+    width: 100%;
+    max-width: 1060px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    font-family: var(--fontRegular);
+    font-size: var(--f_size_small);
+}
+.main_left{
+    width: 47%;
+}
+.main_right{
+    width: 47%;
+}
+
+@media (max-width: 400px) {
+    .main_left{
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+    .main_right{
+        width: 100%;
+    }
+}

@@ -4,8 +4,8 @@ import { callPostListAPI } from "../../api/PostingAPICall";
 //채용공고 정보 받아옴
 import './JobPosting.css';
 import PostingList from "../../component/jobposting/PostingList";
-import JobDropdown from "../../component/common/Dropdown"
-import JobClick from "../../component/common/Clickbutton"
+import Dropdown from "../../component/common/Dropdown"
+import Clickbutton from "../../component/common/Clickbutton"
 
 //화면 크기 확인용
 function useWindowSize() {
@@ -83,36 +83,36 @@ function JobPosting() {
   <div className="total">
       <div className='top' style={{fontSize:'13px'}}>
         <div className='space_left'>
-          <JobDropdown buttonText='직무'
+          <Dropdown buttonText='직무'
             dropdownContent={Jobnames}
             selectedOne = {selectedJob}
             handleChange={handleJobChange}>
-          </JobDropdown>
+          </Dropdown>
           <div className="cnt_job">
             {pageInfo && pageInfo.total}개 채용공고
           </div>
         </div>
         <div className='space_right'>
-          <JobDropdown buttonText='지역'
+          <Dropdown buttonText='지역'
             dropdownContent={Region}
             selectedOne = {selectedRegion}
             handleChange={handleRegionChange}
             backcolor={width <= 400 ? 'c_gray' : 'c_white'}
             optionsize='o_small'>
-          </JobDropdown>
-          <JobDropdown buttonText='정렬'
+          </Dropdown>
+          <Dropdown buttonText='정렬'
             dropdownContent={Order}
             selectedOne = {selectedOrder}
             handleChange={handleOrderChange}
             backcolor={width <= 400 ? 'c_gray' : 'c_white'}
             multiple = {false}
             optionsize='o_short'>
-          </JobDropdown>
-          <JobClick buttonText={showOpenJobs ? '현재 모집' : '전체 공고'}
+          </Dropdown>
+          <Clickbutton buttonText={showOpenJobs ? '현재 모집' : '전체 공고'}
             toggleOpen = {toggleOpenJobs}
             showOpen = {showOpenJobs}
             size={width <= 400 ? 'small' : 'medium'}>
-          </JobClick>
+          </Clickbutton>
         </div>
       </div>
 
