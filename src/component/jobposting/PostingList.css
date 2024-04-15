@@ -3,6 +3,7 @@
     font-family: var(--fontRegular);
     font-size: var(--f_size_small);
     align-items: center;
+    background-color: white;
 }
 .posting_container .wrapper{
     width: 98%;
