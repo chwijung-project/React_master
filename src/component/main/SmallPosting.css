@@ -8,6 +8,8 @@
     height: 380px;
     max-width: 530px;
     margin: auto;
+    background-color: white;
+    box-shadow: 0 0 2px 0 rgba(212, 209, 209, 0.5);
 }
 
 .smallpost_top{
@@ -35,7 +37,7 @@
 }
 
 .smallpost_bottom{
-    /* background-color: aquamarine; */
+    width: 100%;
 }
 
 .smallist_wraper{
@@ -51,11 +53,17 @@
     float: left;
     width: 80%;
     display: flex;
+    gap: 5px;
 }
 .smallogo{
     display: flex;
     align-items: center;
+    justify-content: center;
     margin-right: 0.4rem;
+}
+.smallogo img{
+    width: 24px;
+    height: 24px;
 }
 .smalltitle{
     width: 100%;
@@ -106,5 +114,10 @@
     cursor:default;
 }
 
+@media (max-width: 400px){
+    .smallpost_left{
+        font-size: var(--f_size_default);
+    }
+}
 
 

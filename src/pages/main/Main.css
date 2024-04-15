@@ -28,6 +28,9 @@
 }
 
 @media (max-width: 400px) {
+    .main_container{
+        max-width: 350px;
+    }
     .main_left{
         width: 100%;
         margin-bottom: 2rem;

@@ -11,13 +11,13 @@ function PostingList({currentPage, setCurrentPage, pageInfo, postList}) {
 
   //직무별 다른 색깔
   const jobStyles = {
-    '머신러닝/딥러닝 엔지니어': { backgroundColor: '#f8ad9d40', color: '#e5383b' },
-    '머신러닝/딥러닝 리서처': { backgroundColor: '#fae58840', color: '#ffc300' },
-    '데이터 사이언티스트': { backgroundColor: '#b2f7ef40', color: '#72efdd' },
-    '데이터 엔지니어': { backgroundColor: '#caf0f850', color: '#4361ee' },
-    'AI 서비스 개발자': { backgroundColor: '#eae2b750', color: '#f77f00' },
-    'AI 서비스 기획자': { backgroundColor: '#d8f3dc60', color: '#52b788' },
-    'AI 아티스트': { backgroundColor: '#fff0f360', color: '#ff758f' },
+    '머신러닝/딥러닝 엔지니어': { backgroundColor: '#f8ad9d40', color: '#e5383b',short:'MLE' },
+    '머신러닝/딥러닝 리서처': { backgroundColor: '#fae58840', color: '#ffc300', short:'MLR' },
+    '데이터 사이언티스트': { backgroundColor: '#b2f7ef40', color: '#72efdd',short:'DS' },
+    '데이터 엔지니어': { backgroundColor: '#caf0f850', color: '#4361ee',short:'DE' },
+    'AI 서비스 개발자': { backgroundColor: '#eae2b750', color: '#f77f00',short:'AI DEV' },
+    'AI 서비스 기획자': { backgroundColor: '#d8f3dc60', color: '#52b788',short:'AI PM' },
+    'AI 아티스트': { backgroundColor: '#fff0f360', color: '#ff758f',short:'AI ART' },
   };
 
   // 얼마나 지난 공고인지
@@ -94,11 +94,12 @@ function PostingList({currentPage, setCurrentPage, pageInfo, postList}) {
 
 return(
 <div className='posting_container'>
+  <div className='wrapper'>
     {Array.isArray(postList)&&postList.map((p,index) => (
       <div className='list_wraper'>
           <div className='list_start'>
             <div className='recru_logo'>
-              <img src='https://static.wanted.co.kr/images/wdes/0_5.be5f31e8.png' alt='' width={25} height={25}/>
+              <img src={p.recru_logo} alt='' width={25} height={25}/>
             </div>
             <div className='list_title_content'>
               <div className='recru_title'>
@@ -118,15 +119,19 @@ return(
                         ({getWeekday(p.recru_end_date)})</span>):
                         (<span>상시채용</span>)}
                     </div>
-                    <div className='recru_jobstyle' style={{backgroundColor:jobStyles[p.recru_job].backgroundColor}}>
-                      <MdCircle size={6} color={jobStyles[p.recru_job].color}/>
-                      <span className='recru_jobname'>
-                        {p.recru_job}
-                      </span>
+                    <div style={{display:'flex'}}>
+                      {p.job_names.split(', ').map((job,index) => (
+                        <div key={index} className='recru_jobstyle' style={{backgroundColor: jobStyles[job].backgroundColor}}>
+                          <MdCircle size={6} color={jobStyles[job].color}/>
+                          <span className='recru_jobname'>
+                          {jobStyles[job].short}
+                          </span>
+                        </div>
+                      ))}
                     </div>
                   </div>
                   <div className='list_title_bottom'>
-                    <img src='https://static.wanted.co.kr/images/wdes/0_5.be5f31e8.png' alt='' width={18} height={18}/>
+                    <img src={p.recru_logo} alt='' width={18} height={18}/>
                     {p.recru_company}
                     <div className='recru_region'>
                       <span style={{color:'#adb5bd'}}>{p.recru_region}</span> 
@@ -155,30 +160,39 @@ return(
             </div>
           </div>
           <div className='list_end'>
-            <div className='recru_jobstyle' style={{backgroundColor:jobStyles[p.recru_job].backgroundColor}}>
-              <MdCircle size={10} color={jobStyles[p.recru_job].color}/>
-              <span className='recru_jobname'>
-                {p.recru_job}
-              </span>
+            <div style={{display:'flex',gap:'8px'}}>
+              {p.job_names.split(', ').map((job,index) => (
+                <div key={index} className='recru_jobstyle' style={{backgroundColor: jobStyles[job].backgroundColor}}>
+                  <MdCircle size={6} color={jobStyles[job].color}/>
+                  <span className='recru_jobname'>
+                  {jobStyles[job].short}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <div style={{color:'#adb5bd'}}>
+              {p.job_sub_names}
             </div>
           </div>
           <div className='list_button'>
-            {p.recru_closed === 'false' ? (
-            <button className='button view' onClick={() => window.open(p.recru_url, '_blank')}>
-              지원하기</button>):(<button className='button delete'>
-                공고마감</button>)}
+            {p.recru_closed_date ? (
+              <button className='button delete'>
+              공고마감</button>):(<button className='button view' onClick={() => window.open(p.recru_url, '_blank')}>
+              지원하기</button>
+              )}
           </div>
 
           {/* 미디어쿼리 적용부분 */}
           <div className='list_button_media'>
-            {p.recru_closed === 'false' ? (
-            <button className='button view' onClick={() => window.open(p.recru_url, '_blank')}>
-              지원</button>):(<button className='button delete'>
-                마감</button>)}
+            {p.recru_closed_date ? (
+            <button className='button delete'>
+            마감</button>):(<button className='button view' onClick={() => window.open(p.recru_url, '_blank')}>
+            지원</button>)}
           </div>
           {/* 미디어쿼리 적용부분 */}
       </div>
     ))}
+  </div>
 
   <div className='pgn_wraper'>
     {Array.isArray(postList) &&
@@ -215,6 +229,7 @@ return(
       </div>
     }
   </div>
+  <br></br>
 </div>
 )
 }

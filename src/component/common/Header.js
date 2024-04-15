@@ -26,15 +26,12 @@ return (
     <div className="header_banner">
       <div className="header_start" onClick={ onClickLogoHandler }>
         <div className='header_logo'></div>
-        <span className='header_title'>취중플젝</span>
+        <span className='header_title'>취몽<span style={{color:'#adb5bd', fontSize:'9px',marginLeft:'1px'}}>夢</span></span>
       </div>
 
       <div className="header_middle">
         <button onClick={ onClickPostingHandler }>
           채용공고
-        </button>
-        <button onClick={ onClickCommuHandler }>
-          커뮤니티
         </button>
         <button onClick={ onClickCoachingHandler }>
           AI코칭

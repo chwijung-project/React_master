@@ -27,19 +27,19 @@ function SmallCommunity() {
         <div className = 'smallpost_container'>
             <div className="smallpost_top">
                 <div className="smallpost_left">
-                    <div className="smallpost_icon">
+                    {/* <div className="smallpost_icon">
                         <IoMdChatboxes />
-                    </div>
+                    </div> */}
                     <div className="smallpost_title" style={{margin:'6px 0'}}>
                         직무 오픈채팅
                     </div>
                 </div>
-                <div className="smallpost_right">
+                {/* <div className="smallpost_right">
                     <div className="smallpost_nav" onClick={onClickNaviHandler}>
                         더보기
                         <span style={{alignItems:'center'}}><MdArrowForwardIos/></span>
                     </div>
-                </div>
+                </div> */}
             </div>
 
             <div className="smallpost_bottom">

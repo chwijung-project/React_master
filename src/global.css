@@ -63,8 +63,15 @@ a {
     box-sizing: border-box;
   } */
   
-  /* body {
-    background-color: var(--bg);
-    color: var(--text);
-    font-family: var(--fontBold);
-  } */
+  body {
+    background-color: #f1f4f960;
+    /* color: var(--text);
+    font-family: var(--fontBold); */
+  }
+
+  @media (max-width: 400px) {
+    .total{
+      margin: 60px 0 0 0;
+      width: 98%;
+    }
+}

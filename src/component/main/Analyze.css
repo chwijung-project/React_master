@@ -1,7 +1,4 @@
 .analyze_container{
-    /* width: 90%;
-    max-width: 1060px;
-    margin: auto; */
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -67,10 +64,35 @@
 }
 
 @media (max-width: 400px) {
+    .analyze_container{
+        flex-wrap:nowrap;
+        margin-top: 1rem;
+        font-family: var(--fontLight);
+        justify-content: center;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        white-space: nowrap;
+    }
+    .analyze_container::-webkit-scrollbar{
+        display: none; 
+      }
     .analyze_contents{
+        width: 100%;
+        padding: 3px 0;
+    }
+    .contents_box{
+        width: 100%;
+        display: flex;
+    }
+
+    .first_layer{
         display: none;
     }
-    .analyze_small{
-        display: flex;
+    .third_layer{
+        display: none;
+    }
+    .last_layer{
+        font-size: var(--f_size_short);
+        margin: 0.5rem 0.5rem;
     }
 }

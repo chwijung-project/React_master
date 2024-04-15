@@ -24,6 +24,7 @@ function Main() {
                     <SmallCommunity/>
                 </div>
             </div>
+            <br></br>
         </div>
     );
 }

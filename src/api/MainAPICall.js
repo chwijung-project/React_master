@@ -7,7 +7,7 @@ import { GET_SMALLPOST } from '../modules/PostModule.js';
 export const callMainJobListAPI = ({selectedJob}) => {
     // const encodedJob = encodeURIComponent(selectedJob);
     // let requestURL = `http://localhost:8080/checkedjobs?job=${encodedJob}`;
-    let requestURL = `http://localhost:8080/recruit-accumulate-counts-by-checked-job`;
+    let requestURL = `http://localhost:8080/api/recruit-open-counts`;
 
     return async (dispatch) => {
 
@@ -30,35 +30,35 @@ export const callMainJobListAPI = ({selectedJob}) => {
 }
 
 /* 메인페이지 직무별 그래프(더미) */
-export const callMainJobListAPI2 = ({selectedJob}) => {
-    // const encodedJob = encodeURIComponent(selectedJob);
-    // let requestURL = `http://localhost:8080/checkedjobs?job=${encodedJob}`;
-    let requestURL = `http://localhost:8080/recruit-open-closed-counts-by-checked-job`;
+// export const callMainJobListAPI2 = ({selectedJob}) => {
+//     // const encodedJob = encodeURIComponent(selectedJob);
+//     // let requestURL = `http://localhost:8080/checkedjobs?job=${encodedJob}`;
+//     let requestURL = `api/smallrecruit`;
 
-    return async (dispatch) => {
+//     return async (dispatch) => {
 
-        const result = await fetch(requestURL, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "*/*"
-            }
-        })
-        .then(response => response.json());
+//         const result = await fetch(requestURL, {
+//             method: "GET",
+//             headers: {
+//                 "Content-Type": "application/json",
+//                 "Accept": "*/*"
+//             }
+//         })
+//         .then(response => response.json());
 
-        if(result.status === 200){
+//         if(result.status === 200){
 
-            console.log('[MainAPICall] callMainJobListAPI2 RESULT : ', result);
+//             console.log('[MainAPICall] callMainJobListAPI2 RESULT : ', result);
 
-            dispatch({ type: GET_MAINGRAHP,  payload: result.data });
-        }
-    };
-}
+//             dispatch({ type: GET_MAINGRAHP,  payload: result.data });
+//         }
+//     };
+// }
 
 /* 메인페이지 채용공고 스몰보드 */
 export const callSmallPostListAPI = ({selectOption}) => {
 
-    let requestURL = `http://localhost:8080/smallrecruit?job=${selectOption}`;
+    let requestURL = `http://localhost:8080/api/smallrecruit?job=${selectOption}`;
 
     // if (selectOption !== undefined || selectOption !== null) {
     //     requestURL = `${requestURL}?job=${selectOption}`;
@@ -87,32 +87,32 @@ export const callSmallPostListAPI = ({selectOption}) => {
 }
 
 /* 메인페이지 감자커뮤니티 스몰보드 */
-export const callSmallComuListAPI = ({currentPage}) => {
+// export const callSmallComuListAPI = ({currentPage}) => {
 
-    let requestURL = `http://localhost:8080/smallcomu`;
+//     let requestURL = `http://localhost:8080/smallcomu`;
 
-    if (currentPage !== undefined || currentPage !== null) {
-        requestURL = `${requestURL}?offset=${currentPage}`;
-    }
+//     if (currentPage !== undefined || currentPage !== null) {
+//         requestURL = `${requestURL}?offset=${currentPage}`;
+//     }
     
-    console.log('[MainAPICall] requestURL : ', requestURL);
+//     console.log('[MainAPICall] requestURL : ', requestURL);
 
-    return async (dispatch) => {
+//     return async (dispatch) => {
 
-        const result = await fetch(requestURL, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "*/*"
-            }
-        })
-        .then(response => response.json());
+//         const result = await fetch(requestURL, {
+//             method: "GET",
+//             headers: {
+//                 "Content-Type": "application/json",
+//                 "Accept": "*/*"
+//             }
+//         })
+//         .then(response => response.json());
 
-        if(result.status === 200){
+//         if(result.status === 200){
 
-            console.log('[MainAPICall] callSmallComuListAPI RESULT : ', result);
+//             console.log('[MainAPICall] callSmallComuListAPI RESULT : ', result);
 
-            dispatch({ type: GET_SMALLCOMU,  payload: result.data });
-        }
-    };
-}
+//             dispatch({ type: GET_SMALLCOMU,  payload: result.data });
+//         }
+//     };
+// }

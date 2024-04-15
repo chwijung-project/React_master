@@ -13,7 +13,7 @@ function RecruitGraph() {
     const dispatch = useDispatch();
     const postingByCrawlingdate = useSelector((state) => state.mainReducer);
 
-    const [selectOption, setSelectOption] = useState('누적 그래프'); // 드롭다운 상태
+    const [selectOption, setSelectOption] = useState('일별 그래프'); // 드롭다운 상태
     const [selectedItems, setSelectedItems] = useState([]); //아이템선택
 
     const handleDropdownChange = (chart) => {
@@ -36,7 +36,7 @@ function RecruitGraph() {
 
 
     const chartOptions = [
-      {label: '누적 그래프', value: '누적 그래프'},
+      {label: '일별 그래프', value: '일별 그래프'},
       {label: '증감 그래프', value: '증감 그래프'}
       ];
       // 직무명 순서대로 배열 정의
@@ -46,30 +46,41 @@ function RecruitGraph() {
         { title: '데이터 사이언티스트', color: '#009E73' , short:'DS' },
         { title: '데이터 엔지니어', color: '#d5cb3b' , short:'DE' },
         { title: 'AI 서비스 개발자', color: '#0072B2' , short:'AI DEV' },
-        { title: 'AI 서비스 기획자', color: '#D55E00' , short:'AI PLAN' },
+        { title: 'AI 서비스 기획자', color: '#D55E00' , short:'AI PM' },
         { title: 'AI 아티스트', color: '#CC79A7' , short:'AI ART' }
       ];
 
     useEffect(() => {
       setSelectedItems(jobTitle); //초기에는 다 넣기기
-      if (selectOption === '누적 그래프') {
+      if (selectOption === '일별 그래프') {
           dispatch(callMainJobListAPI({}));
-      } else if (selectOption === '증감 그래프') {
-          dispatch(callMainJobListAPI2({}));
-      }
+      } 
+      // else if (selectOption === '증감 그래프') {
+      //     dispatch(callMainJobListAPI2({}));
+      // }
     }, [dispatch, selectOption]);
 
-
+    const transformedData = postingByCrawlingdate.reduce((acc, { recru_situ_crawling_date, job_name, recru_situ_open_count }) => {
+      let group = acc.find(g => g.week === recru_situ_crawling_date);
+      if (!group) {
+        group = { week: recru_situ_crawling_date, recruitCounts: {} };
+        acc.push(group);
+      }
+      group.recruitCounts[job_name] = (group.recruitCounts[job_name] || 0) + recru_situ_open_count;
     
+      return acc;
+    }, []);
+    console.log(transformedData);
+
     const chartData = {
-      labels: postingByCrawlingdate.map(p => {
+      labels: transformedData.map(p => {
         const parts = p.week.split('-');
         return `${parts[1]}/${parts[2]}`;
       }),
       datasets: jobTitle.filter(job => selectedItems.some(selected => selected.title === job.title)).map((job) => {
         return {
           label: job.title,
-          data: postingByCrawlingdate.map(p => p.recruitCounts[job.title] || 0),
+          data: transformedData.map(p => p.recruitCounts[job.title] || 0),
           backgroundColor: job.color,
           borderColor: job.color,
           borderWidth: 3,
@@ -131,6 +142,10 @@ function RecruitGraph() {
                 },
                 grid: {
                   color: '#adb5bd80'
+                },
+                ticks: {
+                  autoSkip: true,
+                  maxTicksLimit: 5
                 }
               },
         },
@@ -156,7 +171,7 @@ function RecruitGraph() {
             backgroundColor: "white", 
             titleColor: "#212529", 
             bodyColor: "#212529", 
-            padding: 7, 
+            padding: 5, 
             borderColor: "#80868d", 
             borderWidth: "1", 
             xAlign: "right" 
@@ -178,6 +193,9 @@ function RecruitGraph() {
                 display: true,
               },
               ticks: {
+                font:{
+                  size:9
+                },
                 autoSkip: true,
                 maxTicksLimit: 5
               }
@@ -189,6 +207,13 @@ function RecruitGraph() {
               },
               grid: {
                 color: '#adb5bd70'
+              },
+              ticks: {
+                font:{
+                  size:9
+                },
+                autoSkip: true,
+                maxTicksLimit: 5
               }
             },
       },
@@ -200,7 +225,8 @@ function RecruitGraph() {
       <div className="graph_container">
         <div className="graph_box">
           <div className="graph_upside">
-              <div className="graph_line"></div>
+              {/* <div className="graph_line"></div> */}
+              <div>직무별 AI채용공고 현황</div>
               <div className="graph_dropdown">
                 <Dropdown buttonText='그래프'
                   dropdownContent={chartOptions}
@@ -214,13 +240,6 @@ function RecruitGraph() {
               </div>
           </div>
           <div className="graph_downside">
-            <div className="graph_title">
-                <div className='contents'>
-                  <span>AI채용공고 현황</span>
-                  <span className="small">(단위:개수)</span>
-                </div>
-            </div>
-            
             <div className="graph">
                 <Line data={chartData} options={options} className="chart-canvas"/>
             </div>

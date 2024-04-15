@@ -65,9 +65,9 @@ function SmallPosting() {
         <div className = 'smallpost_container'>
             <div className="smallpost_top">
                 <div className="smallpost_left">
-                    <div className="smallpost_icon">
+                    {/* <div className="smallpost_icon">
                         <MdCampaign />
-                    </div>
+                    </div> */}
                     <div className="smallpost_title">
                         최신 채용공고
                     </div>
@@ -94,25 +94,21 @@ function SmallPosting() {
                 {Array.isArray(postingList) && postingList.map((p) => (<div key={p.idx} className="smallist_wraper">
                     <div className="smallist_left">
                         <div className="smallogo">
-                            <img src="https://static.wanted.co.kr/images/wdes/0_5.be5f31e8.png" alt="" width={25} height={25}/>
+                            <img src={p.recru_logo} alt=""/>
                         </div>
                         <div className="smalltitle">
                             <div className="title">{p.recru_title}</div>
                             <span className="company">{p.recru_company}</span>
-                            {/* <span className='jobstyle' style={{backgroundColor:jobStyles[p.recru_job].backgroundColor, color:jobStyles[p.recru_job].color}}>
-                                <MdCircle size={6} color={jobStyles[p.recru_job].color}/>
-                                <span className='jobname'>
-                                    {p.recru_job}
-                                </span>
-                            </span> */}
                         </div>
                     </div>
                     <div className="smallist_right">
                         <div className='smallist_button'>
-                            {p.recru_closed === 'false' ? (
-                            <button className='button url' onClick={() => window.open(p.recru_url, '_blank')}>
-                            지원하기</button>):(<button className='button no'>
-                            공고마감</button>)}
+                            {p.recru_closed_date ? (
+                            <button className='button no'>
+                            공고마감</button>):(<button className='button url' onClick={() => window.open(p.recru_url, '_blank')}>
+                            지원하기</button>
+                        )}
+                
                         </div>
                     </div>
                 </div>

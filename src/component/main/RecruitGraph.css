@@ -2,34 +2,30 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: var(--fontLight);
-    font-size: var(--f_size_default);
+    font-family: var(--fontRegular);
+    font-size: var(--f_size_big);
     /* width: 100%;
     max-width: 1060px;
     margin: auto; */
 }
 
 .graph_box {
-    /* background-color: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 30px;
-    box-shadow: 0px 0px 10px #ccc; */
+    border-radius: 0.5rem;
     margin-top: 20px;
     margin-bottom: 30px;
     width: 100%;
-    height: 480px;
+    height: 460px;
+    padding: 1rem 2rem;
+    background-color: white;
+    border: 1px solid var(--lineSoft);
+    box-shadow: 0 0 2px 0 rgba(212, 209, 209, 0.5);
 }
 
 .graph_upside{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 0.5rem;
-}
-.graph_line{
-    background-color: #d0d1ff;
-    height: 3.5px;
-    width: 30%;
+    margin-bottom: 2.5rem;
 }
 
 .graph_downside{
@@ -37,7 +33,7 @@
     display: flex;
     flex-wrap: wrap;
 }
-.graph_title{
+/* .graph_title{
     width: 5%;
     display: flex;
     align-items: center;
@@ -55,11 +51,11 @@
     margin-left: 2px;
     font-size: var(--f_size_small);
     color: var(--textSoft);
-}
+} */
 
 .graph{
-    height: 400px;
-    width: 75%;
+    height: 350px;
+    width: 80%;
 }
 .graph_media{
     display: none;
@@ -69,45 +65,48 @@
     width: 20%;
     display: flex;
     align-items: center;
-    justify-content: center;
 }
 .graph_legend .box{
     width: 100%;
-    padding: 0 2rem 0 2.5rem;
 }
 .graph_legend .container{
     display: flex;
     width: 100%;
-    justify-content: flex-start;
+    justify-content: right;
     align-items: center;
     gap: 0.6rem;
-    font-size: var(--f_size_small);
+    font-size: var(--f_size_default);
     font-family: var(--fontLight);
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.8rem;
     cursor: pointer;
 }
 
 .graph_legend .left{
-    width: 12%;
+    width: 10%;
     height: 3px;
 }
 .graph_legend .right{
-    width: 80%;
+    width: 70%;
 }
 .graph_legend .right_media{
-    width: 80%;
+    width: 70%;
     display: none;
 }
 
 @media (max-width: 400px) {
-    .graph_upside{
+    /* .graph_upside{
         display: none;
-    }
-    .contents{
-        display: none;
-    }
+    } */
     .graph_box{
         height: 300px;
+        padding: 0.5rem 1.5rem;
+    }
+    .graph_upside{
+        margin-top: 0.5rem;
+        font-size: var(--f_size_default);
+    }
+    .graph_legend{
+        width: 22%;
     }
     .graph_legend .container{
         font-size: 9px;
@@ -126,7 +125,7 @@
     }
     .graph_media{
         display: inline;
-        height: 300px;
-        width: 75%;
+        height: 200px;
+        width: 78%;
     }
 }
