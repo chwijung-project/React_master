@@ -6,6 +6,7 @@ import { Chart as ChartJS } from 'chart.js/auto';
 import zoomPlugin from 'chartjs-plugin-zoom';
 import './RecruitGraph.css';
 import Dropdown from "../../component/common/Dropdown"
+import { GoQuestion, GoX } from "react-icons/go";
 // import { isHtmlElement } from "react-router-dom/dist/dom";
 
 function RecruitGraph() {
@@ -13,8 +14,9 @@ function RecruitGraph() {
     const dispatch = useDispatch();
     const postingByCrawlingdate = useSelector((state) => state.mainReducer);
 
-    const [selectOption, setSelectOption] = useState('일별 그래프'); // 드롭다운 상태
-    const [selectedItems, setSelectedItems] = useState([]); //아이템선택
+    const [selectOption, setSelectOption] = useState('일별 그래프'); // 드롭다운 옵션 선택
+    const [selectedItems, setSelectedItems] = useState([]); //그래프 직무 선택
+    const [showPopup, setShowPopup] = useState(false); //그래프 안내문
 
     const handleDropdownChange = (chart) => {
       setSelectOption(chart);
@@ -32,23 +34,26 @@ function RecruitGraph() {
         }      
       }
     };
+
+    const togglePopup = () => {
+      setShowPopup(!showPopup);
+  };
     
-
-
     const chartOptions = [
       {label: '일별 그래프', value: '일별 그래프'},
       {label: '증감 그래프', value: '증감 그래프'}
       ];
-      // 직무명 순서대로 배열 정의
-      const jobTitle = [
-        { title: '머신러닝/딥러닝 엔지니어', color: '#E69F00', short:'MLE' },
-        { title: '머신러닝/딥러닝 리서처', color: '#56B4E9' , short:'MLR' },
-        { title: '데이터 사이언티스트', color: '#009E73' , short:'DS' },
-        { title: '데이터 엔지니어', color: '#d5cb3b' , short:'DE' },
-        { title: 'AI 서비스 개발자', color: '#0072B2' , short:'AI DEV' },
-        { title: 'AI 서비스 기획자', color: '#D55E00' , short:'AI PM' },
-        { title: 'AI 아티스트', color: '#CC79A7' , short:'AI ART' }
-      ];
+
+    // 직무명 순서대로 배열 정의
+    const jobTitle = [
+      { title: '머신러닝/딥러닝 엔지니어', color: '#E69F00', short:'MLE' },
+      { title: '머신러닝/딥러닝 리서처', color: '#56B4E9' , short:'MLR' },
+      { title: '데이터 사이언티스트', color: '#009E73' , short:'DS' },
+      { title: '데이터 엔지니어', color: '#d5cb3b' , short:'DE' },
+      { title: 'AI 서비스 개발자', color: '#0072B2' , short:'AI DEV' },
+      { title: 'AI 서비스 기획자', color: '#D55E00' , short:'AI PM' },
+      { title: 'AI 아티스트', color: '#CC79A7' , short:'AI ART' }
+    ];
 
     useEffect(() => {
       setSelectedItems(jobTitle); //초기에는 다 넣기기
@@ -60,6 +65,7 @@ function RecruitGraph() {
       // }
     }, [dispatch, selectOption]);
 
+    //데이터 날짜, 직무별로 groupby
     const transformedData = postingByCrawlingdate.reduce((acc, { recru_situ_crawling_date, job_name, recru_situ_open_count }) => {
       let group = acc.find(g => g.week === recru_situ_crawling_date);
       if (!group) {
@@ -70,7 +76,6 @@ function RecruitGraph() {
     
       return acc;
     }, []);
-    console.log(transformedData);
 
     const chartData = {
       labels: transformedData.map(p => {
@@ -89,7 +94,6 @@ function RecruitGraph() {
         };
       }),
     };
-
     
     const options = {
         plugins: {
@@ -112,7 +116,7 @@ function RecruitGraph() {
               padding: 15, 
               borderColor: "#80868d", 
               borderWidth: "1", 
-              xAlign: "right" 
+              xAlign: "right",
               }
           },
         interaction: {
@@ -222,12 +226,36 @@ function RecruitGraph() {
   };
 
     return(
-      <div className="graph_container">
-        <div className="graph_box">
-          <div className="graph_upside">
-              {/* <div className="graph_line"></div> */}
-              <div>직무별 AI채용공고 현황</div>
-              <div className="graph_dropdown">
+      <div className="recruitgraph_container">
+        <div className="recruitgraph_wrapper">
+          <div className="recruitgraph_first">
+              <div style={{display:'flex', alignItems:'center',gap:'3px'}}>직무별 AI채용공고 현황
+                <div style={{ marginTop: '3.15px' }} onClick={togglePopup}>
+                  <GoQuestion />
+                </div>
+                {showPopup &&
+                  <div className="popup_overlay">
+                      <div className="popup_content">
+                        <div className="popup_first">
+                          <span>직무별 AI 채용공고 현황</span>
+                          <span onClick={togglePopup}><GoX size={18}/></span>
+                        </div>
+                        <div className="popup_second">
+                          <div>
+                          · 원천 데이터: AI와 관련된 검색어로 수집한 채용공고
+                          </div>
+                          <div>
+                          · 가공: 다양한 직무명을 가진 원천 데이터를 챗GPT로 재분류
+                          </div>
+                          <div>
+                          · 결과: 직무별로 수집 당일 채용중인 공고 현황 제공
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                }
+              </div>
+              <div>
                 <Dropdown buttonText='그래프'
                   dropdownContent={chartOptions}
                   selectedOne = {selectOption}
@@ -239,30 +267,34 @@ function RecruitGraph() {
                 </Dropdown>
               </div>
           </div>
-          <div className="graph_downside">
-            <div className="graph">
+
+          <div className="recruitgraph_second">
+            <div className="recruitgraph_graph">
                 <Line data={chartData} options={options} className="chart-canvas"/>
             </div>
-            {/* 미디어 쿼리 */}
-            <div className="graph_media">
+            {/* media_graph */}
+            <div className="recruitgraph_graph_media">
                 <Line data={chartData} options={options_media} className="chart-canvas"/>
             </div>
+            {/* media_end */}
 
-            <div className="graph_legend">
-              <div className="box">
+            <div className="recruitgraph_legend">
+              <div className="recruitgraph_legend_contents">
                 {jobTitle.map((job) => (
-                  <div className='container' 
+                  <div className='recruitgraph_legend_box' 
                     key={job.title}
                     onClick={() => handleSelect(job.title)}>
-                    <div className="left" style={{backgroundColor: selectedItems.some(selected => selected.title === job.title) ? job.color:'#80868d'}}></div>
-                    <div className="right" style={{color: selectedItems.some(selected => selected.title === job.title) ? '':'#80868d'}}>
+                    <div className="recruitgraph_legend_left" style={{backgroundColor: selectedItems.some(selected => selected.title === job.title) ? job.color:'#adb5bd'}}>
+                    </div>
+                    <div className="recruitgraph_legend_right" style={{color: selectedItems.some(selected => selected.title === job.title) ? '':'#adb5bd'}}>
                       {job.title}
                     </div>
 
-                    {/* 미디어쿼리 */}
-                    <div className="right_media" style={{color: selectedItems.some(selected => selected.title === job.title) ? '':'#80868d'}}>
+                    {/* media_legend */}
+                    <div className="recruitgraph_legend_right_media" style={{color: selectedItems.some(selected => selected.title === job.title) ? '':'#adb5bd'}}>
                       {job.short}
                     </div>
+                    {/* media_end */}
 
                   </div>
                 ))}

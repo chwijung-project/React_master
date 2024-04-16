@@ -42,7 +42,7 @@
     width: 50%;
 }
 .header_middle button{
-    width: 50%;
+    width: 33%;
     background-color: transparent;
     font-family: var(--fontRegular);
     border: none;
@@ -66,7 +66,10 @@
         display: none;
     }
     .header_middle{
-        width:60%;
+        width:70%;
+    }
+    .header_middle button{
+        font-size: var(--f_size_medium);
     }
     .header_banner{
         padding: 0 1rem;

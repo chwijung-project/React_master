@@ -2,6 +2,7 @@ import Analyze from "../../component/main/Analyze";
 import RecruitGraph from "../../component/main/RecruitGraph";
 import SmallCommunity from "../../component/main/SmallCommunity";
 import SmallPosting from "../../component/main/SmallPosting";
+import Commercial from "../../component/main/Commercial";
 import './Main.css';
 
 function Main() {
@@ -9,22 +10,31 @@ function Main() {
 
     return (
         <div className="total">  
-            <div className="main_container">
-                <div className="main_contents">
+            <div className="box">
+                {/* <div className="main_analyze">
+                    <Analyze/>
+                </div>
+                <div className="main_recruitgraph">
+                    <RecruitGraph/>
+                </div> */}
                     <Analyze/>
                     <RecruitGraph/>
-                </div>
-            </div>
 
-            <div className="small_list">
-                <div className="main_left">
-                    <SmallPosting/>
+                <div className="main_small">
+                    <div className="main_left">
+                        <SmallPosting/>
+                    </div>
+                    <div className="main_right">
+                        <SmallCommunity/>
+                    </div>
                 </div>
-                <div className="main_right">
-                    <SmallCommunity/>
+                <br></br>
+                <div>
+                    <div className="main_commercial">
+                        <Commercial/>
+                    </div>
                 </div>
             </div>
-            <br></br>
         </div>
     );
 }

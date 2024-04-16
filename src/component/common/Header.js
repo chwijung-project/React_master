@@ -14,8 +14,8 @@ function Header() {
   const onClickPostingHandler = () => {
     navigate("/jobposting", { replace: false });
   };
-  const onClickCommuHandler = () => {
-    navigate("/community", { replace: false });
+  const onClickEduHandler = () => {
+    navigate("/education", { replace: false });
   };
   const onClickCoachingHandler = () => {
     navigate("/coaching", { replace: false });
@@ -35,6 +35,9 @@ return (
         </button>
         <button onClick={ onClickCoachingHandler }>
           AI코칭
+        </button>
+        <button onClick={ onClickEduHandler }>
+          교육목록
         </button>
       </div> 
 

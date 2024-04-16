@@ -1,57 +1,19 @@
-.small_commu{
+.smallcommu_contents{
     width: 100%;
     display: flex;
-    flex-direction: column;
-    /* background-image: url('../../image/kakao.png');
-    background-repeat: no-repeat;
-    background-position : 100% 50%; */
-    /* background-size : cover; */
-    
-}
-.commu_banner{
-    flex-grow: 1;
-    margin-bottom: 10px; 
-    height: 20px;
-    padding: 7px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: var(--f_size_default);
-    font-family: var(--fontMedium);
-    /* background-color: rgb(248, 248, 248); */
-    background-color: transparent;
-    border: 1px solid var(--lineSoft);
-}
-.commu_banner img{
-    opacity: 0.7;
-    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 50%);
+    height: calc(var(--box_height) - 62px);
+    overflow-x: scroll;
+    overflow-y: hidden;
 }
 
-.mle{
-    /* background-color: #E69F0030; */
-    color: #E69F00;  
+.smallcommu_contents img{
+    padding: 0 20px 0 0;
+    height: 210px;
+    width: 130px;
 }
-.mls{
-    /* background-color: #56B4E930; */
-    color: #56B4E9;
-}
-.ds{
-    /* background-color: #009E7330; */
-    color: #009E73;
-}
-.de{
-    /* background-color: #F0E44240; */
-    color: #d5cb3b;
-}
-.ai_dev{
-    /* background-color: #0072B230; */
-    color: #0072B2;
-}
-.ai_plan{
-    /* background-color: #D55E0030; */
-    color: #D55E00;
-}
-.ai_art{
-    /* background-color: #CC79A730; */
-    color: #CC79A7;
+
+@media (max-width: 400px){
+    .smallcommu_contents{
+        height: calc(var(--box_height) - 85px);
+    }
 }

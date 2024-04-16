@@ -2,31 +2,35 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    font-family: var(--fontRegular);
-    font-size: var(--f_size_small);
+    
 }
-.analyze_contents{
+.analyze_wrapper{
     width: 15%;
     padding: 2rem 2rem 1rem 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
+    
 }
-.contents_box{
-    width: 90%;
-    align-items: center;
+.analyze_contents{
+    width: 100%;
 }
 
-.first_layer{
+.analyze_first{
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    background-color: gainsboro;
+    background-color: white;
     cursor: pointer;
     margin-bottom: 0.7rem;
+
+}
+.analyze_first img{
+    width: 25px;
+    height: 25px;
 }
 
-.second_layer{
+.analyze_second{
     display: flex;
     gap: 0.3rem;
 }
@@ -47,52 +51,56 @@
     font-size: var(--f_size_short);
 }
 
-.third_layer{
+.analyze_third{
     margin: 0.5rem 0;
     font-size: var(--f_size_big);
 }
 
-.last_layer{
+.analyze_last{
     color: var(--textSoft);
-}
-
-.analyze_small{
-    display: none;
-    padding: 2rem 2rem 0.5rem 2rem;
-    align-items: center;
-    justify-content: center;
 }
 
 @media (max-width: 400px) {
     .analyze_container{
         flex-wrap:nowrap;
-        margin-top: 1rem;
-        font-family: var(--fontLight);
-        justify-content: center;
         overflow-x: scroll;
         overflow-y: hidden;
-        white-space: nowrap;
+        margin-top: 1rem;
+        font-family: var(--fontLight);
+        font-size: var(--f_size_short);
     }
     .analyze_container::-webkit-scrollbar{
         display: none; 
       }
-    .analyze_contents{
+    .analyze_wrapper{
         width: 100%;
-        padding: 3px 0;
-    }
-    .contents_box{
-        width: 100%;
-        display: flex;
+        padding: 10px 5px;
+        margin-left: 6px;
+        display: inline;
     }
 
-    .first_layer{
+    .analyze_contents{
+        width: 100%;
+        padding: 20px 0 10px 0;
+
+    }
+    .analyze_first{
         display: none;
     }
-    .third_layer{
-        display: none;
-    }
-    .last_layer{
+    .analyze_third{
         font-size: var(--f_size_short);
-        margin: 0.5rem 0.5rem;
+        display: flex;
+        margin: 0.3rem 0;
+    }
+    .analyze_last{
+       display: none;
+    }
+    .analyze_second{
+        gap: 0.1rem;
+        display: inline;
+    }
+    .analyze_second span{
+        margin-bottom: 2px;
+        display: inline-block;
     }
 }

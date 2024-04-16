@@ -5,8 +5,6 @@ import { callSmallPostListAPI } from "../../api/MainAPICall";
 import './SmallPosting.css';
 import { 
     MdArrowForwardIos,
-    MdCampaign,
-    MdCircle
  } from "react-icons/md";
 import Dropdown from "../../component/common/Dropdown"
 
@@ -27,29 +25,15 @@ function SmallPosting() {
     {label: 'AI 서비스 기획자', value: 'AI 서비스 기획자'},
     {label: 'AI 아티스트', value: 'AI 아티스트'}
     ];
-    
-    //직무별 다른 색깔
-    const jobStyles = {
-    '머신러닝/딥러닝 엔지니어': { backgroundColor: '#f8ad9d40', color: '#e5383b' },
-    '머신러닝/딥러닝 리서처': { backgroundColor: '#fae58840', color: '#ffc300' },
-    '데이터 사이언티스트': { backgroundColor: '#b2f7ef40', color: '#72efdd' },
-    '데이터 엔지니어': { backgroundColor: '#caf0f850', color: '#4361ee' },
-    'AI 서비스 개발자': { backgroundColor: '#eae2b750', color: '#f77f00' },
-    'AI 서비스 기획자': { backgroundColor: '#d8f3dc60', color: '#52b788' },
-    'AI 아티스트': { backgroundColor: '#fff0f360', color: '#ff758f' },
-    };
 
+    //선택한 직무 그대로 담아서 페이지 넘어가게
     const onClickNaviHandler = () => {
-        navigate("/jobposting", { replace: true });
+        navigate("/jobposting", { state: { selectedJob: selectOption }, replace: true });
     };
-
     const DropdownChangehandler = (job) => {
         setSelectOption(job);
     };
 
-    const onClickRecruUrl = (url) => {
-        window.open(url, '_blank');
-    };
 
     useEffect(
         () => {
@@ -63,17 +47,14 @@ function SmallPosting() {
 
     return (
         <div className = 'smallpost_container'>
-            <div className="smallpost_top">
+            <div className="smallpost_first">
                 <div className="smallpost_left">
-                    {/* <div className="smallpost_icon">
-                        <MdCampaign />
-                    </div> */}
                     <div className="smallpost_title">
                         최신 채용공고
                     </div>
                 </div>
                 <div className="smallpost_right">
-                    <div className="smallpost_dropdown">
+                    <div>
                         <Dropdown buttonText='직무'
                             dropdownContent={jobOptions}
                             selectedOne = {selectOption}
@@ -90,15 +71,16 @@ function SmallPosting() {
                     </div>
                 </div>
             </div>
-            <div className="smallpost_bottom">
-                {Array.isArray(postingList) && postingList.map((p) => (<div key={p.idx} className="smallist_wraper">
+            <div className="smallpost_second">
+                {Array.isArray(postingList) && postingList.map((p) =>(
+                <div key={p.idx} className="smallpost_box">
                     <div className="smallist_left">
-                        <div className="smallogo">
+                        <div className="small_logo">
                             <img src={p.recru_logo} alt=""/>
                         </div>
-                        <div className="smalltitle">
-                            <div className="title">{p.recru_title}</div>
-                            <span className="company">{p.recru_company}</span>
+                        <div className="small_jd">
+                            <div className="small_title">{p.recru_title}</div>
+                            <span className="small_company">{p.recru_company}</span>
                         </div>
                     </div>
                     <div className="smallist_right">
@@ -108,7 +90,6 @@ function SmallPosting() {
                             공고마감</button>):(<button className='button url' onClick={() => window.open(p.recru_url, '_blank')}>
                             지원하기</button>
                         )}
-                
                         </div>
                     </div>
                 </div>

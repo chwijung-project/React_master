@@ -1,27 +1,26 @@
 .smallpost_container{
     padding: 0.5rem 1.5rem;
-    font-family: var(--fontRegular);
-    font-size: var(--f_size_small);
     align-items: center;
     border: 1px solid var(--lineSoft);
     border-radius: 0.5rem;
-    height: 380px;
+    height: var(--box_height);
     max-width: 530px;
     margin: auto;
     background-color: white;
     box-shadow: 0 0 2px 0 rgba(212, 209, 209, 0.5);
 }
-
-.smallpost_top{
+.smallpost_first{
     display: flex;
     justify-content: space-between;
     padding: 0.5rem 0;
     border-bottom: 1px solid var(--lineSoft);
     margin-bottom: 0.5rem;
+    height: 24px;
 }
 .smallpost_left{
     display: flex;
     align-items: center;
+    font-family: var(--fontMedium);
     font-size: var(--f_size_big);
     gap:5px;
 }
@@ -36,17 +35,17 @@
     cursor: pointer;
 }
 
-.smallpost_bottom{
+.smallpost_second{
     width: 100%;
+    margin-top: 0.5rem;
 }
-
-.smallist_wraper{
+.smallpost_box{
     justify-content: space-between;
     display: flex;
     width: 100%;
     align-items: center;
-    margin: 0.5rem 0;
-    padding: 4px 0;
+    margin: 0.3rem 0;
+    padding: 3px 0;
 }
 
 .smallist_left{
@@ -55,49 +54,38 @@
     display: flex;
     gap: 5px;
 }
-.smallogo{
+.small_logo{
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 0.4rem;
+    margin-right: 0.6rem;
 }
-.smallogo img{
-    width: 24px;
-    height: 24px;
+.small_logo img{
+    width: 29px;
+    height: 29px;
 }
-.smalltitle{
+.small_jd{
     width: 100%;
 }
-.smalltitle .title{
+.small_title{
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     width: 90%;
-    font-size: var(--f_size_default);
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.3rem;
 }
-.smalltitle .company{
-    font-size: var(--f_size_short);
+.small_company{
     color: var(--textSoft);
     margin-right: 0.4rem;
-}
-.smalltitle .jobstyle{
-    padding: 2px 7px;
-    border-radius: 12px;
-    width: fit-content;
-    font-size: var(--f_size_short);
-}
-.smalltitle .jobname{
-    margin-left: 4px;
+    font-size: var(--f_size_small);
 }
 
 .smallist_right{
     float:right;
-    /* width: 20%; */
 }
 .smallist_button button{
     padding: 5px 8px;
-    font-size: var(--f_size_short);
+    font-size: var(--f_size_small);
     border-radius: 5px;
     border: none;
     cursor: pointer;
@@ -115,8 +103,15 @@
 }
 
 @media (max-width: 400px){
-    .smallpost_left{
-        font-size: var(--f_size_default);
+    .smallist_left{
+        width: 70%;
+    }
+    .small_logo img{
+        width: 27px;
+        height: 27px;
+    }
+    .smallpost_container{
+        height: calc(var(--box_height) - 20px);
     }
 }
 
