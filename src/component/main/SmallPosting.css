@@ -86,20 +86,20 @@
 .smallist_button button{
     padding: 5px 8px;
     font-size: var(--f_size_small);
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
     font-family: var(--fontRegular);
+    background-color: white;
+    border: 1px solid var(--lineSoft);
 }
 
 .url{
-    color: #6247aa;
-    background-color: #d0d1ff57;
+    /* color: #6247aa;
+    background-color: #d0d1ff57; */
+    cursor: pointer;
 }
 .no{
     background-color: #b8d0eb30;
     color: #b8d0eb;
-    cursor:default;
+    cursor:default
 }
 
 @media (max-width: 400px){

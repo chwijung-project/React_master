@@ -65,7 +65,7 @@ a {
   
 body {
   background-color: #f1f4f960;
-  /* background-color: #f1f4f9; */
+  /* background-color: white; */
   font-size: var(--f_size_default);
   font-family: var(--fontRegular);
   color: var(--text);

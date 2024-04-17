@@ -12,7 +12,8 @@
     justify-content: center;
     font-family: var(--fontRegular);
     border: none;
-    border-radius:10px;
+    /* border: 1px solid var(--lineSoft); */
+    border-radius:5px;
     cursor:pointer;
     width: fit-content;
 }
