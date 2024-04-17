@@ -52,8 +52,8 @@ function Dropdown({
         ? selectedItems.length === 1
             ? selectedItems[0].label
             : selectedItems.every(item => item.short)
-                ? selectedItems.map(item => item.short).join(", ")
-                : `${selectedItems[0].label} 외`
+                ? `${selectedItems[0].short} 외 ${selectedItems.length}`
+                : `${selectedItems[0].label} 외 ${selectedItems.length}`
         :buttonText
     
     //초기화 하는 함수
@@ -110,8 +110,10 @@ return (
                     ))}
                 </div>
                 <div className="option_bottom_r" onClick={toggleDropdown}>
-                    <div className="box">
-                        적용하기
+                    <div className="option_bottom_r_box">
+                        <div className="box">
+                            적용하기
+                        </div>
                     </div>
                 </div>
             </div>

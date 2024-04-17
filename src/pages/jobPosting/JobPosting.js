@@ -87,7 +87,8 @@ function JobPosting() {
             <Dropdown buttonText='직무'
               dropdownContent={Jobnames}
               selectedOne = {selectedJob}
-              handleChange={handleJobChange}>
+              handleChange={handleJobChange}
+              backsize={width <= 400 ? 's_small' : 's_default'}>
             </Dropdown>
             <div className="cnt_job">
               {pageInfo && pageInfo.total}개 채용공고
@@ -99,6 +100,7 @@ function JobPosting() {
               selectedOne = {selectedRegion}
               handleChange={handleRegionChange}
               backcolor={width <= 400 ? 'c_gray' : 'c_white'}
+              backsize={width <= 400 ? 's_small' : 's_default'}
               optionsize='o_small'>
             </Dropdown>
             <Dropdown buttonText='정렬'
@@ -106,10 +108,11 @@ function JobPosting() {
               selectedOne = {selectedOrder}
               handleChange={handleOrderChange}
               backcolor={width <= 400 ? 'c_gray' : 'c_white'}
+              backsize={width <= 400 ? 's_small' : 's_default'}
               multiple = {false}
               optionsize='o_short'>
             </Dropdown>
-            <Clickbutton buttonText={showOpenJobs ? '현재 모집' : '전체 공고'}
+            <Clickbutton buttonText={showOpenJobs ? '모집중 공고만' : '전체 공고'}
               toggleOpen = {toggleOpenJobs}
               showOpen = {showOpenJobs}
               size={width <= 400 ? 'small' : 'medium'}>

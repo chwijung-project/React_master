@@ -150,6 +150,9 @@
         margin-bottom: 0.5rem;
         border-radius: 5px;
     }
+    .list_wraper:last-child {
+        border-bottom:1px solid var(--lineSoft);
+    }
     .list_start{
         width: 85%;
     }

@@ -88,7 +88,7 @@ function RecruitGraph() {
           data: transformedData.map(p => p.recruitCounts[job.title] || 0),
           backgroundColor: job.color,
           borderColor: job.color,
-          borderWidth: 3,
+          borderWidth: 2.5,
           tension: 0.5,
           pointRadius: 0,
         };
@@ -198,7 +198,7 @@ function RecruitGraph() {
               },
               ticks: {
                 font:{
-                  size:9
+                  size:8
                 },
                 autoSkip: true,
                 maxTicksLimit: 5
@@ -214,7 +214,7 @@ function RecruitGraph() {
               },
               ticks: {
                 font:{
-                  size:9
+                  size:8
                 },
                 autoSkip: true,
                 maxTicksLimit: 5
@@ -272,12 +272,6 @@ function RecruitGraph() {
             <div className="recruitgraph_graph">
                 <Line data={chartData} options={options} className="chart-canvas"/>
             </div>
-            {/* media_graph */}
-            <div className="recruitgraph_graph_media">
-                <Line data={chartData} options={options_media} className="chart-canvas"/>
-            </div>
-            {/* media_end */}
-
             <div className="recruitgraph_legend">
               <div className="recruitgraph_legend_contents">
                 {jobTitle.map((job) => (
@@ -295,11 +289,17 @@ function RecruitGraph() {
                       {job.short}
                     </div>
                     {/* media_end */}
+                    
 
                   </div>
                 ))}
               </div>
             </div>
+            {/* media_graph */}
+            <div className="recruitgraph_graph_media">
+                <Line data={chartData} options={options_media} className="chart-canvas"/>
+            </div>
+            {/* media_end */}
           </div>
         </div>
       </div>

@@ -11,13 +11,13 @@ function PostingList({currentPage, setCurrentPage, pageInfo, postList}) {
 
   //직무별 다른 색깔
   const jobStyles = {
-    '머신러닝/딥러닝 엔지니어': { backgroundColor: '#f8ad9d40', color: '#e5383b',short:'MLE' },
-    '머신러닝/딥러닝 리서처': { backgroundColor: '#fae58840', color: '#ffc300', short:'MLR' },
-    '데이터 사이언티스트': { backgroundColor: '#b2f7ef40', color: '#72efdd',short:'DS' },
-    '데이터 엔지니어': { backgroundColor: '#caf0f850', color: '#4361ee',short:'DE' },
-    'AI 서비스 개발자': { backgroundColor: '#eae2b750', color: '#f77f00',short:'AI DEV' },
-    'AI 서비스 기획자': { backgroundColor: '#d8f3dc60', color: '#52b788',short:'AI PM' },
-    'AI 아티스트': { backgroundColor: '#fff0f360', color: '#ff758f',short:'AI ART' },
+    '머신러닝/딥러닝 엔지니어': { backgroundColor: '#e69f0030', color: '#e69f00',short:'MLE' },
+    '머신러닝/딥러닝 리서처': { backgroundColor: '#56b4e930', color: '#56b4e9', short:'MLR' },
+    '데이터 사이언티스트': { backgroundColor: '#009e7330', color: '#009e73',short:'DS' },
+    '데이터 엔지니어': { backgroundColor: '#d5cb3b40', color: '#d5cb3b',short:'DE' },
+    'AI 서비스 개발자': { backgroundColor: '#0072b230', color: '#0072b2',short:'AI DEV' },
+    'AI 서비스 기획자': { backgroundColor: '#d55e0030', color: '#d55e00',short:'AI PM' },
+    'AI 아티스트': { backgroundColor: '#cc79a730', color: '#cc79a7',short:'AI ART' },
   };
 
   // 얼마나 지난 공고인지

@@ -130,14 +130,19 @@
     .recruitgraph_wrapper{
         height: calc(var(--box_height) - 45px);
     }
+    .recruitgraph_first {
+        margin-bottom: 1.3rem;
+    }
+    .recruitgraph_second{
+        display: block;
+    }
     .recruitgraph_graph{
         display: none;
     }
     .recruitgraph_graph_media{
-        display: inline;
-        width: 75%;
-        height: calc(var(--box_height) / 1.6);
-        margin-top: -0.8rem;
+        display: inline-block;
+        width: 100%;
+        height: calc(var(--box_height) / 1.7);
     }
     .recruitgraph_legend_right{
         display: none;
@@ -147,10 +152,18 @@
         font-size: var(--f_size_short);
     }
     .recruitgraph_legend{
-        width: 22%;
+        width: 100%;
+    }
+    .recruitgraph_legend_contents{
+        width: 100%;
+        display: flex;
+        margin-bottom: 0.4rem;
     }
     .recruitgraph_legend_box{
-        padding: 0 2px 0 0.5rem;
+        width: calc(100% / 7);
+        gap: 0.2rem;
+        justify-content: center;
+
     }
     .popup_content {
         width: 80%;

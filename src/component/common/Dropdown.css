@@ -72,7 +72,6 @@
     float: right;
     width: 45%;
     height: 100%;
-    background-color: white;
     height: calc(90% - 1rem);
 }
 .option_header{
@@ -82,7 +81,6 @@
     padding: 0.7rem 0 0 0;
     top: 0;
     height: 1.2rem;
-    background-color: white;
 }
 .option_bottom{
     display: flex;
@@ -91,18 +89,16 @@
     font-size: var(--f_size_default);
     padding: 0.7rem 0 0 0;
     height: 1.2rem;
-    background-color: white;
     cursor: pointer;
     color: var(--textDark);
 }
 .option_bottom_r{
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    margin: 0 1rem 0 0.7rem;
+    justify-content: right;
+    margin-right: 0.7rem;
     font-size: var(--f_size_default);
-    padding: 0.7rem 0 0 0;
-    /* width: 100%; */
+    padding: 0.6rem 0 0 0;
     height: 1.2rem;
 }
 .option_bottom_r .box{
@@ -166,7 +162,7 @@
         font-size: var(--f_size_short);
     }
     .s_semi{
-        padding: 1px 4px 1px 10px;
+        padding: 1px 3px 1px 5px;
         font-size: 9px;
     }
     .dropdown_option{
