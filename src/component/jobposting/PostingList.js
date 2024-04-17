@@ -94,12 +94,12 @@ function PostingList({currentPage, setCurrentPage, pageInfo, postList}) {
 
 return(
 <div className='posting_container'>
-  <div className='wrapper'>
+  <div className='posting_wrapper'>
     {Array.isArray(postList)&&postList.map((p,index) => (
       <div className='list_wraper'>
           <div className='list_start'>
             <div className='recru_logo'>
-              <img src={p.recru_logo} alt='' width={25} height={25}/>
+              <img src={p.recru_logo} alt=''/>
             </div>
             <div className='list_title_content'>
               <div className='recru_title'>
@@ -128,6 +128,9 @@ return(
                           </span>
                         </div>
                       ))}
+                    </div>
+                    <div style={{color:'#adb5bd'}}>
+                      {p.job_sub_names}
                     </div>
                   </div>
                   <div className='list_title_bottom'>
@@ -165,7 +168,7 @@ return(
                 <div key={index} className='recru_jobstyle' style={{backgroundColor: jobStyles[job].backgroundColor}}>
                   <MdCircle size={6} color={jobStyles[job].color}/>
                   <span className='recru_jobname'>
-                  {jobStyles[job].short}
+                  {job}
                   </span>
                 </div>
               ))}

@@ -81,50 +81,53 @@ function JobPosting() {
 
   return (
   <div className="total">
-      <div className='top' style={{fontSize:'13px'}}>
-        <div className='space_left'>
-          <Dropdown buttonText='직무'
-            dropdownContent={Jobnames}
-            selectedOne = {selectedJob}
-            handleChange={handleJobChange}>
-          </Dropdown>
-          <div className="cnt_job">
-            {pageInfo && pageInfo.total}개 채용공고
+    <div className="box">
+        <div className='top' style={{fontSize:'13px'}}>
+          <div className='space_left'>
+            <Dropdown buttonText='직무'
+              dropdownContent={Jobnames}
+              selectedOne = {selectedJob}
+              handleChange={handleJobChange}>
+            </Dropdown>
+            <div className="cnt_job">
+              {pageInfo && pageInfo.total}개 채용공고
+            </div>
+          </div>
+          <div className='space_right'>
+            <Dropdown buttonText='지역'
+              dropdownContent={Region}
+              selectedOne = {selectedRegion}
+              handleChange={handleRegionChange}
+              backcolor={width <= 400 ? 'c_gray' : 'c_white'}
+              optionsize='o_small'>
+            </Dropdown>
+            <Dropdown buttonText='정렬'
+              dropdownContent={Order}
+              selectedOne = {selectedOrder}
+              handleChange={handleOrderChange}
+              backcolor={width <= 400 ? 'c_gray' : 'c_white'}
+              multiple = {false}
+              optionsize='o_short'>
+            </Dropdown>
+            <Clickbutton buttonText={showOpenJobs ? '현재 모집' : '전체 공고'}
+              toggleOpen = {toggleOpenJobs}
+              showOpen = {showOpenJobs}
+              size={width <= 400 ? 'small' : 'medium'}>
+            </Clickbutton>
           </div>
         </div>
-        <div className='space_right'>
-          <Dropdown buttonText='지역'
-            dropdownContent={Region}
-            selectedOne = {selectedRegion}
-            handleChange={handleRegionChange}
-            backcolor={width <= 400 ? 'c_gray' : 'c_white'}
-            optionsize='o_small'>
-          </Dropdown>
-          <Dropdown buttonText='정렬'
-            dropdownContent={Order}
-            selectedOne = {selectedOrder}
-            handleChange={handleOrderChange}
-            backcolor={width <= 400 ? 'c_gray' : 'c_white'}
-            multiple = {false}
-            optionsize='o_short'>
-          </Dropdown>
-          <Clickbutton buttonText={showOpenJobs ? '현재 모집' : '전체 공고'}
-            toggleOpen = {toggleOpenJobs}
-            showOpen = {showOpenJobs}
-            size={width <= 400 ? 'small' : 'medium'}>
-          </Clickbutton>
-        </div>
-      </div>
 
-    <div className="posting_list">
-      <PostingList
-        currentPage={currentPage} 
-        setCurrentPage={setCurrentPage} 
-        pageInfo={pageInfo} 
-        postList={postList} 
-      />
+      <div className="posting_list">
+        <PostingList
+          currentPage={currentPage} 
+          setCurrentPage={setCurrentPage} 
+          pageInfo={pageInfo} 
+          postList={postList} 
+        />
+      </div>
     </div>
-  </div>)
-  }    
+  </div>
+  );
+  };   
   export default JobPosting;
   
