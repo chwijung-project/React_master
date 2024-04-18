@@ -4,6 +4,8 @@
     font-size: var(--f_size_small);
     align-items: center;
     background-color: white;
+    border: 1px solid var(--lineSoft);
+    box-shadow: 0 0 2px 0 rgba(212, 209, 209, 0.5);
 }
 .posting_wrapper{
     width: 100%;
@@ -12,13 +14,8 @@
     display: flex;
     align-items: center;
     border-bottom: 1px solid var(--lineSoft);
-    /* padding: 15px 10px; */
     padding: 10px;
     height: 45px;
-    /* background-color: white;
-    border: 1px solid var(--lineSoft);
-    box-shadow: 0 0 2px 0 rgba(212, 209, 209, 0.5);
-    margin-bottom: 10px; */
 }
 .list_wraper:last-child {
     border-bottom: none;
@@ -32,6 +29,7 @@
 }
 .list_title_content{
     margin-left: 0.5rem;
+    cursor: pointer;
 }
 .recru_logo{
     align-items: center;
@@ -82,6 +80,7 @@
     padding: 5px 8px;
     border-radius: 12px;
     width: fit-content;
+    height: fit-content;
     margin-bottom: 4px;
     font-size: var(--f_size_short);
 }
@@ -139,8 +138,8 @@
 
 @media (max-width: 400px) {
     .posting_container{
-        background-color: #f1f4f960;
-        /* background-color: white; */
+        background-color: transparent;
+        border: none
     }
     .list_wraper{
         height: 70px;

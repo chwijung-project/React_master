@@ -1,19 +1,97 @@
 .smallcommu_contents{
     width: 100%;
+    /* flex-direction: column; */
     display: flex;
-    height: calc(var(--box_height) - 62px);
-    overflow-x: scroll;
-    overflow-y: hidden;
+    justify-content: space-between;
+    flex-wrap: wrap;    
+    margin-top: -5px;
+    gap: 5px;
 }
 
-.smallcommu_contents img{
-    padding: 0 20px 0 0;
-    height: 210px;
-    width: 130px;
+.smallcommu_contents_logo{
+    width: 15px;
+    height: 15px;
 }
+.smallcommu_contents_logo_text{
+    display: none;
+}
+
+.smallcommu_contents div{
+    width: 40%;
+    flex-grow: 1;
+    margin-bottom: 2px; 
+    height: 42px;
+    padding: 7px 0 7px 7px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: transparent;
+    border-bottom: 1px solid var(--lineSoft);
+    background-color: white;
+}
+.smallcommu_openchat{
+    width: 25%;
+    height: 20px;
+    padding: 5px;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+.smallcommu_openchat button{
+    border: 1.5px solid var(--lineSoft);
+    padding: 5px 0.5rem;
+    font-size: var(--f_size_small);
+    font-family: var(--fontRegular);
+    color: var(--text);
+    background-color: transparent;
+}
+.mle{
+    background-color: #E69F0030;
+    color: #E69F00;  
+}
+.mls{
+    background-color: #56B4E930;
+    color: #56B4E9;
+}
+.ds{
+    background-color: #009E7330;
+    color: #009E73;
+}
+.de{
+    background-color: #F0E44240;
+    color: #d5cb3b;
+}
+.ai_dev{
+    background-color: #0072B230;
+    color: #0072B2;
+}
+.ai_pm{
+    background-color: #D55E0030;
+    color: #D55E00;
+}
+.ai_art{
+    background-color: #CC79A730;
+    color: #CC79A7;
+}
+
 
 @media (max-width: 400px){
-    .smallcommu_contents{
-        height: calc(var(--box_height) - 85px);
+    .smallcommu_contents div{
+        font-size: var(--f_size_small);
+        justify-content: flex-start;
+        gap: 0.5rem;
+    }
+    .smallcommu_openchat{
+        display: none;
+    }
+    .smallcommu_contents_logo{
+        width: 30px;
+        height: 15px;
+        padding: 3px;
+    }
+    .smallcommu_contents_logo_text{
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 }

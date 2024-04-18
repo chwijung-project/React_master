@@ -11,13 +11,7 @@ function Main() {
     return (
         <div className="total">  
             <div className="box">
-                {/* <div className="main_analyze">
-                    <Analyze/>
-                </div>
-                <div className="main_recruitgraph">
-                    <RecruitGraph/>
-                </div> */}
-                    <Analyze/>
+                    {/* <Analyze/> */}
                     <RecruitGraph/>
 
                 <div className="main_small">

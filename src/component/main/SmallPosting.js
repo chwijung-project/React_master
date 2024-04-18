@@ -78,7 +78,7 @@ function SmallPosting() {
                         <div className="small_logo">
                             <img src={p.recru_logo} alt=""/>
                         </div>
-                        <div className="small_jd">
+                        <div className="small_jd" onClick={() => window.open(p.recru_url, '_blank')}>
                             <div className="small_title">{p.recru_title}</div>
                             <span className="small_company">{p.recru_company}</span>
                         </div>

@@ -66,6 +66,7 @@
 }
 .small_jd{
     width: 100%;
+    cursor: pointer;
 }
 .small_title{
     white-space: nowrap;

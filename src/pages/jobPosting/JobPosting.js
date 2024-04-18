@@ -129,6 +129,7 @@ function JobPosting() {
         />
       </div>
     </div>
+    <br></br>
   </div>
   );
   };   

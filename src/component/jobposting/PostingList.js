@@ -20,6 +20,20 @@ function PostingList({currentPage, setCurrentPage, pageInfo, postList}) {
     'AI 아티스트': { backgroundColor: '#cc79a730', color: '#cc79a7',short:'AI ART' },
   };
 
+  const jobSub = {
+    'natural language proc':{short:'NLP'},
+    'computer vision':{short:'CV'},
+    'computer graphics':{short:'CG'},
+    'robotics':{short:'RO'},
+    'speech/sigProc':{short:'SP'},
+    'data mining':{short:'DM'},
+    'automated planning':{short:'AP'},
+    'knowledge representation':{short:'KR'},
+    'human-computer interaction':{short:'HCI'},
+    'medical AI':{short:'Medical'},
+    'null':{short:''}
+  }
+
   // 얼마나 지난 공고인지
   function countdate(date){
     const today = new Date();
@@ -101,8 +115,8 @@ return(
             <div className='recru_logo'>
               <img src={p.recru_logo} alt=''/>
             </div>
-            <div className='list_title_content'>
-              <div className='recru_title'>
+            <div className='list_title_content' onClick={() => window.open(p.recru_url, '_blank')}>
+              <div className='recru_title' >
                 {addLineBreaks(p.recru_title, 45)}
               </div>
               {/* 미디어쿼리 적용부분 */}
@@ -124,14 +138,16 @@ return(
                         <div key={index} className='recru_jobstyle' style={{backgroundColor: jobStyles[job].backgroundColor}}>
                           <MdCircle size={6} color={jobStyles[job].color}/>
                           <span className='recru_jobname'>
-                          {jobStyles[job].short}
+                          {jobStyles[job].short === 'MLR'?(
+                            <span>{jobStyles[job].short}<span style={{marginLeft:'5px',color:'#80868d', fontSize:'9px'}}>{jobSub[p.job_sub_names].short}</span></span>):
+                            (<span>{jobStyles[job].short}</span>)}   
                           </span>
                         </div>
                       ))}
                     </div>
-                    <div style={{color:'#adb5bd'}}>
+                    {/* <div style={{color:'#adb5bd'}}>
                       {p.job_sub_names}
-                    </div>
+                    </div> */}
                   </div>
                   <div className='list_title_bottom'>
                     <img src={p.recru_logo} alt='' width={18} height={18}/>
@@ -168,14 +184,16 @@ return(
                 <div key={index} className='recru_jobstyle' style={{backgroundColor: jobStyles[job].backgroundColor}}>
                   <MdCircle size={6} color={jobStyles[job].color}/>
                   <span className='recru_jobname'>
-                  {job}
+                    {job === '머신러닝/딥러닝 리서처'?(
+                      <span>{job}<span style={{marginLeft:'5px',color:'#80868d',fontSize:'9px'}}>{jobSub[p.job_sub_names].short}</span></span>):
+                      (<span>{job}</span>)}
                   </span>
                 </div>
               ))}
             </div>
-            <div style={{color:'#adb5bd'}}>
+            {/* <div style={{color:'#adb5bd'}}>
               {p.job_sub_names}
-            </div>
+            </div> */}
           </div>
           <div className='list_button'>
             {p.recru_closed_date ? (
