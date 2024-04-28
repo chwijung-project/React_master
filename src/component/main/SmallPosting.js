@@ -12,7 +12,7 @@ function SmallPosting() {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const smallposting = useSelector(state => state.postReducer);
+    const smallposting = useSelector(state => state.smallReducer);
     const postingList = smallposting.data;
     const [selectOption, setSelectOption] = useState('머신러닝/딥러닝 엔지니어');
 

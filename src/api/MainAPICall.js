@@ -1,6 +1,5 @@
 import { GET_MAINGRAHP } from '../modules/MainModule.js';
-import { GET_SMALLCOMU } from '../modules/SmallModule.js';
-import { GET_SMALLPOST } from '../modules/PostModule.js';
+import { GET_SMALLPOST } from '../modules/SmallModule.js';
 
 
 /* 메인페이지 직무별 그래프 */

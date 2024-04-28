@@ -38,15 +38,28 @@ function PostingFilter(){
       ];
 
     
-      const handleFilterChange = () => {
-        dispatch(callPostListAPI({
-            selectedJob,
-            selectedRegion,
-            selectedOrder,
-            currentPage: 1,
-            showOpenJobs: true
-        }));
-    };
+    //   const handleFilterChange = () => {
+    //     dispatch(callPostListAPI({
+    //         selectedJob,
+    //         selectedRegion,
+    //         selectedOrder,
+    //         currentPage: 1,
+    //         showOpenJobs: true
+    //     }));
+    // };
+        useEffect(
+            () => {
+                dispatch(callPostListAPI({
+                    selectedJob,
+                    selectedRegion,
+                    selectedOrder,
+                    currentPage: 1,
+                    showOpenJobs: true
+                }));  
+                console.log("useEffect : 보내는 직무의 값");
+            }
+            ,[selectedJob, selectedRegion, selectedOrder, currentPage, showOpenJobs]
+        );
     
     return (
         <div>
