@@ -1,4 +1,6 @@
 import React, {useEffect, useState} from 'react';
+import { useSelector, useDispatch } from "react-redux";
+import { callPostListAPI } from "../../api/PostingAPICall";
 import './PostingList.css';
 import {
   MdArrowBackIos,
@@ -7,7 +9,10 @@ import {
 } from "react-icons/md";
 // npm i react-icons@4.11.0
 
-function PostingList({currentPage, setCurrentPage, pageInfo, postList}) {
+function PostingList() {
+  // const dispatch = useDispatch();
+  const postList = useSelector(state => state.postReducer.data);
+  console.log("postList",postList)
 
   //직무별 다른 색깔
   const jobStyles = {
@@ -20,6 +25,7 @@ function PostingList({currentPage, setCurrentPage, pageInfo, postList}) {
     'AI 아티스트': { backgroundColor: '#cc79a730', color: '#cc79a7',short:'AI ART' },
   };
 
+  //2차 직무 요약어
   const jobSub = {
     'natural language proc':{short:'NLP'},
     'computer vision':{short:'CV'},
@@ -88,56 +94,38 @@ function PostingList({currentPage, setCurrentPage, pageInfo, postList}) {
   return formattedText;
   }
 
-
-  //페이지네이션 용
-  const pageNumber = [];
-  const limit = 10 ;
-  const [currentPageArray, setCurrentPageArray] = useState([]);
-
-  if(pageInfo){
-      for(let i = 1; i <= pageInfo.pageEnd ; i++){
-          pageNumber.push(i);
-      }
-  }
-
-  useEffect(()=>{
-      const startIndex = Math.floor((currentPage-1)/limit)*limit;
-      setCurrentPageArray(pageNumber.slice(startIndex,startIndex+limit));
-  }, [currentPage, pageInfo]);
-
-
 return(
-<div className='posting_container'>
-  <div className='posting_wrapper'>
+<div className='postinglist_container'>
+  <div className='postinglist_wrapper'>
     {Array.isArray(postList)&&postList.map((p,index) => (
-      <div className='list_wraper'>
-          <div className='list_start'>
-            <div className='recru_logo'>
+      <div key={index} className='postinglist_contents'>
+          <div className='postinglist_first'>
+            <div className='postinglist_logo'>
               <img src={p.recru_logo} alt=''/>
             </div>
-            <div className='list_title_content' onClick={() => window.open(p.recru_url, '_blank')}>
-              <div className='recru_title' >
+            <div className='postinglist_first_right' onClick={() => window.open(p.recru_url, '_blank')}>
+              <div className='postinglist_title' >
                 {addLineBreaks(p.recru_title, 45)}
               </div>
               {/* 미디어쿼리 적용부분 */}
-              <div className='recru_title_media'>
+              <div className='postinglist_title_media'>
                 {addLineBreaksAndErase(p.recru_title, 30)}
               </div>
               
-              <div className='list_title_under'>
+              <div className='postinglist_subinfo'>
                 {/* 미디어쿼리 적용부분 */}
-                <div className='list_title_under_media'>
-                  <div className='list_title_top'>
-                    <div className='recru_endate'>
+                <div className='postinglist_subinfo_media'>
+                  <div className='postinglist_media_first'>
+                    <div className='postinglist_endate'>
                       {p.recru_end_date ? ( <span>~{p.recru_end_date.substr(5)}
                         ({getWeekday(p.recru_end_date)})</span>):
                         (<span>상시채용</span>)}
                     </div>
                     <div style={{display:'flex'}}>
                       {p.job_names.split(', ').map((job,index) => (
-                        <div key={index} className='recru_jobstyle' style={{backgroundColor: jobStyles[job].backgroundColor}}>
+                        <div key={index} className='postinglist_jobstyle' style={{backgroundColor: jobStyles[job].backgroundColor}}>
                           <MdCircle size={6} color={jobStyles[job].color}/>
-                          <span className='recru_jobname'>
+                          <span className='postinglist_jobname'>
                           {jobStyles[job].short === 'MLR'?(
                             <span>{jobStyles[job].short}<span style={{marginLeft:'5px',color:'#80868d', fontSize:'9px'}}>{jobSub[p.job_sub_names].short}</span></span>):
                             (<span>{jobStyles[job].short}</span>)}   
@@ -145,45 +133,42 @@ return(
                         </div>
                       ))}
                     </div>
-                    {/* <div style={{color:'#adb5bd'}}>
-                      {p.job_sub_names}
-                    </div> */}
                   </div>
-                  <div className='list_title_bottom'>
-                    <img src={p.recru_logo} alt='' width={18} height={18}/>
+                  <div className='postinglist_media_second'>
+                    <img src={p.recru_logo} alt=''/>
                     {p.recru_company}
-                    <div className='recru_region'>
+                    <div className='postinglist_region'>
                       <span style={{color:'#adb5bd'}}>{p.recru_region}</span> 
                     </div>
                   </div>
                 </div>
                 
-                <div className='recru_company'>
+                <div className='postinglist_company'>
                   {p.recru_company}
                 </div>
-                <div className='recru_period'>
+                <div className='postinglist_period'>
                   {countdate(p.recru_crawling_date)}일 전
                 </div>
               </div>
             </div>
           </div>
           
-          <div className='list_middle'>
-            <div className='recru_endate'>
+          <div className='postinglist_second'>
+            <div className='postinglist_endate'>
               {p.recru_end_date ? ( <span>~{p.recru_end_date.substr(5)}
                 ({getWeekday(p.recru_end_date)})</span>):
                 (<span>상시채용</span>)}
             </div>
-            <div className='recru_region'>
+            <div className='postinglist_region'>
               <span style={{color:'#adb5bd'}}>In</span> {p.recru_region}
             </div>
           </div>
-          <div className='list_end'>
+          <div className='postinglist_third'>
             <div style={{display:'flex',gap:'8px'}}>
               {p.job_names.split(', ').map((job,index) => (
-                <div key={index} className='recru_jobstyle' style={{backgroundColor: jobStyles[job].backgroundColor}}>
+                <div key={index} className='postinglist_jobstyle' style={{backgroundColor: jobStyles[job].backgroundColor}}>
                   <MdCircle size={6} color={jobStyles[job].color}/>
-                  <span className='recru_jobname'>
+                  <span className='postinglist_jobname'>
                     {job === '머신러닝/딥러닝 리서처'?(
                       <span>{job}<span style={{marginLeft:'5px',color:'#80868d',fontSize:'9px'}}>{jobSub[p.job_sub_names].short}</span></span>):
                       (<span>{job}</span>)}
@@ -191,11 +176,8 @@ return(
                 </div>
               ))}
             </div>
-            {/* <div style={{color:'#adb5bd'}}>
-              {p.job_sub_names}
-            </div> */}
           </div>
-          <div className='list_button'>
+          <div className='postinglist_last'>
             {p.recru_closed_date ? (
               <button className='button delete'>
               공고마감</button>):(<button className='button view' onClick={() => window.open(p.recru_url, '_blank')}>
@@ -204,7 +186,7 @@ return(
           </div>
 
           {/* 미디어쿼리 적용부분 */}
-          <div className='list_button_media'>
+          <div className='postinglist_last_media'>
             {p.recru_closed_date ? (
             <button className='button delete'>
             마감</button>):(<button className='button view' onClick={() => window.open(p.recru_url, '_blank')}>
@@ -213,42 +195,6 @@ return(
           {/* 미디어쿼리 적용부분 */}
       </div>
     ))}
-  </div>
-
-  <div className='pgn_wraper'>
-    {Array.isArray(postList) &&
-      <div className='pgn_button'>
-        <button onClick={() => {setCurrentPage(currentPage - 1);
-        window.scrollTo(0,0);}} 
-        disabled={currentPage === 1}> 
-          <span><MdArrowBackIos size={10}/></span> 
-          <span>이전</span>
-        </button>
-      </div>
-    }&nbsp;&nbsp;
-
-    {currentPageArray.map((num) => (
-      <div className='pgn_button' key={num} onClick={() => {setCurrentPage(num);
-          window.scrollTo(0,0);}}>
-          <button
-              style={ currentPage === num ? {color : '#b5179e', fontWeight:'bold', backgroundColor:'#b5179d30'} : {color:'#adb5bd'}}
-          > {num}
-          </button>&nbsp;&nbsp;
-      </div>
-    ))}
-
-    {Array.isArray(postList) &&
-      <div className='pgn_button'>
-        <button 
-            onClick={() => {setCurrentPage(currentPage + 1);
-            window.scrollTo(0,0);}}
-            // disabled={currentPage === pageInfo.pageEnd  || pageInfo.total === 0}
-            >
-            <span style={{marginRight:'5px'}}>다음</span>
-            <span><MdArrowForwardIos size={10}/></span> 
-        </button>
-      </div>
-    }
   </div>
   <br></br>
 </div>

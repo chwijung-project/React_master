@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 import './Header.css';
 // import chwijung_logo from '../../image/chwijung_logo.jpg';
@@ -6,6 +6,7 @@ import './Header.css';
 function Header() {
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   // 페이지 이동
   const onClickLogoHandler = () => {
@@ -21,8 +22,11 @@ function Header() {
     navigate("/coaching", { replace: false });
   };
 
+  // 페이지에 따른 색상 변경
+  const headerClass = location.pathname === "/jobposting" ? "header_jobposting" : "header_normal";
+
 return (
-  <div className="header_container">
+  <div className={`header_container ${headerClass}`}>
     <div className="header_banner">
       <div className="header_start" onClick={ onClickLogoHandler }>
         <div className='header_logo'></div>
@@ -33,11 +37,11 @@ return (
         <button onClick={ onClickPostingHandler }>
           채용공고
         </button>
-        <button onClick={ onClickCoachingHandler }>
-          AI코칭
-        </button>
         <button onClick={ onClickEduHandler }>
           교육목록
+        </button>
+        <button onClick={ onClickCoachingHandler }>
+          AI코칭
         </button>
       </div> 
 

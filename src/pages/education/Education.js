@@ -1,24 +1,27 @@
-import React, {useEffect, useState} from 'react';
+import EduBanner from "../../component/education/EduBanner";
+import EduFilter from "../../component/education/EduFilter";
+import EduList from "../../component/education/EduList";
+import EduPgn from "../../component/education/EduPgn";
 import './Education.css';
-import Dropdown from "../../component/common/Dropdown"
-import Clickbutton from "../../component/common/Clickbutton"
-import {
-  MdArrowBackIos,
-  MdArrowForwardIos,
-  MdCircle,
-} from "react-icons/md";
-// npm i react-icons@4.11.0
 
 function Education() {
-  return(
-    <div className='total'>
-      <div className='box'>
-          <a href="/oauth2/authorization/google" class="button_login" role="button">Google Login</a>
-      </div>
-    </div>
-    
-  )
 
+    return (
+      <>
+        <div className="edu_first">
+          <EduBanner/>
+        </div>
+        <div className="edu_second">
+          <EduFilter/>
+        </div>
+        <div className="total" style={{marginTop:"0.5rem"}}>  
+            <div className="box">
+                    <EduList/>
+                    <EduPgn/>
+            </div>
+        </div>
+      </>
+    );
+}
 
-};
 export default Education;

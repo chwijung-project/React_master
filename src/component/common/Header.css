@@ -3,11 +3,17 @@
     top:0;
     left:0;
     width: 100%;
-    background-color: #fff;
-    box-shadow: 0 0 8px 0 var(--shadow);
+    background-color: white;
     z-index: 20;
     font-family: var(--fontRegular);
     font-size: var(--f_size_big);
+}
+.header_jobposting{
+    border: 0.5px solid #c1cad45c;
+}
+.header_normal{
+    border: 1px solid var(--lineSoft);
+    box-shadow: 0 0 2px 0 rgba(212, 209, 209, 0.5);
 }
 
 .header_banner {

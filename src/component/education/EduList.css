@@ -1,0 +1,19 @@
+.edulist_container{
+    padding: 0 1rem;
+    font-family: var(--fontRegular);
+    font-size: var(--f_size_small);
+    align-items: center;
+    background-color: white;
+    border: 1px solid var(--lineSoft);
+    box-shadow: 0 0 2px 0 rgba(212, 209, 209, 0.5);
+}
+
+
+@media (max-width: 400px) {
+    .edulist_container{
+        /* margin-top: -1rem; */
+        background-color: transparent;
+        border: none;
+        box-shadow: none;
+    }
+}

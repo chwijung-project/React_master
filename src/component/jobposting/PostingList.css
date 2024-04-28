@@ -1,4 +1,5 @@
-.posting_container{
+.postinglist_container{
+    margin-top: 135px;
     padding: 0 1rem;
     font-family: var(--fontRegular);
     font-size: var(--f_size_small);
@@ -7,76 +8,77 @@
     border: 1px solid var(--lineSoft);
     box-shadow: 0 0 2px 0 rgba(212, 209, 209, 0.5);
 }
-.posting_wrapper{
+.postinglist_wrapper{
     width: 100%;
 }
-.list_wraper{
+.postinglist_contents{
     display: flex;
     align-items: center;
     border-bottom: 1px solid var(--lineSoft);
-    padding: 10px;
+    padding: 10px 0;
     height: 45px;
 }
-.list_wraper:last-child {
+.postinglist_contents:last-child {
     border-bottom: none;
 }
 
-.list_start{
+.postinglist_first{
     width: 50%;
     display: flex;
     height: calc(45px/2);
     align-items: center;
 }
-.list_title_content{
+.postinglist_logo{
+    align-items: center;
+}
+.postinglist_logo img{
+    width: 33px;
+    height: 33px;
+    object-fit: contain;
+}
+.postinglist_first_right{
     margin-left: 0.5rem;
     cursor: pointer;
 }
-.recru_logo{
-    align-items: center;
-}
-.recru_logo img{
-    width: 33px;
-    height: 33px;
-}
-.recru_title{
+.postinglist_title{
     font-size: var(--f_size_default);
     font-family: var(--fontMedium);
 }
 
 /* 미디어쿼리 */
-.recru_title_media{
+.postinglist_title_media{
     display: none;
 }
 
-.list_title_under{
+.postinglist_subinfo{
     display: flex;
     margin-top: 0.3rem;
     font-size: var(--f_size_short);
 }
 
 /* 미디어쿼리 */
-.list_title_under_media{
+.postinglist_subinfo_media{
     display: none;
 }
 
-.recru_company{
+.postinglist_company{
     margin-right: 0.4rem;
 }
-.recru_period{
+.postinglist_period{
     color: var(--textSoft);
 }
 
-.list_middle{
+.postinglist_second{
     width: 12%;
 }
-.recru_endate{
+.postinglist_endate{
     margin-bottom: 0.2rem;
 }
 
-.list_end{
+.postinglist_third{
     width: 30%;
 }
-.recru_jobstyle{
+.postinglist_jobstyle{
     padding: 5px 8px;
     border-radius: 12px;
     width: fit-content;
@@ -84,32 +86,32 @@
     margin-bottom: 4px;
     font-size: var(--f_size_short);
 }
-.recru_jobname{
+.postinglist_jobname{
     margin-left: 4px;
 }
 
-.list_button{
+.postinglist_last{
     width: 8%;
     display: flex;
     justify-content: right;
 }
-.list_button_media{
+.postinglist_last_media{
     display: none;
 }
 
-.list_button button{
+.postinglist_last button{
     padding: 8px 14px;
-    background-color: white;
     border: 1px solid var(--lineSoft);
     font-family: var(--fontRegular);
     font-size: var(--f_size_small);
 }
 .view{
+    background-color: white;
     cursor: pointer;
 }
   
 .delete{
-    background-color: #b8d0eb30;
+    background-color: white;
     color: #b8d0eb;
     cursor:default
 }
@@ -137,72 +139,81 @@
 }
 
 @media (max-width: 400px) {
-    .posting_container{
+    .postinglist_container{
+        margin-top: 128px;
         background-color: transparent;
-        border: none
+        border: none;
+        box-shadow: none;
     }
-    .list_wraper{
+    .postinglist_contents{
         height: 70px;
         background-color: white;
         border: 1px solid var(--lineSoft);
         box-shadow: 0 0 2px 0 rgba(212, 209, 209, 0.5);
         margin-bottom: 0.5rem;
         border-radius: 5px;
+        padding: 10px 5px;
     }
-    .list_wraper:last-child {
+    .postinglist_contents:last-child {
         border-bottom:1px solid var(--lineSoft);
     }
-    .list_start{
+    .postinglist_first{
         width: 85%;
     }
-    .recru_title{
+    .postinglist_title{
         display: none;
     }
-    .recru_title_media{
+    .postinglist_title_media{
         display: inline;
         font-size: var(--f_size_default);
         font-family: var(--fontMedium);
     }
-    .list_title_under_media{
+    .postinglist_subinfo_media{
         display: inline;
     }
     
-    .recru_jobstyle{
+    .postinglist_jobstyle{
         padding: 2px 7px;
         border-radius: 12px;
     }
 
-    .list_button{
+    .postinglist_last{
         display: none;
     }
-    .list_button_media{
+    .postinglist_last_media{
         display: flex;
         /* justify-content: right; */
         width: 15%;
     }
-    .list_button_media button{
+    .postinglist_last_media button{
         padding: 5px 8px;
-        background-color: white;
+        /* background-color: white; */
         border: 1px solid var(--lineSoft);
         font-family: var(--fontRegular);
         font-size: var(--f_size_short);
     }
-    .recru_period, .recru_logo, .recru_company, 
-    .list_middle, .list_end{
+    .postinglist_period, .postinglist_logo, .postinglist_company, 
+    .postinglist_second, .postinglist_third, .postinglist_forth{
         display: none;
     }
 
-    .list_title_top{
+    .postinglist_media_first{
         display: flex;
         margin: 0.2rem 0 0 0;
         gap: 0.2rem;
         width: 100%;
     }
-    .list_title_bottom{
+    .postinglist_media_second{
         display: flex;
         gap: 0.4rem;
         align-items: center;
         margin-top: 0.6rem;
+    }
+    .postinglist_media_second img{
+        width: 18px;
+        height: 18px;
+        object-fit: contain;
+
     }
 
     .pgn_button button{
