@@ -29,7 +29,7 @@ function DropdownMulti({
     
             if (allSelected) {
                 // 모든 옵션이 선택되었으면 '전체'만 설정
-                setSelected([{ value: "전체", label: "전체" }]);
+                setSelected([{ value: "전체", label: "전체", short:'전체' }]);
             } else {
                 // 그렇지 않다면 일반적으로 선택된 항목 설정
                 const selections = dropdownContent.filter(item => selectedItems.includes(item.value));
@@ -49,7 +49,7 @@ function DropdownMulti({
         if (item.value === "전체") {
             const allValues = dropdownContent.slice(1).map(job => job.value).join(', ');
             handleChange(allValues);
-            setSelected([{ value: "전체", label: "전체" }]);
+            setSelected([{ value: "전체", label: "전체", short:'전체' }]);
         } else {
             let newSelected = selected.filter(s => s.value !== "전체");
             const index = newSelected.findIndex(v => v.value === item.value);
@@ -63,7 +63,7 @@ function DropdownMulti({
             const allSelected = allValues.every(val => newSelected.map(sel => sel.value).includes(val));
             if (allSelected) {
                 handleChange(allValues);
-                setSelected([{ value: "전체", label: "전체" }]);
+                setSelected([{ value: "전체", label: "전체", short:'전체' }]);
             } else {
                 handleChange(newSelected.map(sel => sel.value));
                 setSelected(newSelected);
@@ -79,11 +79,24 @@ function DropdownMulti({
         : `${selected[0].label} 외 ${selected.length-1}`) 
     : `${buttonText} 전체`;
 
+    const displayLabel_media = selected.length > 0 
+    ? (selected.length === 1 && selected[0].label !== '전체'
+        ? selected[0].short
+        : selected.length === 1 && selected[0].label === '전체'
+        ? `${buttonText} 전체`
+        : `${selected[0].short} 외 ${selected.length-1}`) 
+    : `${buttonText} 전체`;
+
 return (
     <div className="dropdownmulti_container">
         <button className={`${backcolor} ${backsize}`} onClick={toggleDropdown}>
             <div className="dropdownmulti_wrapper">
-                <div className="dropdownmulti_title">{displayLabel}</div>
+                <div className="dropdownmulti_title">
+                    {displayLabel}
+                </div>
+                <div className="dropdownmulti_title_media">
+                    {displayLabel_media}
+                </div>
                 <div className="dropdownmulti_icon">
                     {isOpen ? <MdArrowDropUp /> : <MdArrowDropDown />}
                 </div>
@@ -102,8 +115,11 @@ return (
                         {dropdownContent.map((item) => (
                         <div className={`dm_option_button ${selected.map(i => i.value).includes(item.value) ? 'selected' : ''}`}
                         onClick={() => handleSelect(item)}>
-                            <div>
+                            <div className="dm_option_box">
                                 {item.label}
+                            </div>
+                            <div className="dm_option_box_media">
+                                {item.short}
                             </div>
                             <div>
                                 {selected.map(i => i.value).includes(item.value) && <MdCheck />}
@@ -122,10 +138,15 @@ return (
                             선택된 {buttonText}
                         </div>
                         <div className="dm_right_second">
-                        {selected.map((i) => (
+                        {selected.map((item) => (
                             <div className="dm_option_checked"
-                            onClick={() => handleSelect(i)}>
-                                <div>{i.label}</div>
+                            onClick={() => handleSelect(item)}>
+                            <div className="dm_option_box">
+                                {item.label}
+                            </div>
+                            <div className="dm_option_box_media">
+                                {item.short}
+                            </div>
                                 <div className="dm_option_checked_icon">
                                     <MdClose/>
                                 </div>

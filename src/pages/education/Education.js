@@ -11,7 +11,7 @@ function Education() {
         <div className="edu_first">
           <EduBanner/>
         </div>
-        <div className="total" style={{marginTop:"2rem"}}>  
+        <div className="total" style={{marginTop:"4.5rem"}}>  
             <div className="box">
               <EduFilter/>
               <EduList/>

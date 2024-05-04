@@ -1,5 +1,4 @@
 .postinglist_container{
-    /* margin-top: 135px; */
     padding: 0 1rem;
     font-family: var(--fontRegular);
     font-size: var(--f_size_small);
@@ -140,7 +139,6 @@
 
 @media (max-width: 400px) {
     .postinglist_container{
-        margin-top: 128px;
         background-color: transparent;
         border: none;
         box-shadow: none;

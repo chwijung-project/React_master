@@ -30,3 +30,15 @@
     display: flex;
     align-items: center;
 }
+
+@media (max-width: 400px){
+    .postingpgn_container{
+        margin: 0rem 0 5rem 0; 
+    }
+    .postingpgn_container button{
+        font-family: var(--fontRegular);
+        font-size: var(--f_size_short);
+        padding: 3px;
+        gap: 2px;
+    }
+}

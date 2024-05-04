@@ -134,4 +134,7 @@ button {
   .s_small{
     font-size: var(--f_size_short);
   }
+  .s_middle{
+    font-size: var(--f_size_short);
+  }
 }

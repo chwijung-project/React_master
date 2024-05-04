@@ -9,10 +9,10 @@ function JobPosting() {
 
   return (
   <>
-    <div className="edu_first">
+    <div className="jobposting_first">
       <PostingBanner/>
     </div>
-    <div className="total">
+    <div className="total" style={{marginTop:'4.5rem'}}>
       <div className="box">
         <PostingFilter/>
         <PostingList/>
