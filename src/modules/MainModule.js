@@ -3,9 +3,7 @@ import { handleActions } from 'redux-actions';
 
 const initialState = [];
 
-export const GET_MAINGRAHP            = 'main/GET_MAIN';
-
-// export const GET_SMALLCOMU            = 'main/GET_SMALLCOMU';
+export const GET_MAINGRAHP = 'main/GET_MAIN';
 
 const mainReducer = handleActions(
     {
@@ -13,10 +11,6 @@ const mainReducer = handleActions(
 
             return payload;
         },
-        // [GET_SMALLCOMU]: (state, { payload }) => {
-
-        //     return payload;
-        // }
     },
     initialState
 );

@@ -11,13 +11,11 @@ function Education() {
         <div className="edu_first">
           <EduBanner/>
         </div>
-        <div className="edu_second">
-          <EduFilter/>
-        </div>
-        <div className="total" style={{marginTop:"0.5rem"}}>  
+        <div className="total" style={{marginTop:"2rem"}}>  
             <div className="box">
-                    <EduList/>
-                    <EduPgn/>
+              <EduFilter/>
+              <EduList/>
+              <EduPgn/>
             </div>
         </div>
       </>

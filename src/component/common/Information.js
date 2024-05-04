@@ -1,4 +1,23 @@
-export const Region = [
+//////////직무 정보//////////
+//직무명
+export const Jobnames = [
+	{label: '전체', value: '전체', short:"전체"},
+	{label: '머신러닝/딥러닝 엔지니어', value: '머신러닝/딥러닝 엔지니어', short:'MLE',color: '#E69F00'},
+	{label: '머신러닝/딥러닝 리서처', value: '머신러닝/딥러닝 리서처', short:'MLR', color: '#56B4E9'},
+	{label: '데이터 사이언티스트', value: '데이터 사이언티스트', short:'DS', color: '#009E73'},
+	{label: '데이터 엔지니어', value: '데이터 엔지니어', short:'DE', color: '#d5cb3b'},
+	{label: 'AI 서비스 개발자', value: 'AI 서비스 개발자', short:'AI DEV', color: '#0072B2'},
+	{label: 'AI 서비스 기획자', value: 'AI 서비스 기획자', short:'AI PM', color: '#D55E00'},
+	{label: 'AI 아티스트', value: 'AI 아티스트', short:'AI ART', color: '#CC79A7'}
+];
+
+//데엔, 데사 ...
+export const jobsTotal = Jobnames.slice(1).map(job => job.value).join(', ');
+
+
+//////////지역 정보//////////
+//지역명_전체
+export const Region_full = [
     {
 		name: "서울",
 		subArea: [
@@ -283,4 +302,36 @@ export const Region = [
 		name: "제주",
 		subArea: ["서귀포시", "제주시"],
 	}
+];
+
+//지역명 있는것만
+export const Region = [
+	{label:'전체', value:'전체'},
+	{ label: "경기", value: ["경기 화성시","경기 용인시","경기 안양시","경기 수원시","경기 성남시","경기 김포시","경기 광명시"] },
+	{ label: "경북", value: ["경북 포항시"] },
+	{ label: "광주", value: ["광주 북구"] },
+	{ label: "대구", value: ["대구 동구"] },
+	{ label: "대전", value: ["대전 유성구"] },
+	{ label: "부산", value: ["부산 해운대구"] },
+	{ label: "서울", value: ["서울 중구","서울 종로구","서울 용산구","서울 영등포구","서울 양천구","서울 송파구","서울 성동구","서울 서초구","서울 서대문구","서울 마포구","서울 동작구","서울 금천구","서울 구로구","서울 관악구","서울 강서구","서울 강남구"] },
+	{ label: "울산", value: ["울산 중구"] },
+	{ label: "인천", value: ["인천 연수구"] },
+	{ label: "전남", value: ["전남 순천시"] }
+];
+
+//서울 강남구, 서울 서초구, 경기 성남시...
+export const regionTotal = Region.slice(1).map(region => region.value).join(', ');
+
+
+//////////정렬 기준//////////
+//정렬기준
+export const Orders = [
+	{label: '최신순', value: 'latest_order'},
+	{label: '마감순', value: 'deadline_order'}
+];
+
+//차트옵션
+export const chartOptions = [
+	{label: '일별 그래프', value: '일별 그래프'},
+	{label: '증감 그래프', value: '증감 그래프'}
 ];

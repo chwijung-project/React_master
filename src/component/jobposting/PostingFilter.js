@@ -1,82 +1,99 @@
-import React, { useState } from 'react';
-import { useDispatch } from "react-redux";
+import React, { useState,useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import { updateFilters } from "../../modules/PostModule";
 import { callPostListAPI } from "../../api/PostingAPICall";
-import { Region } from "../../component/common/Region";
+import { Region, Jobnames, Orders } from "../common/Information";
+import DropdownSingle from '../common/DropdownSingle';
+import DropdownMulti from '../common/DropdownMulti';
+import { MdCheck } from "react-icons/md";
+import { GoX } from "react-icons/go";
+import { useLocation, useNavigate } from 'react-router-dom';
 import "./PostingFilter.css"
 
 
 function PostingFilter(){
     const dispatch = useDispatch();
-    const [selectedJob, setSelectedJob] = useState('머신러닝/딥러닝 엔지니어');
-    const [selectedRegion, setSelectedRegion] = useState('서울 강남구');
-    const [selectedOrder, setSelectedOrder] = useState('');
+    const { pageInfo, selectedJob, selectedRegion, selectedOrder, showOpenJobs, currentPage } = useSelector(state => state.postReducer);
 
-    const Jobnames = [
-        {label: '머신러닝/딥러닝 엔지니어', value: '머신러닝/딥러닝 엔지니어', short:'MLE'},
-        {label: '머신러닝/딥러닝 리서처', value: '머신러닝/딥러닝 리서처', short:'MLR'},
-        {label: '데이터 사이언티스트', value: '데이터 사이언티스트', short:'DS'},
-        {label: '데이터 엔지니어', value: '데이터 엔지니어', short:'DE'},
-        {label: 'AI 서비스 개발자', value: 'AI 서비스 개발자', short:'AI DEV'},
-        {label: 'AI 서비스 기획자', value: 'AI 서비스 기획자', short:'AI PM'},
-        {label: 'AI 아티스트', value: 'AI 아티스트', short:'AI ART'}
-      ];
-    
-      const Regions = [
-          {label: '서울', value: '서울 강남구'},
-          {label: '경기', value: '경기 성남시'},
-          {label: '인천', value: '인천 계양구'},
-          {label: '대전', value: '대전 대덕구'},
-          {label: '울산', value: '울산 남구'},
-          {label: '부산', value: '부산 강서구'},
-          {label: '광주', value: '광주 광산구'},
-          {label: '대구', value: '대구 남구'}
-      ];
-    
-      const Orders = [
-          {label: '최신순', value: 'latest_order'},
-          {label: '마감순', value: 'deadline_order'}
-      ];
+    const handleJobChange= (value) => {
+        dispatch(updateFilters({["selectedJob"]: value}))
+    }
+    const handleRegionChange= (value) => {
+        dispatch(updateFilters({["selectedRegion"]: value}))
+    }
+    const handleOrderChange= (value) => {
+        dispatch(updateFilters({["selectedOrder"]: value}))
+    }
+    const handleshowChange= (value) => {
+        dispatch(updateFilters({["showOpenJobs"]: value}))
+    }
 
-    
-    //   const handleFilterChange = () => {
-    //     dispatch(callPostListAPI({
-    //         selectedJob,
-    //         selectedRegion,
-    //         selectedOrder,
-    //         currentPage: 1,
-    //         showOpenJobs: true
-    //     }));
-    // };
-        useEffect(
-            () => {
-                dispatch(callPostListAPI({
-                    selectedJob,
-                    selectedRegion,
-                    selectedOrder,
-                    currentPage: 1,
-                    showOpenJobs: true
-                }));  
-                console.log("useEffect : 보내는 직무의 값");
-            }
-            ,[selectedJob, selectedRegion, selectedOrder, currentPage, showOpenJobs]
-        );
-    
-    return (
-        <div>
-            <select value={selectedJob} onChange={e => { setSelectedJob(e.target.value); handleFilterChange(); }}>
-                <option value="">직무 선택</option>
-                {Jobnames.map(job => <option key={job.value} value={job.value}>{job.label}</option>)}
-            </select>
-            <select value={selectedRegion} onChange={e => { setSelectedRegion(e.target.value); handleFilterChange(); }}>
-                <option value="">지역 선택</option>
-                {Regions.map(region => <option key={region.value} value={region.value}>{region.label}</option>)}
-            </select>
-            <select value={selectedOrder} onChange={e => { setSelectedOrder(e.target.value); handleFilterChange(); }}>
-                <option value="">정렬 순서</option>
-                {Orders.map(order => <option key={order.value} value={order.value}>{order.label}</option>)}
-            </select>
-        </div>
+    useEffect(() => {
+            console.log("호출데이터",{ selectedJob, selectedRegion, selectedOrder, currentPage, showOpenJobs })
+            dispatch(callPostListAPI({
+                selectedJob,
+                selectedRegion,
+                selectedOrder,
+                currentPage,
+                showOpenJobs
+            }));  
+        }
+        ,[selectedJob, selectedRegion, selectedOrder,  currentPage,showOpenJobs, dispatch]
     );
+    console.log("selectedItems_selectedJob",selectedJob)
+    console.log("selectedItems_selectedRegion",selectedRegion)
+
+    return (
+        <div className='postingfilter_container'>
+            <div className='postingfilter_wrapper'>
+                <div className='postingfilter_left'>
+                    <DropdownMulti 
+                        buttonText='직무'
+                        dropdownContent={Jobnames}
+                        selectedItems = {selectedJob}
+                        handleChange={handleJobChange}
+                        backcolor= "c_default"
+                        optionsize='o_default'>
+                    </DropdownMulti>
+
+                    <div className='postingfilter_text'>
+                        총 {pageInfo.total}개
+                    </div>
+                </div>
+                <div className='postingfilter_right'>
+                    <DropdownMulti 
+                        buttonText='지역'
+                        dropdownContent={Region}
+                        selectedItems = {selectedRegion}
+                        handleChange={handleRegionChange}
+                        backcolor= "c_white"
+                        optionsize='o_default'>
+                    </DropdownMulti>
+
+                    <DropdownSingle 
+                        buttonText='정렬'
+                        dropdownContent={Orders}
+                        selectedOne = {selectedOrder}
+                        handleChange={handleOrderChange}
+                        backcolor= "c_white"
+                        optionsize='o_short'>
+                    </DropdownSingle>
+
+                    <button 
+                        className="c_default s_middle postingfilter_toggle" 
+                        onClick={() => handleshowChange(!showOpenJobs)}>
+                        {showOpenJobs 
+                            ? <span>
+                                <span style={{marginRight:"3px"}}><MdCheck/></span>
+                                채용중 공고만
+                            </span> 
+                            : '채용중 공고만 보기'}
+                    </button>
+
+                </div>
+            </div>
+        </div>
+);
 }; 
 export default PostingFilter;
 

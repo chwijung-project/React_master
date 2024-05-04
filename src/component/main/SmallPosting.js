@@ -3,10 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { callSmallPostListAPI } from "../../api/MainAPICall";
 import './SmallPosting.css';
-import { 
-    MdArrowForwardIos,
- } from "react-icons/md";
-import Dropdown from "../../component/common/Dropdown"
+import { MdArrowForwardIos} from "react-icons/md";
+import DropdownSingle from "../../component/common/DropdownSingle"
+import { Jobnames } from "../common/Information";
 
 function SmallPosting() {
 
@@ -14,17 +13,8 @@ function SmallPosting() {
     const dispatch = useDispatch();
     const smallposting = useSelector(state => state.smallReducer);
     const postingList = smallposting.data;
+    console.log("postingList",postingList)
     const [selectOption, setSelectOption] = useState('머신러닝/딥러닝 엔지니어');
-
-    const jobOptions = [
-    {label: '머신러닝/딥러닝 엔지니어', value: '머신러닝/딥러닝 엔지니어'},
-    {label: '머신러닝/딥러닝 리서처', value: '머신러닝/딥러닝 리서처'},
-    {label: '데이터 사이언티스트', value: '데이터 사이언티스트'},
-    {label: '데이터 엔지니어', value: '데이터 엔지니어'},
-    {label: 'AI 서비스 개발자', value: 'AI 서비스 개발자'},
-    {label: 'AI 서비스 기획자', value: 'AI 서비스 기획자'},
-    {label: 'AI 아티스트', value: 'AI 아티스트'}
-    ];
 
     //선택한 직무 그대로 담아서 페이지 넘어가게
     const onClickNaviHandler = () => {
@@ -42,7 +32,7 @@ function SmallPosting() {
             }));  
             console.log("useEffect : 보내는 직무의 값", selectOption);
         }
-        ,[selectOption]
+        ,[dispatch, selectOption]
     );
 
     return (
@@ -55,19 +45,21 @@ function SmallPosting() {
                 </div>
                 <div className="smallpost_right">
                     <div>
-                        <Dropdown buttonText='직무'
-                            dropdownContent={jobOptions}
+                        <DropdownSingle buttonText='직무'
+                            dropdownContent={Jobnames.slice(1)}
                             selectedOne = {selectOption}
                             handleChange={DropdownChangehandler}
                             backcolor= 'c_gray'
                             backsize="s_small"
                             multiple = {false}
-                            optionsize='o_semi'>
-                        </Dropdown>
+                            optionsize='o_short'>
+                        </DropdownSingle>
                     </div>
                     <div className="smallpost_nav" onClick={onClickNaviHandler}>
                         더보기
-                        <span style={{alignItems:'center'}}><MdArrowForwardIos/></span>
+                        <span className="smallpost_nav_icon">
+                            <MdArrowForwardIos/>
+                        </span>
                     </div>
                 </div>
             </div>

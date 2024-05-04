@@ -1,6 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import { useSelector, useDispatch } from "react-redux";
-import { callPostListAPI } from "../../api/PostingAPICall";
+import React from 'react';
+import { useSelector } from "react-redux";
 import './PostingList.css';
 import {
   MdArrowBackIos,
@@ -10,9 +9,7 @@ import {
 // npm i react-icons@4.11.0
 
 function PostingList() {
-  // const dispatch = useDispatch();
-  const postList = useSelector(state => state.postReducer.data);
-  console.log("postList",postList)
+  const postList = useSelector(state => state.postReducer.posts);
 
   //직무별 다른 색깔
   const jobStyles = {
@@ -24,7 +21,6 @@ function PostingList() {
     'AI 서비스 기획자': { backgroundColor: '#d55e0030', color: '#d55e00',short:'AI PM' },
     'AI 아티스트': { backgroundColor: '#cc79a730', color: '#cc79a7',short:'AI ART' },
   };
-
   //2차 직무 요약어
   const jobSub = {
     'natural language proc':{short:'NLP'},
@@ -39,7 +35,6 @@ function PostingList() {
     'medical AI':{short:'Medical'},
     'null':{short:''}
   }
-
   // 얼마나 지난 공고인지
   function countdate(date){
     const today = new Date();
@@ -48,8 +43,6 @@ function PostingList() {
     diff = Math.ceil(diff/(1000*60*60*24));
     return diff
   };
-  
-
   // 요일 출력용
   function getWeekday (dateString) {
     const [year, month, day] = dateString.split('-').map(num => parseInt(num, 10));
@@ -57,7 +50,6 @@ function PostingList() {
     const WEEKDAY = ['일', '월', '화', '수', '목', '금', '토'];
     return WEEKDAY[date.getDay()];
   };
-
   // 줄 바꿈 용
   function addLineBreaks(text, maxLineLength) {
     const words = text.split(' ');
@@ -75,7 +67,6 @@ function PostingList() {
     });
     return formattedText;
   };
-
   //최대 단어 갯수 세고 나머지 ...으로 대체
   function addLineBreaksAndErase(text, maxLineLength) {
     const words = text.split(' ');

@@ -19,12 +19,16 @@ function Commercial() {
         <div className = "commercial_container">
             <div className="commercial_wrapper">
                 <div className="commercial_first">
+                <div className="smallpost_left">
                     <div className="smallpost_title">
                         부트캠프
                     </div>
+                </div>
                     <div className="smallpost_nav" onClick={onClickNaviHandler}>
                         더보기
-                        <span style={{alignItems:'center'}}><MdArrowForwardIos/></span>
+                        <span className="smallpost_nav_icon">
+                            <MdArrowForwardIos/>
+                        </span>
                     </div>
                 </div>
                 <div className="commercial_box">

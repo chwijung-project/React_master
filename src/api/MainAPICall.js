@@ -59,10 +59,6 @@ export const callSmallPostListAPI = ({selectOption}) => {
 
     let requestURL = `http://localhost:8080/api/smallrecruit?job=${selectOption}`;
     // let requestURL = `api/smallrecruit?job=${selectOption}`;
-
-    // if (selectOption !== undefined || selectOption !== null) {
-    //     requestURL = `${requestURL}?job=${selectOption}`;
-    // }
     
     console.log('[MainAPICall] requestURL : ', requestURL);
 

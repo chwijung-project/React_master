@@ -1,0 +1,99 @@
+.dropdownsingle_container{
+    font-size: var(--f_size_default);
+    font-family: var(--fontRegular);
+}
+.dropdownsingle_container button{
+    border: none;
+    border-radius: 5px;
+    font-family: var(--fontMedium);
+}
+.dropdownsingle_wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+}
+.dropdownsingle_title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.dropdownsingle_icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--f_size_semibig);
+}
+
+.dropdownsingle_overlay {
+    display: none;
+  }
+
+/* 옵션 */
+.ds_option_container{
+    position: absolute;
+    background-color:white;
+    border-radius:5px;
+    border: 1px solid #ccc;
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.4);
+    z-index: 50;
+}
+.ds_option_wrapper{
+    padding: 0.8rem;
+}
+.ds_option_first{
+    font-family: var(--fontMedium);
+    margin-bottom: 0.7rem;
+}
+.ds_option_second{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.ds_option_button{
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-size: var(--f_size_medium);
+    padding: 0.4rem;
+}
+.ds_option_second :hover{
+    background-color: var(--lineSoft);
+}
+.ds_option_button :hover{
+    background-color: transparent;
+}
+.selected{
+    color: var(--checked);
+    font-family: var(--fontMedium);
+}
+
+@media (max-width: 400px)  {
+    .ds_option_wrapper{
+        padding: 0.8rem 0.5rem;
+    }
+    /* .dropdownsingle_overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: var(--modalback);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    .ds_option_container{
+        position: fixed;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        z-index: 50;
+        width: 95%;
+        border: 2px solid #ccc;
+        padding: 2px;
+        width: 100%;
+    } */
+}

@@ -20,9 +20,9 @@
 .smallpost_left{
     display: flex;
     align-items: center;
+    gap:5px;
     font-family: var(--fontMedium);
     font-size: var(--f_size_big);
-    gap:5px;
 }
 .smallpost_right{
     display: flex;
@@ -32,7 +32,12 @@
 .smallpost_nav{
     color: var(--textSoft);
     display: flex;
+    align-items: center;
     cursor: pointer;
+}
+.smallpost_nav_icon{
+    display: flex;
+    align-items: center;
 }
 
 .smallpost_second{
@@ -105,6 +110,9 @@
 }
 
 @media (max-width: 400px){
+    .smallpost_left{
+        font-size: var(--f_size_default);
+    }
     .smallist_left{
         width: 70%;
     }
@@ -118,6 +126,9 @@
     .smallpost_box{
         margin: 0.25rem 0;
         padding: 2px 0;
+    }
+    .smallpost_nav{
+        font-size:  var(--f_size_medium);
     }
 }
 

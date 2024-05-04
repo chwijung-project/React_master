@@ -5,10 +5,9 @@
     font-family: var(--fontMedium);
     font-size: var(--f_size_big);
 }
-
 .recruitgraph_wrapper {
     border-radius: 0.5rem;
-    margin: 30px 0 30px 0;
+    margin: 0 0 30px 0;
     width: 100%;
     height: 430px;
     padding: 0.5rem 1.5rem;
@@ -16,14 +15,12 @@
     border: 1px solid var(--lineSoft);
     box-shadow: 0 0 2px 0 rgba(212, 209, 209, 0.5);
 }
-
 .recruitgraph_first {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 2.5rem;
 }
-
 .recruitgraph_second{
     width: 100%;
     display: flex;
@@ -90,43 +87,66 @@
 }
 
 /* 그래프 안내 팝업 */
-.popup_overlay {
+.popup_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: fixed;
-    top: 0;
+    z-index: 1000;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    top: 0;
+    width: 100%;
+    height: 100%; 
+    background-color: var(--modalback);
+}
+.popup_wrapper {
+    background: white;
+    padding: 12px 12px 40px 20px;
+    border-radius: 5px;
+    box-shadow: var(--modalshadow);
+    width: 80%;
+    height: 300px;
+    max-width: calc(var(--box_width) * 0.5);
+    font-family: var(--fontBold);
+    font-size: calc(var(--f_size_default) * 1.8);
+}
+.popup_first{
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.popup_first_close{
+    color: var(--textDark);
+    cursor: pointer;
+}
+.popup_first_close:hover,
+.popup_first_close:focus {
+    color: var(--text);
+    text-decoration: none;
+}
+.popup_second{
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
-.popup_content {
-    background: white;
-    padding: 20px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.4);
-    z-index: 1000;
-    width: 530px;
-}
-.popup_first{
-    display: flex;
-    justify-content: space-between;
-    cursor: pointer;
-}
-.popup_second{
-    margin: 20px 0;
+.popup_third{
+    font-size: calc(var(--f_size_default) * 1.6);
     font-family: var(--fontRegular);
-    font-size: var(--f_size_default);
+    margin: 5rem 2rem;
+    display: flex;
+    flex-direction: column;
 }
-.popup_second div{
-    margin: 6px 0;
+.popup_third div{
+    margin-bottom: 0.5rem;
 }
 
 
 @media (max-width: 400px) {
+    .recruitgraph_container {
+        font-size: var(--f_size_default);
+    }
     .recruitgraph_wrapper{
         height: calc(var(--box_height) - 45px);
     }
@@ -163,9 +183,16 @@
         width: calc(100% / 7);
         gap: 0.2rem;
         justify-content: center;
-
     }
-    .popup_content {
-        width: 80%;
+
+    /* 그래프 안내 팝업 */
+    .popup_wrapper {
+        width: 78%;
+        height: 180px;
+        font-size: calc(var(--f_size_default) * 1.2);
+    }
+    .popup_third{
+        font-size: var(--f_size_default);
+        margin: 2.5rem 0.3rem;
     }
 }

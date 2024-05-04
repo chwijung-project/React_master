@@ -1,0 +1,32 @@
+.postingpgn_container{
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0 5rem 0; 
+    gap: 0.5rem;
+}
+.postingpgn_container button{
+    border-radius: 5px;
+    font-family: var(--fontRegular);
+    font-size: var(--f_size_default);
+    padding: 0.5rem 0.6rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.postingpgn_container :hover{
+    background-color: var(--lineSoft);
+}
+.current_page{
+    border: none;
+    background-color: #d0d1ff67;
+    font-family: var(--fontMedium);
+}
+.else_page{
+    border: none;
+    background-color: transparent;
+}
+.postingpgn_icon{
+    display: flex;
+    align-items: center;
+}
