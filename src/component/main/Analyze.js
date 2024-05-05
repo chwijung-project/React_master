@@ -1,9 +1,9 @@
 import React from 'react';
 import './Analyze.css';
-import up from '../../image/up.png'
-import down from '../../image/down.png'
-import n from '../../image/n.png'
-import v from '../../image/v.png'
+import up from '../../image/analyze_icon/up.png'
+import down from '../../image/analyze_icon/down.png'
+import n from '../../image/analyze_icon/n.png'
+import v from '../../image/analyze_icon/v.png'
 
 function Analyze() {
 

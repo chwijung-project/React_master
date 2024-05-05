@@ -5,8 +5,8 @@ import { GET_SMALLPOST } from '../modules/SmallModule.js';
 /* 메인페이지 직무별 그래프 */
 export const callMainJobListAPI = ({selectedJob}) => {
     // const encodedJob = encodeURIComponent(selectedJob);
-    let requestURL = `http://localhost:8080/api/recruit-open-counts`;
-    // let requestURL = `api/recruit-open-counts`;
+    // let requestURL = `http://localhost:8080/api/recruit-open-counts`;
+    let requestURL = `api/recruit-open-counts`;
 
     return async (dispatch) => {
 
@@ -57,8 +57,8 @@ export const callMainJobListAPI = ({selectedJob}) => {
 /* 메인페이지 채용공고 스몰보드 */
 export const callSmallPostListAPI = ({selectOption}) => {
 
-    let requestURL = `http://localhost:8080/api/smallrecruit?job=${selectOption}`;
-    // let requestURL = `api/smallrecruit?job=${selectOption}`;
+    // let requestURL = `http://localhost:8080/api/smallrecruit?job=${selectOption}`;
+    let requestURL = `api/smallrecruit?job=${selectOption}`;
     
     console.log('[MainAPICall] requestURL : ', requestURL);
 

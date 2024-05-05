@@ -5,7 +5,6 @@ import JobPosting from './pages/jobPosting/JobPosting';
 import Education from './pages/education/Education';
 import Coaching from './pages/coaching/Coaching';
 import MoreInfo from './pages/moreInfo/MoreInfo';
-import Login from './pages/login/Login';
 import './global.css'
 
 
@@ -22,7 +21,6 @@ function App() {
           <Route path="/coaching" element={ <Coaching/> }/>
           <Route path="/moreInfo" element={ <MoreInfo/> }/>
         </Route>
-        <Route path="/login" element={ <Login/> }/>
       </Routes>
     </BrowserRouter>
     </>

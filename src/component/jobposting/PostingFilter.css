@@ -1,5 +1,7 @@
 .postingfilter_container{
-    /* background-color: teal; */
+    z-index: 10;
+    /* position: sticky;
+    top: 60px; */
 }
 .postingfilter_wrapper{
     display: flex;

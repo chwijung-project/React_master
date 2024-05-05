@@ -1,5 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import './EduList.css';
+import img_1 from '../../image/sample_edu/img_1.png'
+import img_2 from '../../image/sample_edu/img_2.png'
+import img_3 from '../../image/sample_edu/img_3.jpg'
+import img_4 from '../../image/sample_edu/img_4.png'
+import img_5 from '../../image/sample_edu/img_5.png'
+import img_6 from '../../image/sample_edu/img_6.png'
+import img_7 from '../../image/sample_edu/img_7.png'
+import img_8 from '../../image/sample_edu/img_8.png'
 import {
   MdArrowBackIos,
   MdArrowForwardIos,
@@ -21,7 +29,7 @@ const edu_data  = [
     'edu_fee': 0,
     'edu_can': false,
     'edu_url': "https://www.hrd.go.kr/hrdp/co/pcobo/PCOBO0100P.do?tracseId=AIG20230000412718&tracseTme=4&crseTracseSe=C0061&trainstCstmrId=500033945638#undefined",
-    'edu_logo': "https://www.hrd.go.kr/comm/com/fileDownload.do?athfilId=PzSCGOZ2jayzXp2gwmS1Aw&athfilSeqNo=4"
+    'edu_logo': img_1
   },
   {
     'edu_idx': 2,
@@ -36,7 +44,7 @@ const edu_data  = [
     'edu_fee': "34,310",
     'edu_can': true,
     'edu_url': "https://www.hrd.go.kr/hrdp/co/pcobo/PCOBO0100P.do?tracseId=ACG20243000972933&tracseTme=43&crseTracseSe=C0031&trainstCstmrId=500020035790#undefined",
-    'edu_logo': "https://www.hrd.go.kr/comm/com/fileDownload.do?athfilId=DDYAHDFbsMGzXp2gwmS1Aw&athfilSeqNo=1"
+    'edu_logo': img_2
   },
   {
     'edu_idx': 3,
@@ -51,7 +59,7 @@ const edu_data  = [
     'edu_fee': "48,280",
     'edu_can': true,
     'edu_url': "https://www.hrd.go.kr/hrdp/co/pcobo/PCOBO0100P.do?tracseId=ACG20233000921188&tracseTme=341&crseTracseSe=C0031&trainstCstmrId=500020034527#undefined",
-    'edu_logo': "https://www.hrd.go.kr/comm/com/fileDownload.do?athfilId=Ah9BkK0yiPRqzXp2gwmS1Aw&athfilSeqNo=1"
+    'edu_logo': img_3
   },
   {
     'edu_idx': 4,
@@ -66,7 +74,7 @@ const edu_data  = [
     'edu_fee': "34,310",
     'edu_can': true,
     'edu_url': "https://www.hrd.go.kr/hrdp/co/pcobo/PCOBO0100P.do?tracseId=ACG20243000986106&tracseTme=21&crseTracseSe=C0031&trainstCstmrId=500020021711#undefined",
-    'edu_logo': "https://www.hrd.go.kr/comm/com/fileDownload.do?athfilId=37sCz2DqD5OzXp2gwmS1Aw&athfilSeqNo=1"
+    'edu_logo': img_4
   },
   {
     'edu_idx': 5,
@@ -81,7 +89,7 @@ const edu_data  = [
     'edu_fee': "71,150",
     'edu_can': true,
     'edu_url': "https://www.hrd.go.kr/hrdp/co/pcobo/PCOBO0100P.do?tracseId=ACG20233000912503&tracseTme=229&crseTracseSe=C0031&trainstCstmrId=500020021711#undefined",
-    'edu_logo': "https://www.hrd.go.kr/comm/com/fileDownload.do?athfilId=37sCz2DqD5OzXp2gwmS1Aw&athfilSeqNo=1"
+    'edu_logo': img_4
   },
   {
     'edu_idx': 6,
@@ -96,7 +104,7 @@ const edu_data  = [
     'edu_fee': "49,000",
     'edu_can': true,
     'edu_url': "https://www.hrd.go.kr/hrdp/co/pcobo/PCOBO0100P.do?tracseId=AIG20220000409530&tracseTme=88&crseTracseSe=C0105&trainstCstmrId=500020046229#undefined",
-    'edu_logo': "https://www.hrd.go.kr/comm/com/fileDownload.do?athfilId=jQEcAWgmxRyzXp2gwmS1Aw&athfilSeqNo=4"
+    'edu_logo': img_8
   },
   {
     'edu_idx': 7,
@@ -111,7 +119,7 @@ const edu_data  = [
     'edu_fee': "71,150",
     'edu_can': true,
     'edu_url': "https://www.hrd.go.kr/hrdp/co/pcobo/PCOBO0100P.do?tracseId=ACG20233000920549&tracseTme=24&crseTracseSe=C0031&trainstCstmrId=500020055230#undefined",
-    'edu_logo': "https://www.hrd.go.kr/comm/com/fileDownload.do?athfilId=Yk48vWEVSsGzXp2gwmS1Aw&athfilSeqNo=1"
+    'edu_logo': img_7
   },
   {
     'edu_idx': 8,
@@ -126,7 +134,7 @@ const edu_data  = [
     'edu_fee': "34,310",
     'edu_can': true,
     'edu_url': "https://www.hrd.go.kr/hrdp/co/pcobo/PCOBO0100P.do?tracseId=ACG20243000987711&tracseTme=11&crseTracseSe=C0031&trainstCstmrId=500020049047#undefined",
-    'edu_logo': "https://www.hrd.go.kr/comm/com/fileDownload.do?athfilId=1Z9CxCUC09B6CzXp2gwmS1Aw&athfilSeqNo=1"
+    'edu_logo': img_6
   },
   {
     'edu_idx': 9,
@@ -141,7 +149,7 @@ const edu_data  = [
     'edu_fee': 0,
     'edu_can': false,
     'edu_url': "https://www.hrd.go.kr/hrdp/co/pcobo/PCOBO0100P.do?tracseId=AIG20230000455673&tracseTme=2&crseTracseSe=C0061&trainstCstmrId=500020041918#undefined",
-    'edu_logo': "https://www.hrd.go.kr/comm/com/fileDownload.do?athfilId=26jjDUcxv1yzXp2gwmS1Aw&athfilSeqNo=8"
+    'edu_logo': img_5
   },
   {
     'edu_idx': 10,
@@ -156,7 +164,7 @@ const edu_data  = [
     'edu_fee': "21,830",
     'edu_can': true,
     'edu_url': "https://www.hrd.go.kr/hrdp/co/pcobo/PCOBO0100P.do?tracseId=ACG20233000911258&tracseTme=229&crseTracseSe=C0031&trainstCstmrId=500020021711#undefined",
-    'edu_logo': "https://www.hrd.go.kr/comm/com/fileDownload.do?athfilId=37sCz2DqD5OzXp2gwmS1Aw&athfilSeqNo=1"
+    'edu_logo': img_4
   }
 ]
 
