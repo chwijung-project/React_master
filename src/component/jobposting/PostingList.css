@@ -1,111 +1,224 @@
-/* 정렬기능 */
-.sort-container {
+.postinglist_container{
+    padding: 0 1rem;
+    font-family: var(--fontRegular);
+    font-size: var(--f_size_small);
+    align-items: center;
+    background-color: white;
+    border: 1px solid var(--lineSoft);
+    box-shadow: 0 0 2px 0 rgba(212, 209, 209, 0.5);
+}
+.postinglist_wrapper{
+    width: 100%;
+}
+.postinglist_contents{
     display: flex;
     align-items: center;
-    width: 100%;
-    height: 100%;
-    margin-left: 45px;
-    /* justify-content: center; */
+    border-bottom: 1px solid var(--lineSoft);
+    padding: 10px 0;
+    height: 45px;
+}
+.postinglist_contents:last-child {
+    border-bottom: none;
 }
 
-/* 채용공고 리스트 겉 박스 디자인 */
-.posting-table {
-    margin-top: 10px;
+.postinglist_first{
+    width: 50%;
+    display: flex;
+    height: calc(45px/2);
+    align-items: center;
+}
+.postinglist_logo{
+    align-items: center;
+}
+.postinglist_logo img{
+    width: 33px;
+    height: 33px;
+    object-fit: contain;
+}
+.postinglist_first_right{
+    margin-left: 0.5rem;
+    cursor: pointer;
+}
+.postinglist_title{
+    font-size: var(--f_size_default);
+    font-family: var(--fontMedium);
+}
+
+/* 미디어쿼리 */
+.postinglist_title_media{
+    display: none;
+}
+
+.postinglist_subinfo{
+    display: flex;
+    margin-top: 0.3rem;
+    font-size: var(--f_size_short);
+}
+
+/* 미디어쿼리 */
+.postinglist_subinfo_media{
+    display: none;
+}
+
+.postinglist_company{
+    margin-right: 0.4rem;
+}
+.postinglist_period{
+    color: var(--textSoft);
+}
+
+.postinglist_second{
+    width: 12%;
+}
+.postinglist_endate{
+    margin-bottom: 0.2rem;
+}
+
+.postinglist_third{
+    width: 30%;
+}
+.postinglist_jobstyle{
+    padding: 5px 8px;
+    border-radius: 12px;
+    width: fit-content;
+    height: fit-content;
+    margin-bottom: 4px;
+    font-size: var(--f_size_short);
+}
+.postinglist_jobname{
+    margin-left: 4px;
+}
+
+.postinglist_last{
+    width: 8%;
+    display: flex;
+    justify-content: right;
+}
+.postinglist_last_media{
+    display: none;
+}
+
+.postinglist_last button{
+    padding: 8px 14px;
+    border: 1px solid var(--lineSoft);
+    font-family: var(--fontRegular);
+    font-size: var(--f_size_small);
+}
+.view{
+    background-color: white;
+    cursor: pointer;
+}
+  
+.delete{
+    background-color: white;
+    color: #b8d0eb;
+    cursor:default
+}
+
+.pgn_wraper{
+    margin-top: 28px;
+    list-style-type: none;
+    display: flex;
     justify-content: center;
-    height:fit-content;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px #ccc;
 }
 
-.posting-list {
-    display: block;
-    width: 100%;
-    height: 165px;
-    border-bottom: 1px solid #d7d8da;
-    font-family: KOTRA_GOTHIC;
-    font-size: 25px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+.pgn_button button{
+    border: none;
+    background-color: white;
+    font-family: var(--fontLight);
+    font-size: var(--f_size_default);
+    cursor: pointer;
 }
 
-.posting-title {
-    margin-left: 50px;
-    width: 720px; 
-    /* white-space: pre-wrap; */
-}
-
-.posting-company {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    font-size: 21px;
-}
-
-.posting-job {
-    padding: 1px 2px 1px 10px;
+.pgn_middle{
     display: flex;
     align-items: center;
-    text-align: center;
-    height: 40px;
-    width: 190px;
-    border: 1px solid #e9ecef;
-    border-radius: 15px;
-    background-color: #edf6f9;
-    font-family: NanumBarunGothic;
-    font-weight: bold;
-    font-size: 17px;
-    color: #006d77;
+    justify-content:flex-start;
+    gap: 2px;
 }
 
-.posting-region {
-    /* margin-left: 50px; */
-    /* margin-right: 10px; */
-    width: 145px;
-    height: 50px;
-    font-size: 21px;
-}
+@media (max-width: 400px) {
+    .postinglist_container{
+        background-color: transparent;
+        border: none;
+        box-shadow: none;
+    }
+    .postinglist_contents{
+        height: 70px;
+        background-color: white;
+        border: 1px solid var(--lineSoft);
+        box-shadow: 0 0 2px 0 rgba(212, 209, 209, 0.5);
+        margin-bottom: 0.5rem;
+        border-radius: 5px;
+        padding: 10px 5px;
+    }
+    .postinglist_contents:last-child {
+        border-bottom:1px solid var(--lineSoft);
+    }
+    .postinglist_first{
+        width: 85%;
+    }
+    .postinglist_title{
+        display: none;
+    }
+    .postinglist_title_media{
+        display: inline;
+        font-size: var(--f_size_default);
+        font-family: var(--fontMedium);
+    }
+    .postinglist_subinfo_media{
+        display: inline;
+    }
+    
+    .postinglist_jobstyle{
+        padding: 2px 7px;
+        border-radius: 12px;
+    }
 
-.posting-enddate {
-    width: 145px;
-    height: 30px;
-    font-size: 20px;
-    /* margin-right: -10px */
-}
+    .postinglist_last{
+        display: none;
+    }
+    .postinglist_last_media{
+        display: flex;
+        /* justify-content: right; */
+        width: 15%;
+    }
+    .postinglist_last_media button{
+        padding: 5px 8px;
+        /* background-color: white; */
+        border: 1px solid var(--lineSoft);
+        font-family: var(--fontRegular);
+        font-size: var(--f_size_short);
+    }
+    .postinglist_period, .postinglist_logo, .postinglist_company, 
+    .postinglist_second, .postinglist_third, .postinglist_forth{
+        display: none;
+    }
 
-.posting-logo-able {
-    height: 80px;
-    width: 80px;
-    border-radius: 10px;
-    /* margin-right: 10px;
-    margin-left: 30px; */
-    border:white;
-    /* background-color: #b8dedc;
-    color: #006d77; */
-    /* font-size: 20px;
-    font-weight: bold; */
-    /* border: 1px solid #006d77;
-    box-shadow: 0px 3px 3px 0px #b8dedc; */
-}
+    .postinglist_media_first{
+        display: flex;
+        margin: 0.2rem 0 0 0;
+        gap: 0.2rem;
+        width: 100%;
+    }
+    .postinglist_media_second{
+        display: flex;
+        gap: 0.4rem;
+        align-items: center;
+        margin-top: 0.6rem;
+    }
+    .postinglist_media_second img{
+        width: 18px;
+        height: 18px;
+        object-fit: contain;
 
-.posting-logo-unable {
-    height: 85px;
-    width: 85px;
-    border-radius: 10px;
-    margin-right: 10px;
-    margin-left: 30px;
-    border:white;
-    background-color: #f5f3f4;
-    color: #adb5bd;
-    font-size: 20px;
-    border: 1px solid #d3d3d3;
-}
+    }
 
-.input-style input {
-    width: 110px;
-    height: 50px;
-    font-size: 18px;
-    cursor:pointer;
-    border-radius: 5px;
-    margin-left: 5px;
-    border: 1px solid #d3d3d3;
+    .pgn_button button{
+        font-size: 9px;
+        background-color: #f1f4f960;
+    }
+    .pgn_middle{
+        gap: 0px;
+    }
 }

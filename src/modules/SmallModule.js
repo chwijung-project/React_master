@@ -2,11 +2,11 @@ import { handleActions } from 'redux-actions';
 
 const initialState = [];
 
-export const GET_SMALLCOMU            = 'main/GET_SMALLCOMU';
+export const GET_SMALLPOST  = 'main/GET_SMALLPOST';
 
 const smallReducer = handleActions(
     {
-        [GET_SMALLCOMU]: (state, { payload }) => {
+        [GET_SMALLPOST]: (state, { payload }) => {
 
             return payload;
         }

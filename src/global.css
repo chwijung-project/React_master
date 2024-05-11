@@ -1,0 +1,140 @@
+@font-face {
+  font-family: 'Pretendard-Light';
+  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Pretendard-Medium';
+  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Pretendard-SemiBold';
+  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Pretendard-Bold';
+  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+:root {
+    --text: #212529;
+    --textDark: #80868d;
+    --textSoft: #adb5bd;
+    --lineSoft: #c1cad482;
+    --shadow: #cad2da;
+    --checked: #1e84d7;
+    --modalback: rgba(0, 0, 0, 0.5);
+    --modalshadow: 0 5px 5px 0 rgba(0,0,0,0.4);
+
+    --fontLight:'Pretendard-Light';
+    --fontRegular:'Pretendard-Regular';
+    --fontMedium:'Pretendard-Medium';
+    --fontBold:'Pretendard-SemiBold';
+    --fontExtra:'Pretendard-Bold';
+
+    --f_size_big:14px;
+    --f_size_semibig:13.5px;
+    --f_size_default:12px;
+    --f_size_medium:11px;
+    --f_size_small:10px;
+    --f_size_short:9px;
+
+    --box_height:320px;
+    --box_width:1060px;
+  }
+
+a {
+  color: inherit;
+  text-decoration: none;
+  }
+  
+body {
+  background-color: #f1f4f960;
+  font-size: var(--f_size_default);
+  font-family: var(--fontRegular);
+  color: var(--text);
+}
+button {
+  color: var(--text);
+  font-size: var(--f_size_semibig);
+  font-family: var(--fontRegular);
+  cursor: pointer;
+}
+
+.total {
+  margin-top: 90px;
+  width: 100%;
+  justify-content: center;
+  /* background-color: #6247aa60; */
+}
+.total .box{
+  max-width: var(--box_width);
+  margin: auto;
+}
+
+/* 버튼 색상 */
+.c_default{
+  background-color: #d0d1ff67;
+  color: #6247aa;
+}
+.c_gray{
+  background-color: #f5f5f5;
+}
+.c_white{
+  background-color: transparent;
+}
+
+/* 버튼 크기 */
+.s_default{
+  padding: 8px 8px 8px 12px;
+  /* font-size: var(--f_size_default); */
+}
+.s_middle{
+  padding: 7px 10px;
+  font-size: var(--f_size_default);
+}
+.s_small{
+  padding: 6px 6px 6px 10px;
+  font-size: var(--f_size_small);
+}
+
+/* 옵션 사이즈 */
+.o_default{
+  width: fit-content;
+  height: 290px;
+}
+.o_small{
+  width: 21%;
+  height: 275px;
+}
+.o_short{
+  width: fit-content;
+  height: fit-content;
+}
+
+
+@media (max-width: 400px) {
+  .s_default{
+    padding: 6px 6px 6px 10px;
+    font-size: var(--f_size_short);
+  }
+  .s_small{
+    font-size: var(--f_size_short);
+  }
+  .s_middle{
+    font-size: var(--f_size_short);
+  }
+}

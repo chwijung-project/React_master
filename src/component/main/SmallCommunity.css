@@ -1,104 +1,110 @@
-@font-face {
-    font-family: "KOTRA_BOLD-Bold";
-    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.1/KOTRA_BOLD-Bold.woff")
-      format("woff");
-    font-weight: normal;
-    font-style: normal;
+.smallcommu_contents{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;    
+    margin-top: -5px;
+    gap: 5px;
 }
 
-@font-face {
-    font-family: 'SUITE-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
+.smallcommu_contents_logo{
+    width: 15px;
+    height: 15px;
+}
+.smallcommu_contents_left{
+    display: none;
+}
+.smallcommu_contents_right{
+    width: 60%;
+    padding-left: 12px;
+}
+.smallcommu_contents_name{
+    display: none;
 }
 
-.comucontainer {
-    margin-left: 45px;
-}
-
-.comusmall-box{
+.smallcommu_contents div{
+    width: 40%;
+    flex-grow: 1;
+    margin-bottom: 2px; 
+    height: 42px;
+    padding: 7px 0 7px 7px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-
-.smallcomudrop{
-    margin-left: -60px; 
-    width: 280px;
-    height: 30px;
-    font-size: 21px;
-    font-family: NanumBarunGothic;
-    font-weight:500;
+    background-color: transparent;
+    border-bottom: 1px solid var(--lineSoft);
     background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px #ccc;
-    text-align: center;
-
 }
-.comutext {
-    margin-left: 15px;
-    font-family: "KOTRA_BOLD-Bold";
-    font-size: 30px;
+.smallcommu_contents div:last-child {
+    border-bottom: none;
 }
-
-.smallcomutable {
-    margin-top: -15px; 
-    position: relative;
-    border: 1px solid #ddd;
-    border-radius: 15px;
-    box-shadow: 0px 0px 10px #ccc;
-    width: 575px;
-    height: 400px;
-    text-align: center;
+.smallcommu_openchat{
+    width: 25%;
+    height: 20px;
+    padding: 5px;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+.smallcommu_openchat button{
+    border: 1.5px solid var(--lineSoft);
+    padding: 5px 0.5rem;
+    font-size: var(--f_size_small);
+    font-family: var(--fontRegular);
+    color: var(--text);
+    background-color: transparent;
 }
 
-.morebtn {
-    font-family: "SUITE-Regular";
-    background-color: white;
-    margin-top: 10px;
-    margin-left: 460px;
-    border: none;
-    width: 80px;
-    height: 30px;
-    position: absolute;
-    cursor: pointer;
+.mle{
+    background-color: #E69F0030;
+    color: #E69F00;  
+}
+.mls{
+    background-color: #56B4E930;
+    color: #56B4E9;
+}
+.ds{
+    background-color: #009E7330;
+    color: #009E73;
+}
+.de{
+    background-color: #F0E44240;
+    color: #d5cb3b;
+}
+.ai_dev{
+    background-color: #0072B230;
+    color: #0072B2;
+}
+.ai_pm{
+    background-color: #D55E0030;
+    color: #D55E00;
+}
+.ai_art{
+    background-color: #CC79A730;
+    color: #CC79A7;
 }
 
-.morebtn:hover{
-    /* background-color: #f7f7f7; */
-    color: red; /* 글씨 색상을 변경 */
-}
 
-.smallcomutable th,
-.smallcomutable td {
-  padding: 10px;
-}
-
-.index {
-    font-family: 'SUITE-Regular';
-}
-
-.comu_titl{
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 280px;
-    min-width: 280px;
-    font-family: 'SUITE-Regular';
-    cursor: pointer;
-}
-
-.comu_titl:hover{
-    color: #ccc;
-}
-
-.user_id {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 80px;
-    min-width: 80px;
-    font-family: 'SUITE-Regular';
+@media (max-width: 400px){
+    .smallcommu_contents div{
+        font-size: var(--f_size_small);
+        justify-content: flex-start;
+        gap: 0.5rem;
+    }
+    .smallcommu_openchat{
+        display: none;
+    }
+    .smallcommu_contents_logo{
+        width: 30px;
+        height: 15px;
+        padding: 3px;
+    }
+    .smallcommu_contents_left{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .smallcommu_contents_right{
+        width: 75%;
+        padding-left: 0;
+    }
 }

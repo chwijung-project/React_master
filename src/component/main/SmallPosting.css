@@ -1,100 +1,135 @@
-@font-face {
-    font-family: "KOTRA_BOLD-Bold";
-    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.1/KOTRA_BOLD-Bold.woff")
-      format("woff");
-    font-weight: normal;
-    font-style: normal;
+.smallpost_container{
+    padding: 0.5rem 1.5rem;
+    align-items: center;
+    border: 1px solid var(--lineSoft);
+    border-radius: 0.5rem;
+    height: var(--box_height);
+    max-width: 530px;
+    margin: auto;
+    background-color: white;
+    box-shadow: 0 0 2px 0 rgba(212, 209, 209, 0.5);
 }
-
-@font-face {
-    font-family: 'SUITE-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
+.smallpost_first{
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--lineSoft);
+    margin-bottom: 0.5rem;
+    height: 24px;
 }
-
-.small-box{
+.smallpost_left{
     display: flex;
     align-items: center;
+    gap:5px;
+    font-family: var(--fontMedium);
+    font-size: var(--f_size_big);
+}
+.smallpost_right{
+    display: flex;
+    align-items: center;
+    gap:0.5rem;
+}
+.smallpost_nav{
+    color: var(--textSoft);
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.smallpost_nav_icon{
+    display: flex;
+    align-items: center;
+}
+
+.smallpost_second{
+    width: 100%;
+    margin-top: 0.6rem;
+}
+.smallpost_box{
     justify-content: space-between;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin: 0.4rem 0;
+    padding: 3px 0;
 }
 
-.smalldrop{
-    margin-left: -60px; 
-    width: 280px;
-    height: 30px;
-    font-size: 21px;
-    font-family: NanumBarunGothic;
-    font-weight:500;
-    background-color: white;
-    border: 1px solid #ddd; 
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px #ccc;
-    text-align: center;
+.smallist_left{
+    float: left;
+    width: 80%;
+    display: flex;
+    gap: 5px;
+}
+.small_logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.6rem;
+}
+.small_logo img{
+    width: 29px;
+    height: 29px;
+}
+.small_jd{
+    width: 100%;
+    cursor: pointer;
+}
+.small_title{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 90%;
+    margin-bottom: 0.3rem;
+}
+.small_company{
+    color: var(--textSoft);
+    margin-right: 0.4rem;
+    font-size: var(--f_size_small);
 }
 
-.posttext {
-    margin-left: 15px;
-    font-family: "KOTRA_BOLD-Bold";
-    font-size: 30px;
+.smallist_right{
+    float:right;
 }
-
-.smallposttable {
-    margin-top: -15px; 
-    position: relative;
-    border: 1px solid #ddd;
-    border-radius: 15px;
-    box-shadow: 0px 0px 10px #ccc;
-    width: 575px;
-    height: 400px;
-    text-align: center;
-}
-
-.morebtn {
-    font-family: "SUITE-Regular";
-    background-color: white;
-    margin-left: 500px;
+.smallist_button button{
+    padding: 5px 8px;
+    font-size: var(--f_size_small);
+    font-family: var(--fontRegular);
     border: none;
-    width: 80px;
-    height: 30px;
-    position: absolute;
+    /* background-color: white;
+    border: 1px solid var(--lineSoft); */
+}
+
+.url{
+    color: #6247aa;
+    background-color: #d0d1ff57;
     cursor: pointer;
 }
-
-.morebtn:hover{
-    /* background-color: #f7f7f7; */
-    color: red; /* 글씨 색상을 변경 */
-    font-weight: bold;
+.no{
+    background-color: #b8d0eb30;
+    color: #b8d0eb;
+    cursor:default
 }
 
-.smallposttable th,
-.smallposttable td {
-  padding: 10px;
+@media (max-width: 400px){
+    .smallpost_left{
+        font-size: var(--f_size_default);
+    }
+    .smallist_left{
+        width: 70%;
+    }
+    .small_logo img{
+        width: 25px;
+        height: 25px;
+    }
+    .smallpost_container{
+        height: calc(var(--box_height) - 20px);
+    }
+    .smallpost_box{
+        margin: 0.25rem 0;
+        padding: 2px 0;
+    }
+    .smallpost_nav{
+        font-size:  var(--f_size_medium);
+    }
 }
 
-.index {
-    font-family: 'SUITE-Regular';
-}
 
-.recruit{
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 280px;
-    min-width: 280px;
-    font-family: 'SUITE-Regular';
-    cursor: pointer;
-}
-
-.recruit:hover{
-    color: #ccc;
-}
-
-.company {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 80px;
-    min-width: 80px;
-    font-family: 'SUITE-Regular';
-}

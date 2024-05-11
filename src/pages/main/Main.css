@@ -1,0 +1,31 @@
+.main_small{
+    width: 100%;
+    margin: 0 0 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.main_left{
+    width: 48%;
+}
+.main_right{
+    width: 48%;
+}
+
+.main_commercial{
+    width: 100%;
+}
+
+
+@media (max-width: 400px) {
+    /* .main_container{
+        max-width: 350px;
+    } */
+    .main_left{
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+    .main_right{
+        width: 100%;
+    }
+}

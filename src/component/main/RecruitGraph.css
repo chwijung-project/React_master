@@ -1,79 +1,198 @@
-@font-face {
-    font-family: "KOTRA_BOLD-Bold";
-    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.1/KOTRA_BOLD-Bold.woff")
-        format("woff");
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'NanumBarunGothic';
-    font-style: normal;
-    font-weight: 400;
-    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot');
-    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype');
-}
-   
-@font-face {
-    font-family: 'NanumBarunGothic';
-    font-style: normal;
-    font-weight: 700;
-    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.eot');
-    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.ttf') format('truetype')
-}
-   
-@font-face {
-    font-family: 'NanumBarunGothic';
-    font-style: normal;
-    font-weight: 300;
-    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot');
-    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.ttf') format('truetype');
-}
-
-.graph-container {
+.recruitgraph_container {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: var(--fontMedium);
+    font-size: var(--f_size_big);
 }
-
-.graph-box {
-    background-color: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 30px;
-    box-shadow: 0px 0px 10px #ccc;
-    margin-top: 20px;
-    margin-bottom: 30px;
-    width: 1200px;
-    height: 600px;
+.recruitgraph_wrapper {
+    border-radius: 0.5rem;
+    margin: 0 0 30px 0;
+    width: 100%;
+    height: 430px;
+    padding: 0.5rem 1.5rem;
+    background-color: white;
+    border: 1px solid var(--lineSoft);
+    box-shadow: 0 0 2px 0 rgba(212, 209, 209, 0.5);
 }
-
-.recrutext{
-    font-family: "KOTRA_BOLD-Bold";
-    margin-left: 18px;
-    height: 25px;
-}
-
-.graph-upside{
+.recruitgraph_first {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 2.5rem;
+}
+.recruitgraph_second{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+/* .graph_title{
+    width: 5%;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.graph_title .contents{
+    width: 150px; 
+    font-size: var(--f_size_big);
+    position: absolute;
+    transform: translate(-50%, -50%) rotate(270deg);
+    top: 50%; 
+    left: 60%;
+}
+.graph_title .small{
+    margin-left: 2px;
+    font-size: var(--f_size_small);
+    color: var(--textSoft);
+} */
+
+.recruitgraph_graph{
+    height: var(--box_height);
+    width: 80%;
+}
+.recruitgraph_graph_media{
+    display: none;
 }
 
-.dropdown{
-    margin-right: 25px;
-    margin-top: 10px;
-    width: 100px;
-    font-size: 21px;
-    font-family: NanumBarunGothic;
-    font-weight:500;
-    color: black;
-    background-color: white;
-    border: 1px solid #ccc;
+.recruitgraph_legend{
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+.recruitgraph_legend_contents{
+    width: 75%;
+}
+.recruitgraph_legend_box{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: var(--f_size_default);
+    font-family: var(--fontLight);
+    margin-bottom: 0.8rem;
+    cursor: pointer;
+}
+
+.recruitgraph_legend_left{
+    width: 10%;
+    height: 3px;
+}
+.recruitgraph_legend_left_right{
+    width: 70%;
+}
+.recruitgraph_legend_right_media{
+    width: 70%;
+    display: none;
+}
+
+/* 그래프 안내 팝업 */
+.popup_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%; 
+    background-color: var(--modalback);
+}
+.popup_wrapper {
+    background: white;
+    padding: 12px 12px 40px 20px;
     border-radius: 5px;
-    text-align: center;
+    box-shadow: var(--modalshadow);
+    width: 80%;
+    height: 300px;
+    max-width: calc(var(--box_width) * 0.5);
+    font-family: var(--fontBold);
+    font-size: calc(var(--f_size_default) * 1.8);
+}
+.popup_first{
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.popup_first_close{
+    color: var(--textDark);
+    cursor: pointer;
+}
+.popup_first_close:hover,
+.popup_first_close:focus {
+    color: var(--text);
+    text-decoration: none;
+}
+.popup_second{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.popup_third{
+    font-size: calc(var(--f_size_default) * 1.6);
+    font-family: var(--fontRegular);
+    margin: 5rem 2rem;
+    display: flex;
+    flex-direction: column;
+}
+.popup_third div{
+    margin-bottom: 0.5rem;
 }
 
-.graph{
-    height: 520px;
-    width: 99%;
+
+@media (max-width: 400px) {
+    .recruitgraph_container {
+        font-size: var(--f_size_default);
+    }
+    .recruitgraph_wrapper{
+        height: calc(var(--box_height) - 45px);
+    }
+    .recruitgraph_first {
+        margin-bottom: 1.3rem;
+    }
+    .recruitgraph_second{
+        display: block;
+    }
+    .recruitgraph_graph{
+        display: none;
+    }
+    .recruitgraph_graph_media{
+        display: inline-block;
+        width: 100%;
+        height: calc(var(--box_height) / 1.7);
+    }
+    .recruitgraph_legend_right{
+        display: none;
+    }
+    .recruitgraph_legend_right_media{
+        display: inline;
+        font-size: var(--f_size_short);
+    }
+    .recruitgraph_legend{
+        width: 100%;
+    }
+    .recruitgraph_legend_contents{
+        width: 100%;
+        display: flex;
+        margin-bottom: 0.4rem;
+    }
+    .recruitgraph_legend_box{
+        width: calc(100% / 7);
+        gap: 0.2rem;
+        justify-content: center;
+    }
+
+    /* 그래프 안내 팝업 */
+    .popup_wrapper {
+        width: 78%;
+        height: 180px;
+        font-size: calc(var(--f_size_default) * 1.2);
+    }
+    .popup_third{
+        font-size: var(--f_size_default);
+        margin: 2.5rem 0.3rem;
+    }
 }

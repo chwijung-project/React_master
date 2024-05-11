@@ -1,0 +1,73 @@
+.edubanner_container{
+    margin-top: 60px;
+    width: 100%;
+    height: 150px;
+    background-color: rgb(200, 229, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.edubanner_container img{
+    width: 100%;
+    height: 100%;
+}
+
+.carousel .carousel-status {
+    display: none;
+  }
+
+.indicator {
+    display: inline-block;
+    margin: 0 5px;
+    width: 15px;
+    height: 3px;
+    background-color: var(--lineSoft);
+    cursor: pointer;
+}
+
+.indicator.selected {
+    background-color: var(--textDark);
+    width: 20px;
+    height: 3px;
+}
+
+
+.edubanner_second{
+    width: 100%;
+    max-width: var(--box_width);
+    margin: auto;
+    height: 145px;
+    padding: 1rem 0;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+.edubanner_second_left{
+    width: 35%;
+    height: 100%;
+}
+.edubanner_second_right{
+    width: 35%;
+    height: 100%;
+}
+.edubanner_second_box{
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border: 1px solid var(--lineSoft);
+    border-radius: 5px;
+    box-shadow: 0 0 2px 0 rgba(212, 209, 209, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 400px) {
+    .edubanner_container {
+        height: 100px;
+        margin-top: 1px;
+    }
+    .edubanner_second{
+        display: none;
+    }
+}
